@@ -36,7 +36,7 @@ const AddEmployee = () => {
           <div className='col-md-8'>
             <div className='card'>
               <div className='card-header bg-primary text-white'>
-                <h4>Add Employee</h4>
+                <h4>Add employee</h4>
               </div>
               <div className='card-body'>
                 <form onSubmit={handleSubmit}>
