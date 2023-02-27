@@ -35,7 +35,7 @@ export default function App() {
                     <Route path="/userprofile" component={UserProfile} />
                     <Route path="/addemployee" component={AddEmployee}/>
                     <Route path="/logincomp" component={LoginComp}/>
-                    {/* <Route path="/admindash" component={AdminDashBoard}/> */}
+                    <Route path="/admindash" component={AdminDashBoard}/>
                     {/* <Route path="/addtask" component={AddTask}/> */}
 
                 </Switch>
