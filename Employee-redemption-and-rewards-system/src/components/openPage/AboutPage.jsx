@@ -1,7 +1,6 @@
 
 import { Container, Row, Col } from 'react-bootstrap';
 import Onavbar from './Onavbar';
-import Particlesbg from '../particles/Particlesbg';
 import React from 'react';
 import './openpage.css';
 
@@ -22,7 +21,7 @@ const AboutPage = () => {
   return (
     <div>
       <Onavbar />
-      <Particlesbg />
+      
 
       {/* Add the custom font to the head of the document */}
       <head>

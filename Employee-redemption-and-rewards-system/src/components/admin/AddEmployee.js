@@ -3,7 +3,6 @@ import Navbar from '../header/Navbar';
 import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
-import Particlesbg from '../particles/Particlesbg';
 import { background } from '@chakra-ui/react';
 
 const AddEmployee = () => {
@@ -30,7 +29,7 @@ const AddEmployee = () => {
     <div style={{backgroundColor:'transparent'}}>
     <div>
       <Navbar />
-      <Particlesbg/>
+
       <div className='addemp'>
       <div className='container mt-4'>
         <div className='row'>
