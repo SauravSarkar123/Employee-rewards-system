@@ -14,8 +14,14 @@ const OpenPage = () => {
     fontWeight: 'bold',
   };
 
+  const backgroundGradient = {
+    background: 'linear-gradient(to right, #1985FF, #42ECEC)',
+    height: '100vh',
+    width: '100vw',
+  };
+
   return (
-    <div>
+    <div style={backgroundGradient}>
       <Onavbar />
       {/* <Three /> */}
 
