@@ -42,7 +42,7 @@ const AboutPage = () => {
               <h4 id="about" style={{ color: '#e633ff' }}>
                 <u>About</u>
               </h4>
-              <h5 style={{ color: '#FFFFFF', wordSpacing:'0.6em' }}>
+              <h5 style={{ color: '#000', wordSpacing:'0.6em' }}>
                 Maintaining accurate records of employee data and certifications is essential for many companies,
                 but such records can often be difficult to manage and access. This lack of proper record-keeping can
                 create challenges for retrieving and utilizing employee data, leading to inefficiencies and errors.
@@ -68,10 +68,10 @@ const AboutPage = () => {
           <h4 id="benefits" style={{ color: '#e633ff' }}>
             <u>Benefits</u>
           </h4>
-          <h5 style={{ color: '#FFFFFF', wordSpacing:'0.6em' }}>
+          <h5 style={{ color: '#000', wordSpacing:'0.6em' }}>
             The benefits of implementing a blockchain-based employee reward system include:
            </h5>
-           <ul style={{ color: '#FFFFFF',wordSpacing:'0.6em' }}>
+           <ul style={{ color: '#000',wordSpacing:'0.6em' }}>
              <li>Improved accuracy and accessibility of employee data and certifications</li>
              <li>Increased efficiency of operations</li>
            <li>Tangible incentives for employees to perform desired behaviors</li>
@@ -80,7 +80,7 @@ const AboutPage = () => {
            <h4 id="tech" style={{ color: '#e633ff' }}>
              <u>Technology</u>
          </h4>
-           <h5 style={{ color: '#FFFFFF',wordSpacing:'0.6em' }}>
+           <h5 style={{ color: '#000',wordSpacing:'0.6em' }}>
              The employee reward system can be developed using blockchain technology and the Daml digital
              asset modeling language. This ensures the secure and efficient management of employee data,
              as well as the issuance and transfer of reward tokens. Additionally, the use of smart contracts
@@ -90,7 +90,7 @@ const AboutPage = () => {
            <h4 id="future" style={{ color: '#e633ff' }}>
              <u>Future</u>
            </h4>
-           <h5 style={{ color: '#FFFFFF',wordSpacing:'0.6em' }}>
+           <h5 style={{ color: '#000',wordSpacing:'0.6em' }}>
              The future of employee reward systems lies in the development and integration of emerging technologies,
              such as blockchain and AI, to improve the accuracy, efficiency, and fairness of such systems. By leveraging
              these technologies, companies can more effectively motivate their employees to perform desired behaviors,
