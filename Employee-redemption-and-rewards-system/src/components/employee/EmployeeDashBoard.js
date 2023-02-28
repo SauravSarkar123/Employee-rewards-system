@@ -146,7 +146,7 @@ return (
                 <Card>
                     <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmqSWdlFU8Z2oiMcidHb4ZkdSRm2nnaw32w&usqp=CAU" />
                     <Card.Body>
-                        <Card.Title><strong>Name:</strong> John Doe</Card.Title>
+                        <Card.Title><strong>Name:</strong> John </Card.Title>
                         <Card.Text><strong>Phone:</strong> +1 123-456-7890</Card.Text>
                         <Card.Text><strong>Email:</strong> john.doe@example.com</Card.Text>
                         <Table striped bordered hover>

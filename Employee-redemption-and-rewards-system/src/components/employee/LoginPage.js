@@ -28,6 +28,8 @@ export default function SignInPage() {
         name,
         password,
       });
+      const token = response.data.token;
+      localStorage.setItem('token', token);
       setMessage(response.data.message)
 
       console.log(response.data);
