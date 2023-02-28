@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Navbar from '../header/Navbar';
+import RegisterHeader from '../header/registerheader';
 import Footer from '../footer/Footer'
 import { useHistory } from "react-router-dom";
 
 import '../../App.css'
-import BackgroundImage from '../../assets/images/emp.jpg'
+
 export default function Register(){ 
     const API_URL = "http://localhost:8800";
     const [name, setUsername] = useState("");
@@ -46,7 +46,7 @@ export default function Register(){
   
     return (
       <div>
-        <Navbar />
+        <RegisterHeader/>
         <header style={ HeaderStyle }>
           <div className="container-fluid h-100" >
             <div className="row h-100">
@@ -103,7 +103,7 @@ export default function Register(){
 
 
 const HeaderStyle = {
-background: `url(${BackgroundImage}) no-repeat center center fixed`,
+
 backgroundSize: 'cover',
 height: '100%',
 width:"100%"

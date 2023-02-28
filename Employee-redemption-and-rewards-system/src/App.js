@@ -15,8 +15,11 @@ import RegisterCompany from "./components/admin/RegisterPageComp";
 import LoginComp from "./components/admin/LoginPage";
 import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
+import LoginHeader12 from './components/header/loginheader'
+import RegisterHeader from './components/header/registerheader'
 
 import './App.css'
+
 
 export default function App() {
     return (
@@ -37,6 +40,8 @@ export default function App() {
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     <Route path="/addtask" component={AddTask}/>
+                    <Route path="/loginheader" components={LoginHeader12}/>
+                    <Route path="/registerheader" components={RegisterHeader}/>
 
                 </Switch>
             </div>

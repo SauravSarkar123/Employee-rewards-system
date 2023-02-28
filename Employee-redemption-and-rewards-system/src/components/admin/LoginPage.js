@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Navbar from '../header/Navbar';
+
 import Footer from '../footer/Footer'
 import { useHistory } from "react-router-dom";
 
 
 import '../../App.css'
-import BackgroundImage from '../../assets/images/emp.jpg'
+
+import LoginHeader from '../header/loginheader';
 
 
 
@@ -55,7 +56,8 @@ export default function SignInPage() {
  return (
      <div>
      <header style={ HeaderStyle }>
-         <Navbar/>
+         <LoginHeader/>
+         
      <div className="text-center m-5-auto">
          <h2>Sign in to us</h2>
          <form onSubmit={handleLogin}>
@@ -85,7 +87,7 @@ export default function SignInPage() {
  const HeaderStyle = {
  width: "100%",
  height: "150vh",
- background: `url(${BackgroundImage})`,
+ 
  backgroundPosition: "center",
  backgroundRepeat: "no-repeat",
  backgroundSize: "cover"
