@@ -17,7 +17,7 @@ const OpenPage = () => {
   return (
     <div>
       <Onavbar />
-      <Three />
+      {/* <Three /> */}
 
       <Container>
         <Row>
