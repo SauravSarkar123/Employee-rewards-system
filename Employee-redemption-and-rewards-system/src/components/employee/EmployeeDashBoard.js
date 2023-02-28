@@ -59,23 +59,25 @@ return (
 <div style={{ height: "600px", overflowY: "scroll", width: "120%" }}>
 <Table striped bordered hover style={{ width: "100%", fontSize: "1.2em", height: "90%" }}>
 <thead>
-<tr>
-<th>Company</th>
-<th>Reward Description</th>
-<th>Date</th>
-<th>Rating</th>
-<th>Tokens Earned</th>
-</tr>
-</thead>
-<tbody>
-{tokenData.map((token, index) => (
-<tr key={index}>
-<td>{token.companyName}</td>
-<td>{token.rewardDesc}</td>
-<td>{token.date}</td>
-<td>{token.rating}</td>
-<td>{token.tokensEarned}</td>
-</tr>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Reward Description</th>
+                                <th>Date</th>
+                                <th>Rating</th>
+                                <th>Tokens Earned</th>
+                                <th>View Certificates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tokenData.map((token, index) => (
+                                <tr key={index}>
+                                    <td>{token.companyName}</td>
+                                    <td>{token.rewardDesc}</td>
+                                    <td>{token.date}</td>
+                                    <td>{token.rating}</td>
+                                    <td>{token.tokensEarned}</td>
+                                    <td><Button>View</Button></td>
+                                </tr>
 ))}
 </tbody>
 </Table>
