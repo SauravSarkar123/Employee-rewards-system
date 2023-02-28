@@ -12,6 +12,7 @@
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "fastapi": "^0.0.8",
+    "js-cookie": "^3.0.1",
     "mdb-react-ui-kit": "^5.1.0",
     "mongodb": "^5.0.1",
     "nodemon": "^2.0.20",
@@ -19,10 +20,8 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^16.8.6",
     "react-icons": "^4.7.1",
-    
     "react-router-dom": "^5.1.0",
     "react-scripts": "3.0.1",
-   
     "three": "^0.150.0"
   },
   "scripts": {

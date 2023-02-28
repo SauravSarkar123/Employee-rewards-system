@@ -24,6 +24,7 @@ export default function Register(){
       event.preventDefault();
   
       try {
+        
         const response = await axios.post(`${API_URL}/register`, {
           name,mobile,address,DOJ,
           password,

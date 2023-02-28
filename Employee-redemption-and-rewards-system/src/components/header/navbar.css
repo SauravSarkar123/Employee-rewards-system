@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(185, 222, 250) !important; 
+    background-color: rgb(4, 4, 37) !important; 
     padding: 2rem 6rem;
     color:rgb(245, 245, 245);
 }
@@ -42,7 +42,7 @@
 .gpt3__navbar-links_container p,
 .gpt3__navbar-sign p,
 .gpt3__navbar-menu_container p {
-    color: rgb(14, 2, 2);
+    color: rgb(255, 255, 255) !important;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
@@ -56,7 +56,7 @@
 .gpt3__navbar-sign button,
 .gpt3__navbar-menu_container button {
     padding: 0.5rem 1rem;
-    color: #fff;
+    color: #fff !important;
     background: #2116fc;
     font-family: var(--font-family);
     font-weight: 500;

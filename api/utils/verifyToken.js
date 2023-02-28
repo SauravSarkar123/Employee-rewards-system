@@ -12,6 +12,8 @@ export const verifyToken = (req, res, next) => {
     req.user = user;
     next();
   });
+
+  console.log("Token has been verified")
 };
 
 export const verifyUser = (req, res, next) => {

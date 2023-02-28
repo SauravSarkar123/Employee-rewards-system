@@ -13,6 +13,7 @@ import BackgroundImage from '../../assets/images/emp.jpg'
 
 const API_URL = "http://localhost:8800"; 
 
+
 export default function SignInPage() {
   const [name, setname] = useState("");
   const [password, setPassword] = useState("");
@@ -24,15 +25,17 @@ export default function SignInPage() {
     event.preventDefault();
 
     try {
+      
       const response = await axios.post(`${API_URL}/login`, {
         name,
         password,
       });
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      setMessage(response.data.message)
 
-      console.log(response.data);
+      console.log(response)
+
+      // const token = response.headers['set-cookie'][0].split(';')[0].split('=')[1];
+      // localStorage.setItem('access_token', token);
+      // console.log(token)
 
 
       // Redirect to admin page on successful login
@@ -51,7 +54,7 @@ export default function SignInPage() {
         setErrorMessage("An error occurred");
       }
       const alertMessage = errorMessage || "Invalid Credentials";
-      console.log()
+     
       alert(alertMessage);
     }
   };
@@ -94,5 +97,3 @@ export default function SignInPage() {
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover"
 }
-
-
