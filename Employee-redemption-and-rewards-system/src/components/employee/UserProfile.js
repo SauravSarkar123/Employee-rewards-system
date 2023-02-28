@@ -44,7 +44,7 @@ export default function ProfilePage() {
           <MDBCol lg="4">
             <MDBCard className="mb-4">
                 <div className='empd'><b>Employee Details:</b></div>
-                <img src={UserPic} width="60%"/>
+                <img src={UserPic} alt="User Pic" style={{ width: '40%', margin: 'auto' }} />
             {/* <AvatarWithRipple/> */}
               <MDBCardBody className="text-center">
                 <p className="text-muted mb-1">Full Stack Developer</p>
