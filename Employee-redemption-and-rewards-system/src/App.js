@@ -17,8 +17,17 @@ import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
 import LoginHeader12 from './components/header/loginheader'
 import RegisterHeader from './components/header/registerheader'
+import EmployeeHomepage from './components/openPage/EmployeeHomepage'
+import CompanyHome from './components/openPage/companyhome'
+import CompanyHeader from './components/header/companyheader'
+
 
 import './App.css'
+import UserProfileHeader from './components/header/userprofile header'
+import CompanyProfile from './components/admin/Assigntask'
+
+
+
 
 
 export default function App() {
@@ -40,9 +49,13 @@ export default function App() {
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     <Route path="/addtask" component={AddTask}/>
-                    <Route path="/loginheader" components={LoginHeader12}/>
-                    <Route path="/registerheader" components={RegisterHeader}/>
-
+                    <Route path="/loginheader" component={LoginHeader12}/>
+                    <Route path="/registerheader" component={RegisterHeader}/>
+                    <Route exact path="/employeehome" component={EmployeeHomepage}/>
+                    <Route path="/companyhome" component={CompanyHome}/>
+                    <Route path="Companyheader" component={CompanyHeader}/>
+                    <Route path="/userprofileheader" component={UserProfileHeader}/>
+                    <Route path="/assigntask" componrnt={CompanyProfile}/>
                 </Switch>
             </div>
         </Router>

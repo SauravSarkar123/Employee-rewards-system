@@ -3,7 +3,8 @@ import Onavbar from './Onavbar';
 import Three from './three';
 import React from 'react';
 import './openpage.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Footer from '../footer/Footer'
 
 const OpenPage = () => {
   // Define the gradient styles for the headings
@@ -14,11 +15,15 @@ const OpenPage = () => {
     fontWeight: 'bold',
   };
 
+
+
+
   const backgroundGradient = {
     background: 'linear-gradient(to right, #1985FF, #42ECEC)',
     height: '100vh',
     width: '100vw',
   };
+
 
   return (
     <div style={backgroundGradient}>
@@ -39,13 +44,14 @@ const OpenPage = () => {
                 Recognizing and rewarding employee excellence
               </h2>
               <div className="d-flex justify-content-between mt-4">
-                <Link to="/register"><Button variant="primary">Register as Employee</Button></Link>
-                <Link to="/registercompany"><Button variant="success">Register a Company</Button></Link>
+                <a href="/employeehome"><Button variant="primary">Employee</Button></a> 
+                <a href="/companyhome"><Button variant="success">Company</Button></a>
               </div>
             </div>
           </Col>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };

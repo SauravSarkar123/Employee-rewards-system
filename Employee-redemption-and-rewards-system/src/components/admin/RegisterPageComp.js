@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Navbar from '../header/Navbar';
+import CompanyHeader from '../header/companyheader';
 import Footer from '../footer/Footer'
 import { useHistory } from "react-router-dom";
 
 import '../../App.css'
-import BackgroundImage from '../../assets/images/emp.jpg'
+
 export default function RegisterComp(){ 
     const API_URL = "http://localhost:8800";
     const [comName, setUsercomName] = useState("");
@@ -41,7 +41,7 @@ export default function RegisterComp(){
   
     return (
       <div>
-        <Navbar />
+        <CompanyHeader />
         <header style={ HeaderStyle }>
           <div className="container-fluid h-100" >
             <div className="row h-100">
@@ -98,7 +98,7 @@ export default function RegisterComp(){
 
 
 const HeaderStyle = {
-background: `url(${BackgroundImage}) no-repeat center center fixed`,
+
 backgroundSize: 'cover',
 height: '100%',
 width:"100%"

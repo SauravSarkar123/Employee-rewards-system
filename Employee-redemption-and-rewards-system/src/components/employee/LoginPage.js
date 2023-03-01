@@ -6,6 +6,7 @@
  import { useHistory } from "react-router-dom";
 
 
+
 import '../../App.css'
 
 
@@ -21,6 +22,12 @@ export default function SignInPage() {
   const [message, setMessage] = useState('')
   const history = useHistory();
 
+
+
+
+
+  
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -29,16 +36,9 @@ export default function SignInPage() {
       const response = await axios.post(`${API_URL}/login`, {
         name,
         password,
-      });
+      } , { withCredentials: true });
 
-      console.log(response)
-
-      // const token = response.headers['set-cookie'][0].split(';')[0].split('=')[1];
-      // localStorage.setItem('access_token', token);
-      // console.log(token)
-
-
-      // Redirect to admin page on successful login
+      
       history.push("/userprofile");
     } catch (error) {
       console.error(error);
@@ -58,6 +58,9 @@ export default function SignInPage() {
       alert(alertMessage);
     }
   };
+
+
+  
 
   return (
       <div>

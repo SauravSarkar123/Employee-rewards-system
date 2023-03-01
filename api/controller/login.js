@@ -27,15 +27,19 @@ export const loginUser = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid password" });
     }
     const token = jwt.sign({name: user.name, password: user.password}, process.env.JWT)
-    // localStorage.setItem("access_token", token);
   
     const { password:userPassword,...otherDetails} = await user._doc;
     console.log(token);
 
-    res.setHeader('Set-Cookie', `access_token=${token}; HttpOnly`);
+    res.setHeader('Set-Cookie', `access_token=${token};`);
+
+    
    
-    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ message: "Login successful", ...otherDetails });
+    res.cookie('access_token', token, { httpOnly: false }).status(200).json({ message: "Login successful", ...otherDetails});
+    
   } catch (err) {
     next(err);
+
+    
   }
 };
