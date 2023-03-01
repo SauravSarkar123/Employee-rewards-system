@@ -36,7 +36,7 @@ function CompanyProfile() {
           value={newEmployeeName}
           onChange={(event) => setNewEmployeeName(event.target.value)}
         />
-        <button onClick={handleAddEmployee}>Add</button>
+        <button onClick={handleAddEmployee}>add</button>
       </div>
       <div className="search-box-container">
         <h2>Search Employees</h2>
