@@ -24,6 +24,7 @@ import CompanyHeader from './components/header/companyheader'
 
 import './App.css'
 import UserProfileHeader from './components/header/userprofile header'
+import CompanyProfile from './components/admin/Assigntask'
 
 
 
@@ -48,12 +49,13 @@ export default function App() {
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     <Route path="/addtask" component={AddTask}/>
-                    <Route path="/loginheader" components={LoginHeader12}/>
-                    <Route path="/registerheader" components={RegisterHeader}/>
+                    <Route path="/loginheader" component={LoginHeader12}/>
+                    <Route path="/registerheader" component={RegisterHeader}/>
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
                     <Route path="/companyhome" component={CompanyHome}/>
                     <Route path="Companyheader" component={CompanyHeader}/>
-                    <Route path="/userprofileheader" components={UserProfileHeader}/>
+                    <Route path="/userprofileheader" component={UserProfileHeader}/>
+                    <Route path="/assigntask" componrnt={CompanyProfile}/>
                 </Switch>
             </div>
         </Router>
