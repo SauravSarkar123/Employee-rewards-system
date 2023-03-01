@@ -98,10 +98,10 @@ const ProfilePage = () => {
             </Card>
           </Grid>
 
-          <Grid item md={8}>
+          <Grid item md={4}>
           <Card variant="outlined" className="personal-info-card" style={{ width: '100%', borderRadius: '20px', backgroundColor: '#f5f5f5', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)', padding: '2rem' }}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '2rem' }}>
+        <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '2rem' }}>
           Personal Information:
         </Typography>
         <List>
@@ -132,35 +132,7 @@ const ProfilePage = () => {
         </List>
       </CardContent>
     </Card>
-<Card variant="outlined" style={{ marginTop: "1rem", borderRadius: "20px", boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)" }}>
-  <CardContent>
-    <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "2rem" }}>
-      Skills:
-    </Typography>
-    <List style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
-        <ListItemText primary="React" style={{ fontWeight: "bold" }} />
-        <ListItemText secondary="Advanced" style={{ color: "#666" }} />
-      </ListItem>
-      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
-        <ListItemText primary="Node.js" style={{ fontWeight: "bold" }} />
-        <ListItemText secondary="Intermediate" style={{ color: "#666" }} />
-      </ListItem>
-      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
-        <ListItemText primary="JavaScript" style={{ fontWeight: "bold" }} />
-        <ListItemText secondary="Expert" style={{ color: "#666" }} />
-      </ListItem>
-      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
-        <ListItemText primary="CSS" style={{ fontWeight: "bold" }} />
-        <ListItemText secondary="Intermediate" style={{ color: "#666" }} />
-      </ListItem>
-      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
-        <ListItemText primary="HTML" style={{ fontWeight: "bold" }} />
-        <ListItemText secondary="Expert" style={{ color: "#666" }} />
-      </ListItem>
-    </List>
-  </CardContent>
-        </Card>
+
       </Grid>
     </Grid>
   </section>

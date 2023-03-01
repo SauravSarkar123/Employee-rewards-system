@@ -76,7 +76,6 @@ return (
 </Table>
 </Card.Body>
 </Card>
-<Center><Button variant="primary" className="mt-4" onClick={toggleTokenTable}>View Tokens History</Button> </Center>
 
 </Col>
 <Col md={9}>
@@ -109,6 +108,9 @@ return (
 </tbody>
 </Table>
 }
+
+<Center><Button variant="primary" className="mt-4" onClick={toggleTokenTable}>View Tokens History</Button> </Center>
+
 <Center>
 <h4 style={{ marginTop: "20px" }}>Total Tokens Earned: {totalTokens}</h4>
 </Center>
