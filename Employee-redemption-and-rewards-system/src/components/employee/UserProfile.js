@@ -1,195 +1,175 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
-} from 'mdb-react-ui-kit';
-import AvatarWithRipple from "./icon"
-import "../../App.css"
-import Navbar from '../header/Navbar';
-import Footer from '../footer/Footer'
-import { Link } from 'react-router-dom';
-import UserPic from "../../assets/images/user4.png"
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  LinearProgress,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@material-ui/core";
+import {
+  AccountCircle,
+  GitHub,
+  Language,
+  Twitter,
+} from "@material-ui/icons";
 
-export default function ProfilePage() {
-    const [progressWidth, setProgressWidth] = useState(0);
-    // const { name, email, mobile, address, dob } = props.location.state;
 
-    const handlePurusuingClick =() =>{
-        if(progressWidth < 100){
-            setProgressWidth(progressWidth + 10);
-        }
+import Footercr from "../footer/footercr";
+import LogoutHeader from '../header/logoutheader';
+const ProfilePage = () => {
+  const [progressWidth, setProgressWidth] = useState(0);
+
+  const handlePursuingClick = () => {
+    if (progressWidth < 100) {
+      setProgressWidth(progressWidth + 10);
     }
+  };
 
-   
   return (
     <div>
-    <Navbar/>
-    <section style={{ backgroundColor: '#eee' }}>
-      <MDBContainer className="py-5">
-       
-        <MDBRow>
-          <MDBCol lg="4">
-            <MDBCard className="mb-4">
-                <div className='empd'><b>Employee Details:</b></div>
-                <img src={UserPic} alt="User Pic" style={{ width: '40%', margin: 'auto' }} />
-            {/* <AvatarWithRipple/> */}
-              <MDBCardBody className="text-center">
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                <Link to='/addemployee'>
-  <button type="button" className="btn btn-primary mt-2">
-    Add Employee
-  </button>
-</Link>
-              </MDBCardBody>
-            </MDBCard>
+      <nav>
+      <LogoutHeader/>
+      </nav>
 
-            <MDBCard className="mb-4 mb-lg-0">
-              <MDBCardBody className="p-0">
-                <MDBListGroup flush className="rounded-3">
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>LinkedIn : <a href="https://www.linkedin.com">LinkedIn</a></MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                    <MDBCardText>Github : <a href="https://www.linkedin.com">Github</a></MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
-                    <MDBCardText>Office : <a href="https://www.office365.com">Office</a></MDBCardText>
-                   </MDBListGroupItem>
-                </MDBListGroup>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-          <MDBCol lg="8">
-            <MDBCard className="mb-4">
-              <MDBCardBody>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Username</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">yt</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">vwn</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Employee ID</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">SK2345678</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Date of Birth</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">123</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Mobile</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">123123</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">aaa</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
+      <section style={{ backgroundColor: "#eee", padding: "1rem 0" }}>
+        <Grid container spacing={3}>
+          <Grid item md={4}>
+          <Card variant="outlined" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
+  <CardContent style={{ textAlign: "center" }}>
+  <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '2rem' }}>
+          Employee Details
+        </Typography>
+    <AccountCircle style={{ fontSize: "5rem", margin: "1rem" }} />
+    <Typography variant="body2" color="textSecondary" component="p" style={{ marginBottom: "0.5rem" }}>
+      Full Stack Developer
+    </Typography>
+    <Typography variant="body2" color="textSecondary" component="p" style={{ marginBottom: "2rem" }}>
+      Bay Area, San Francisco, CA
+    </Typography>
+  </CardContent>
+  <CardActions>
+    <Button variant="contained" color="primary" href="/addemployee" style={{ margin: "1rem" }}>
+      Add Employee
+    </Button>
+  </CardActions>
+</Card>
 
-            <MDBRow>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    
-                    
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Completed Tasks</span></MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    {/* <MDBProgress className="rounded">
-                      <MDBProgressBar width={100} valuemin={0} valuemax={100}  />
-                      </MDBProgress> */}
+            <Card variant="outlined" style={{ marginTop: "1rem" }}>
+              <CardContent>
+              <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '2rem' }}>
+          Contact Information
+        </Typography>
+                <List>
+                  <ListItem>
+                    <ListItemIcon>
+                      <Language />
+                    </ListItemIcon>
+                    <ListItemText>
+                      LinkedIn :{" "}
+                      <a href="https://www.linkedin.com">LinkedIn</a>
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <GitHub />
+                    </ListItemIcon>
+                    <ListItemText>
+                      Github :{" "}
+                      <a href="https://www.github.com">Github</a>
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <Twitter />
+                    </ListItemIcon>
+                    <ListItemText>
+                      Office :{" "}
+                      <a href="https://www.office.com">Office</a>
+                    </ListItemText>
+                  </ListItem>
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    {/* <MDBProgress className="rounded">
-                      <MDBProgressBar width={100} valuemin={0} valuemax={100} />
-                    </MDBProgress> */}
+          <Grid item md={8}>
+          <Card variant="outlined" className="personal-info-card" style={{ width: '100%', borderRadius: '20px', backgroundColor: '#f5f5f5', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)', padding: '2rem' }}>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '2rem' }}>
+          Personal Information:
+        </Typography>
+        <List>
+          <ListItem style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <ListItemText primary="Username" style={{ fontWeight: 'bold' }} />
+            <ListItemText secondary="yt" style={{ color: '#666' }} />
+          </ListItem>
+          <ListItem style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <ListItemText primary="Email" style={{ fontWeight: 'bold' }} />
+            <ListItemText secondary="vwn" style={{ color: '#666' }} />
+          </ListItem>
+          <ListItem style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <ListItemText primary="Employee ID" style={{ fontWeight: 'bold' }} />
+            <ListItemText secondary="SK2345678" style={{ color: '#666' }} />
+          </ListItem>
+          <ListItem style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <ListItemText primary="Date of Birth" style={{ fontWeight: 'bold' }} />
+            <ListItemText secondary="123" style={{ color: '#666' }} />
+          </ListItem>
+          <ListItem style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <ListItemText primary="Mobile" style={{ fontWeight: 'bold' }} />
+            <ListItemText secondary="123123" style={{ color: '#666' }} />
+          </ListItem>
+          <ListItem style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0' }}>
+            <ListItemText primary="Address" style={{ fontWeight: 'bold' }} />
+            <ListItemText secondary="123 Main St, San Francisco, CA" style={{ color: '#666' }} />
+          </ListItem>
+        </List>
+      </CardContent>
+    </Card>
+<Card variant="outlined" style={{ marginTop: "1rem", borderRadius: "20px", boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)" }}>
+  <CardContent>
+    <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "2rem" }}>
+      Skills:
+    </Typography>
+    <List style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
+        <ListItemText primary="React" style={{ fontWeight: "bold" }} />
+        <ListItemText secondary="Advanced" style={{ color: "#666" }} />
+      </ListItem>
+      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
+        <ListItemText primary="Node.js" style={{ fontWeight: "bold" }} />
+        <ListItemText secondary="Intermediate" style={{ color: "#666" }} />
+      </ListItem>
+      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
+        <ListItemText primary="JavaScript" style={{ fontWeight: "bold" }} />
+        <ListItemText secondary="Expert" style={{ color: "#666" }} />
+      </ListItem>
+      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
+        <ListItemText primary="CSS" style={{ fontWeight: "bold" }} />
+        <ListItemText secondary="Intermediate" style={{ color: "#666" }} />
+      </ListItem>
+      <ListItem style={{ display: "flex", justifyContent: "space-between" }}>
+        <ListItemText primary="HTML" style={{ fontWeight: "bold" }} />
+        <ListItemText secondary="Expert" style={{ color: "#666" }} />
+      </ListItem>
+    </List>
+  </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
+  </section>
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    {/* <MDBProgress className="rounded">
-                      <MDBProgressBar width={100} valuemin={0} valuemax={100} />
-                    </MDBProgress> */}
+  <footer>
+    <Footercr/>
+  </footer>
+</div>
+);
+};
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    {/* <MDBProgress className="rounded">
-                      <MDBProgressBar width={100} valuemin={0} valuemax={100} />
-                    </MDBProgress> */}
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    {/* <MDBProgress className="rounded">
-                      <MDBProgressBar width={100} valuemin={0} valuemax={100} />
-                    </MDBProgress> */}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>          
-            </MDBRow>
-          </MDBCol> 
-        </MDBRow>
-      </MDBContainer>
-    </section>
-    <Footer/>
-    </div>
-  );
-}
-// import React from 'react';
-
-// export default function UserProfile(props) {
-//   const { name, email, mobile, address, doj } = props.location.state;
-
-//   return (
-//     <div>
-//       <h2>Welcome, {name}!</h2>
-//       <p>Email: {email}</p>
-//       <p>Mobile: {mobile}</p>
-//       <p>Address: {address}</p>
-//       <p>Date of Joining: {doj}</p>
-//     </div>
-//   );
-// }
+export default ProfilePage;

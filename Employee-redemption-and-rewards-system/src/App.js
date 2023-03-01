@@ -7,7 +7,7 @@ import LoginPage from './components/employee/LoginPage'
 import RegisterPage from './components/employee/RegisterPage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
 import EmployeeDashboard from './components/employee/EmployeeDashBoard'
-import UserProfile from './components/employee/UserProfile'
+import ProfilePage from './components/employee/UserProfile'
 import AddEmployee from './components/admin/AddEmployee'
 import AboutPage from './components/openPage/AboutPage'
 import OpenPage from './components/openPage/Openpage'
@@ -35,7 +35,7 @@ export default function App() {
                     <Route path="/registercompany" component={ RegisterCompany } />
                     <Route path="/forget-password" component={ ForgetPasswordPage } />
                     <Route path="/employee" component={EmployeeDashboard} />
-                    <Route path="/userprofile" component={UserProfile} />
+                    <Route path="/userprofile" component={ProfilePage} />
                     <Route path="/addemployee" component={AddEmployee}/>
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>

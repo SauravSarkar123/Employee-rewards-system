@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Button, Card, Row, Col } from 'react-bootstrap';
-import Navbar from '../header/Navbar';
+import LogoutHeader from '../header/logoutheader';
 import Footer from '../footer/Footer';
 import { Center } from '@chakra-ui/react';
 
@@ -46,12 +46,12 @@ const totalTokens = tokenData.reduce((total, token) => total + token.tokensEarne
 
 return (
 <>
-<Navbar />
+<LogoutHeader />
 <div className="container my-5">
 <Row>
 <Col md={3}>
 <Card style={{ padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}>
-<Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmqSWdlFU8Z2oiMcidHb4ZkdSRm2nnaw32w&usqp=CAU" />
+<a href= "/userprofile"> <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmqSWdlFU8Z2oiMcidHb4ZkdSRm2nnaw32w&usqp=CAU" /> </a>
 <Card.Body>
 <Card.Title style={{ fontSize: "1.5em", marginBottom: "10px" }}>John Doe</Card.Title>
 <Card.Text style={{ marginBottom: "5px" }}>Phone: +1 123-456-7890</Card.Text>
