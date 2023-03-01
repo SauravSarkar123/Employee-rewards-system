@@ -15,7 +15,7 @@ const LoginHeader12 = () => {
           <img src={logo} /> 
         </div>
         <div className="gpt3__navbar-links_container" style={{color:"blue"}}>
-        <p><a href="#ers">ERS</a></p>
+       
         <p>
             <Link to="/"><a>Home</a></Link>
           </p>

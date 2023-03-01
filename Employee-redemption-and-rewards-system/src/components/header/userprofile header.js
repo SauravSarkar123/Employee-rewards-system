@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const RegisterHeader = () => {
+const UserProfileHeader = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <div className="gpt3__navbar" style={{background:"transparent"}}>
@@ -15,7 +15,7 @@ const RegisterHeader = () => {
           <img src={logo} /> 
         </div>
         <div className="gpt3__navbar-links_container" style={{color:"blue"}}>
-        
+       
         <p>
             <Link to="/"><a>Home</a></Link>
           </p>
@@ -26,13 +26,7 @@ const RegisterHeader = () => {
           {/* <p><a href="#blog">Library</a></p> */}
         </div>
       </div>
-      <div className="gpt3__navbar-sign">
-      <Link to="/login"><button>Login</button></Link>
-
       
-       
-        
-      </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
@@ -47,9 +41,10 @@ const RegisterHeader = () => {
              <p><a href="#blog">Library</a></p> 
           </div>
           <div className="gpt3__navbar-menu_container-links-sign">
-            <Link><p>Login</p></Link>
             
-            <button type="button">Login</button>
+            
+            <button type="button">Sign up</button>
+            
           </div>
         </div>
         )}
@@ -58,4 +53,4 @@ const RegisterHeader = () => {
   );
 }
 
-export default RegisterHeader
+export default UserProfileHeader

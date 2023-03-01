@@ -57,17 +57,27 @@
 .gpt3__navbar-menu_container button {
     padding: 0.5rem 1rem;
     color: #fff;
-    background: #2116fc;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
-    line-height: 25px;
+    line-height: 30px;
     border: none;
     outline: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+
+.gpt3__navbar-menu_button-login {
+    background: #2116fc;
+    
 
 }
+
+.gpt3__navbar-menu_button-signup {
+    background: #2116fc;
+   
+}
+
 
 .gpt3__navbar-menu {
     margin-left: 1rem;
