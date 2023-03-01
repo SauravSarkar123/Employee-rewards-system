@@ -1,6 +1,6 @@
 import express from "express";
 
-import { loginComp } from "../controller/loginComp.js";
+import { loginComp } from "../../controller/company/loginComp.js";
 const router = express.Router();
 
 

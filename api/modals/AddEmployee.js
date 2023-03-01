@@ -2,27 +2,32 @@ import mongoose from "mongoose";
 import  Schema  from "mongoose";
 
 const CompanySchema = new mongoose.Schema({
-    comName:{
+    Name:{
         type: String,
         required : true,
         unique : true,
     },
-    comAddress:{
+    RegisterNum:{
         type: String,
         required : true,
+        unique : true
     },
-    comEmail:{
+    Email:{
         type: String,
         required : true,
         unique: true,
     },
-    password:{
+    Password:{
         type : String,
-        required : true,
+        // required : true,
         unique: true,
 
     },
-    mobile:{
+    Address:{
+        type : String,
+        unique : true
+    },
+    Mobile:{
         type : Number,
         required : true,
 
@@ -38,6 +43,6 @@ const CompanySchema = new mongoose.Schema({
     //     required : true
     // }
 
-})
+},{timestamps:true})
 
-export default mongoose.model("Company", CompanySchema)
+export default mongoose.model("AddEmployee", AddEmployeeSchema)

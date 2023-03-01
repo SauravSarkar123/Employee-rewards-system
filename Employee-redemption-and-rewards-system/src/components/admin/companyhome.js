@@ -15,7 +15,7 @@ const CompanyHome = () => {
     fontWeight: 'bold',
     color: '#1D16F4'
   };
-   const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '100vh', width: '100%',};
+   const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '100%', width: '100%',};
   return (
     <div>
     
@@ -48,8 +48,9 @@ const CompanyHome = () => {
        
       </Container>
       
-    </div>
+    
      <Footer />
+     </div>
      </div>
   );
 };

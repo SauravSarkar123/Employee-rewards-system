@@ -1,12 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import userRoute from "./routes/register.js";
-import loginRoute from "./routes/login.js";
+import userRoute from "./routes/employee/register.js";
+import loginRoute from "./routes/employee/login.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import regComp from "./routes/registerComp.js";
-import loginComp from "./routes/loginComp.js";
+import regComp from "./routes/company/registerComp.js";
+import loginComp from "./routes/company/loginComp.js";
 import { verifyToken , verifyUser} from "./utils/verifyToken.js";
 const app = express()
 dotenv.config();

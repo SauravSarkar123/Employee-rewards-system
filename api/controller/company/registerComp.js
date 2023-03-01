@@ -1,4 +1,4 @@
-import CompanyReg from "../modals/CompanyReg.js";
+import CompanyReg from "../../modals/CompanyReg.js";
 
 export const registerCompany = async (req, res, next) => {
   const { comName, comAddress, comEmail, password, mobile } = req.body;

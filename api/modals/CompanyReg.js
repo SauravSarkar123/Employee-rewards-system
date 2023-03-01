@@ -27,6 +27,10 @@ const CompanySchema = new mongoose.Schema({
         required : true,
 
     },
+    isAdmin : {
+        type : Boolean,
+        default : true
+    }
     // status:{
     //     type : Boolean,
     //     required : true,

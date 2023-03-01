@@ -20,7 +20,7 @@ export default function SignInPage() {
  const [errorMessage, setErrorMessage] = useState("");
  const [message, setMessage] = useState('')
  const history = useHistory();
-const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '110vh', width: '100%',};
+const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '100%', width: '100%',};
 
 
  const handleLogin = async (event) => {

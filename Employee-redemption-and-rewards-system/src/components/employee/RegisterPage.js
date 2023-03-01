@@ -18,7 +18,7 @@ export default function Register(){
     const [DOJ, setDOJ] = useState(0);
     const [checkbox, setCheckbox] = useState(false)
     const history = useHistory();
-    const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '110vh', width: '100%',};
+    const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '100%', width: '100%',};
 
 
   

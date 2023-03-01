@@ -16,7 +16,7 @@ export default function RegisterComp(){
     const [comAddress, setcomAddress] = useState(" ");
     const [checkbox, setCheckbox] = useState(false)
     const history = useHistory();
-    const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '110vh', width: '100%',};
+    const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '100%', width: '100%',};
 
 
   
