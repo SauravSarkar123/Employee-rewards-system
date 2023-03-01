@@ -19,16 +19,22 @@ import {
   Twitter,
 } from "@material-ui/icons";
 
+import { useCookies } from 'react-cookie';
+
 
 import Footercr from "../footer/footercr";
 import LogoutHeader from '../header/logoutheader';
 const ProfilePage = () => {
   const [progressWidth, setProgressWidth] = useState(0);
+  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
 
   const handlePursuingClick = () => {
     if (progressWidth < 100) {
       setProgressWidth(progressWidth + 10);
     }
+  };
+  const handleLogout = () => {
+    removeCookie('access_token');
   };
 
   return (
@@ -56,6 +62,11 @@ const ProfilePage = () => {
   <CardActions>
     <Button variant="contained" color="primary" href="/addemployee" style={{ margin: "1rem" }}>
       Add Employee
+    </Button>
+  </CardActions>
+  <CardActions>
+    <Button onClick={handleLogout} variant="contained" color="primary" href="/login" style={{ margin: "1rem" }}>
+      Log Out
     </Button>
   </CardActions>
 </Card>
