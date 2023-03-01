@@ -27,7 +27,7 @@ const CompanyHeader = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-     <Link to="/login"><button>Login</button></Link>
+     <Link to="/logincomp"><button>Login</button></Link>
      <Link to="/registercompany"><button>Sign up</button></Link>
      </div>
       <div className="gpt3__navbar-menu">

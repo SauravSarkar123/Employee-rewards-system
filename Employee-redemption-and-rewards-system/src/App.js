@@ -17,8 +17,8 @@ import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
 import LoginHeader12 from './components/header/loginheader'
 import RegisterHeader from './components/header/registerheader'
-import EmployeeHomepage from './components/openPage/EmployeeHomepage'
-import CompanyHome from './components/openPage/companyhome'
+import EmployeeHomepage from './components/employee/EmployeeHomepage'
+import CompanyHome from './components/admin/companyhome'
 import CompanyHeader from './components/header/companyheader'
 
 

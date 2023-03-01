@@ -21,6 +21,8 @@ export default function SignInPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState('')
   const history = useHistory();
+  const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '110vh', width: '100%',};
+
 
 
 
@@ -63,7 +65,7 @@ export default function SignInPage() {
   
 
   return (
-      <div>
+      <div style={backgroundGradient}>
       <header style={ HeaderStyle }>
           <LoginHeader12/>
       <div className="text-center m-5-auto">
