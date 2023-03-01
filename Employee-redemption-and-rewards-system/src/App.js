@@ -55,7 +55,7 @@ export default function App() {
                     <Route path="/companyhome" component={CompanyHome}/>
                     <Route path="Companyheader" component={CompanyHeader}/>
                     <Route path="/userprofileheader" component={UserProfileHeader}/>
-                    <Route path="/assigntask" componrnt={CompanyProfile}/>
+                    <Route path="/assigntask" component={CompanyProfile}/>
                 </Switch>
             </div>
         </Router>
