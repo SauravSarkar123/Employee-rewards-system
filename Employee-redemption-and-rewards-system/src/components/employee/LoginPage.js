@@ -6,12 +6,14 @@
  import { useHistory } from "react-router-dom";
 
 
+
 import '../../App.css'
 
 
 
 
 const API_URL = "http://localhost:8800"; 
+
 
 export default function SignInPage() {
   const [name, setname] = useState("");
@@ -20,22 +22,23 @@ export default function SignInPage() {
   const [message, setMessage] = useState('')
   const history = useHistory();
 
+
+
+
+
+  
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
+      
       const response = await axios.post(`${API_URL}/login`, {
         name,
         password,
-      });
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      setMessage(response.data.message)
+      } , { withCredentials: true });
 
-      console.log(response.data);
-
-
-      // Redirect to admin page on successful login
+      
       history.push("/userprofile");
     } catch (error) {
       console.error(error);
@@ -51,10 +54,13 @@ export default function SignInPage() {
         setErrorMessage("An error occurred");
       }
       const alertMessage = errorMessage || "Invalid Credentials";
-      console.log()
+     
       alert(alertMessage);
     }
   };
+
+
+  
 
   return (
       <div>
@@ -94,5 +100,3 @@ export default function SignInPage() {
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover"
 }
-
-

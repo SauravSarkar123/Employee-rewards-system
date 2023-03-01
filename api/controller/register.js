@@ -1,5 +1,6 @@
 import User from "../modals/User.js";
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res, next) => {
   try {
@@ -16,9 +17,12 @@ export const registerUser = async (req, res, next) => {
   const newUser = new User({ name, password:hash, email, mobile, address, DOJ});
 
  
+
+ 
     const savedUser = await newUser.save();
     console.log(savedUser);
-    res.status(200).json(savedUser);
+   
+    console.log(savedUser)
   } catch (err) {
     next(err);
   }
