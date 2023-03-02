@@ -30,10 +30,10 @@ const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42
      const response = await axios.post(`${API_URL}/logincomp`, {
        comName,
        password,
-     });
-     setMessage(response.data.message)
+     }, {withCredentials : true});
+    //  setMessage(response.data.message)
 
-     console.log(response.data);
+    //  console.log(response.data);
 
      // Redirect to admin page on successful login
      history.push("/admindash");
@@ -79,7 +79,7 @@ const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42
          </form>
          {message && <p>{message}</p>}
          <footer>
-             <p><Link to="/register"> First time? Create an account</Link>.</p>
+             <p><Link to="/registercompany"> First time? Create an account</Link>.</p>
              <p><Link to="/">Back to Homepage</Link>.</p>
          </footer>   
      </div>

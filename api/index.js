@@ -7,7 +7,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import regComp from "./routes/company/registerComp.js";
 import loginComp from "./routes/company/loginComp.js";
-import { verifyToken , verifyUser} from "./utils/verifyToken.js";
+import addEmployee from "./routes/company/addemp.js"
+import { verifyAdmin, verifyToken , verifyUser} from "./utils/verifyToken.js";
 const app = express()
 dotenv.config();
 
@@ -34,6 +35,8 @@ app.use("/", userRoute)
 app.use("/",loginRoute)
 app.use("/", regComp)
 app.use("/", loginComp)
+app.use("/",regComp)
+app.use("/",verifyToken,verifyAdmin,verifyUser, addEmployee)
 
 
 

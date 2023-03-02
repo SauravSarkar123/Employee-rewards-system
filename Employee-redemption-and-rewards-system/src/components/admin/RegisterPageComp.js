@@ -24,12 +24,12 @@ export default function RegisterComp(){
       event.preventDefault();
   
       try {
-        const response = await axios.post(`${API_URL}/registercompany`, {
+        const response = await axios.post(`${API_URL}/logincomp`, {
          comName,comAddress, comEmail, password, mobile
         });
         
         console.log(response.data);
-        history.push("/logincomp",{
+        history.push("/admindash",{
           // comName: comName,
           // comEmail: comEmail,
           // mobile: mobile,

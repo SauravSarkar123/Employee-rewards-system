@@ -34,13 +34,7 @@ export default function Register(){
         });
         
         console.log(response.data);
-        history.push("/userprofile",{
-          name: name,
-          email: email,
-          mobile: mobile,
-          address: address,
-          doj: DOJ
-        });
+        history.push("/userprofile");
       } catch (error) {
         console.error(error);
       }
