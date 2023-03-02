@@ -1,6 +1,6 @@
 .open{
-    padding-top: 100px;
-    
+        margin-top: 100px;
+        margin-left: 50px;
         background: transparent;
         position: relative;
         z-index: 1;
@@ -8,6 +8,36 @@
         width: 100%
     
 }
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
+
+span {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3em;
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(50%,50%);
+  background-image: linear-gradient(gold, gold);
+  background-size: 100% 10px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  transition: background-size .7s, background-position .5s ease-in-out;
+}
+
+
+
+span:hover {
+  background-size: 100% 100%;
+  background-position: 0% 100%;
+  transition: background-position .7s, background-size .5s ease-in-out;
+}
+
+.open1{
+    font-size: 30px;
+    font-family: "Roboto Condensed" ;
+}
+
 
 #about{
     color: rgb(25, 0, 255);
@@ -21,5 +51,7 @@
     height: 100%;
     z-index: 0;
   }
+
+  
   
   

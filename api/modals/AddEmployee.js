@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import  Schema  from "mongoose";
 
-const CompanySchema = new mongoose.Schema({
+const AddEmployeeSchema = new mongoose.Schema({
     Name:{
         type: String,
         required : true,
@@ -10,6 +10,10 @@ const CompanySchema = new mongoose.Schema({
     RegisterNum:{
         type: String,
         required : true,
+        unique : true
+    },
+    ComID:{
+        type : String,
         unique : true
     },
     Email:{
@@ -21,7 +25,6 @@ const CompanySchema = new mongoose.Schema({
         type : String,
         // required : true,
         unique: true,
-
     },
     Address:{
         type : String,
@@ -30,8 +33,11 @@ const CompanySchema = new mongoose.Schema({
     Mobile:{
         type : Number,
         required : true,
-
     },
+    DOJ : {
+        type : Date,
+        required : true,
+    }
     // status:{
     //     type : Boolean,
     //     required : true,

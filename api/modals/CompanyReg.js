@@ -7,6 +7,10 @@ const CompanySchema = new mongoose.Schema({
         required : true,
         unique : true,
     },
+    comID:{
+        type: String,
+        unique : true
+    },
     comAddress:{
         type: String,
         required : true,
@@ -25,11 +29,10 @@ const CompanySchema = new mongoose.Schema({
     mobile:{
         type : Number,
         required : true,
-
     },
     isAdmin : {
         type : Boolean,
-        default : true
+        default : false
     }
     // status:{
     //     type : Boolean,
