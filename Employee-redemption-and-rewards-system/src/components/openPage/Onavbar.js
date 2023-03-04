@@ -30,13 +30,13 @@ const Onavbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-      <div class="gpt3__navbar-sign_container">
+      {/* <div class="gpt3__navbar-sign_container">
         <Link to="/login">
     <button class="gpt3__navbar-menu_button-login">Login</button>
     </Link>
         <Link to="/register">
     <button class="gpt3__navbar-menu_button-signup">Signup</button></Link>
-</div>
+</div> */}
 
         {/* <p>Sign up</p> */}
       </div>
