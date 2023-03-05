@@ -59,11 +59,11 @@ const ProfilePage = () => {
       Bay Area, San Francisco, CA
     </Typography>
   </CardContent>
-  <CardActions>
+  {/* <CardActions>
     <Button variant="contained" color="primary" href="/addemployee" style={{ margin: "1rem" }}>
       Add Employee
     </Button>
-  </CardActions>
+  </CardActions> */}
   <CardActions>
     <Button onClick={handleLogout} variant="contained" color="primary" href="/login" style={{ margin: "1rem" }}>
       Log Out

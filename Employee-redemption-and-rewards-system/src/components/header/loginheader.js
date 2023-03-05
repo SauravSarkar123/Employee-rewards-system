@@ -27,7 +27,7 @@ const LoginHeader12 = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-     <Link to="/register"><button>Sign up</button></Link></div>
+     <Link to="/registercompany"><button>Sign up</button></Link></div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />

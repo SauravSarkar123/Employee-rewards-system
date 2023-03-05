@@ -1,6 +1,13 @@
 import CompanyReg from "../../modals/CompanyReg.js";
+import bcrypt from "bcryptjs"
+
+import jwt from "jsonwebtoken";
+
 
 export const registerCompany = async (req, res, next) => {
+  try{
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password,salt);
   const { comName, comAddress, comEmail, password, mobile } = req.body;
 
   if (!comName || !comEmail  || !password || !comEmail  || !mobile ) {
@@ -9,9 +16,9 @@ export const registerCompany = async (req, res, next) => {
       .json({ message: "All the fields must be filled" });
   }
 
-  const newUser = new CompanyReg({comName, comEmail, comAddress, password, mobile});
+  const newUser = new CompanyReg({comName, comEmail, comAddress, password:hash, mobile});
 
-  try {
+  
     const savedUser = await newUser.save();
     console.log(savedUser);
     res.status(200).json(savedUser);

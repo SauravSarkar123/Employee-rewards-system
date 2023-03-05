@@ -1,13 +1,13 @@
-.gpt3__navbar {
+.__navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(247, 0, 0); 
+    background-color: rgb(255, 255, 255) !important; 
     padding: 2rem 6rem;
     color:rgb(255, 0, 0);
 }
 
-.gpt3__navbar-links {
+.__navbar-links {
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -16,32 +16,32 @@
     
 }
 
-.gpt3__navbar-links_logo {
+.__navbar-links_logo {
     margin-right: 2rem;
 }
 
-.gpt3__navbar-links_logo img {
+.__navbar-links_logo img {
     width: 200px;
     height: 30px;
     
 }
 
-.gpt3__navbar-links_container {
+.__navbar-links_container {
     display: flex;
     flex-direction: row;
     color: rgb(255, 255, 255) ;
     
 }
 
-.gpt3__navbar-sign {
+.__navbar-sign {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.gpt3__navbar-links_container p a,
-.gpt3__navbar-sign p,
-.gpt3__navbar-menu_container p {
+.__navbar-links_container p a,
+.__navbar-sign p,
+.__navbar-menu_container p {
     color: rgb(0, 0, 0)  ;
     font-family: var(--font-family);
     font-weight: 500;
@@ -53,8 +53,8 @@
     cursor: pointer;
 }
 
-.gpt3__navbar-sign button,
-.gpt3__navbar-menu_container button {
+.__navbar-sign button,
+.__navbar-menu_container button {
     padding: 0.5rem 1rem;
     color: #fff;
     font-family: var(--font-family);
@@ -68,32 +68,32 @@
     margin-right: 20px;
 }
 
-.gpt3__navbar-menu_button-login {
+.__navbar-menu_button-login {
     background: #2116fc;
    
     
 
 }
 
-.gpt3__navbar-menu_button-signup {
+.__navbar-menu_button-signup {
     background: #2116fc;
    
 }
 
 
-.gpt3__navbar-menu {
+.__navbar-menu {
     margin-left: 1rem;
 
     display: none;
     position: relative;
 }
 
-.gpt3__navbar-menu svg {
+.__navbar-menu svg {
     cursor: pointer;
 
 }
 
-.gpt3__navbar-menu_container {
+.__navbar-menu_container {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -110,47 +110,65 @@
     box-shadow: 0px 0px 5px rgba(0,0, 0,0.2);
 }
 
-.gpt3__navbar-menu_container p {
+.__navbar-menu_container p {
     margin: 1rem 0;
 }
 
-.gpt3__navbar-menu_container-links-sign {
+.__navbar-menu_container-links-sign {
     display: none;
     color: #FF4820;
 }
 
 @media screen and (max-width: 1050px) {
-    .gpt3__navbar-links_container {
+    .__navbar-links_container {
         display: none;
     }
 
-    .gpt3__navbar-menu {
+    .__navbar-menu {
         display: flex;
     }
 }
 
 @media screen and (max-width: 700px) {
-    .gpt3__navbar {
+    .__navbar {
         padding: 2rem 4rem;
     }
 }
 
 @media screen and (max-width: 550px) {
-    .gpt3__navbar {
+    .__navbar {
         padding: 2rem;
     }
 
-    .gpt3__navbar-sign {
+    .__navbar-sign {
         display: none;
         color: #FF4820;
     }
 
-    .gpt3__navbar-menu_container p {
+    .__navbar-menu_container p {
         top: 20px;
         color: red;
     }
 
-    .gpt3__navbar-menu_container-links-sign {
+    .__navbar-menu_container-links-sign {
         display: block;
     }
 }
+
+.__navbar-container:hover .__navbar {
+  transform: translateY(0);
+}
+
+/* .__navbar {
+   transform: translateY(-100%); 
+  transition: transform 0.3s ease-in-out;
+} */
+
+
+.__navbar:hover {
+    background-color: gold;
+  }
+  
+
+
+ 

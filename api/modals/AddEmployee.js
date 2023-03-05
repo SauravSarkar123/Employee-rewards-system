@@ -12,20 +12,13 @@ const AddEmployeeSchema = new mongoose.Schema({
         required : true,
         unique : true
     },
-    ComID:{
-        type : String,
-        unique : true
-    },
+    
     Email:{
         type: String,
         required : true,
         unique: true,
     },
-    Password:{
-        type : String,
-        // required : true,
-        unique: true,
-    },
+  
     Address:{
         type : String,
         unique : true
@@ -34,10 +27,10 @@ const AddEmployeeSchema = new mongoose.Schema({
         type : Number,
         required : true,
     },
-    DOJ : {
-        type : Date,
-        required : true,
-    }
+    // DOJ : {
+    //     type : Date,
+    //     required : true,
+    // }
     // status:{
     //     type : Boolean,
     //     required : true,

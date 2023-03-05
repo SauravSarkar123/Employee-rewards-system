@@ -3,9 +3,12 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../header/Navbar';
 import Footer from '../footer/Footer';
+import { useCookies } from 'react-cookie';
+import { Link } from 'react-router-dom';
 
 function AdminDashBoard() {
   const [search, setSearch] = useState(''); // state for search input
+  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
 
   const employees = [ // dummy employee data
     { id: 12345, name: 'John Doe' },
@@ -13,6 +16,10 @@ function AdminDashBoard() {
     { id: 13579, name: 'Bob Johnson' },
     { id: 24680, name: 'Sara Lee' },
   ];
+  const handleLogout = () => {
+    removeCookie('access_token');
+  };
+
 
   const filteredEmployees = employees.filter(employee => { // filter employees by search input
     return employee.name.toLowerCase().includes(search.toLowerCase()) || employee.id.toString().includes(search);
@@ -34,6 +41,12 @@ function AdminDashBoard() {
               <div className="my-3">
                 <div className="font-weight-bold">Employee ID: 12345</div>
                 <div className="font-weight-bold">admin Name: John Doe</div>
+                <Link to="/logincomp"><button onClick={handleLogout} variant="contained" color="primary" href="/logincomp" style={{ margin: "1rem" }}>
+      Log Out
+    </button></Link>
+    <Link to="/addemployee"><button variant="contained" color="primary" href="/logincomp" style={{ margin: "1rem" }}>
+      Add Employee
+    </button></Link>
               </div>
             </div>
           </div>

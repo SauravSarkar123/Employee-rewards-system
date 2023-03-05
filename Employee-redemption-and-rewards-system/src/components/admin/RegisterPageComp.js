@@ -24,12 +24,12 @@ export default function RegisterComp(){
       event.preventDefault();
   
       try {
-        const response = await axios.post(`${API_URL}/logincomp`, {
+        const response = await axios.post(`${API_URL}/registercompany`, {
          comName,comAddress, comEmail, password, mobile
         });
         
         console.log(response.data);
-        history.push("/admindash",{
+        history.push("/logincomp",{
           // comName: comName,
           // comEmail: comEmail,
           // mobile: mobile,
@@ -38,6 +38,7 @@ export default function RegisterComp(){
         });
       } catch (error) {
         console.error(error);
+        alert(error)
       }
     };
   

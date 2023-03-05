@@ -2,7 +2,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import CompanyHeader from '../header/companyheader';
 import Three from '../openPage/three';
 import React from 'react';
-import '../openPage/openpage.css'
+import '../openPage/openpage.module.css'
 import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer'
 

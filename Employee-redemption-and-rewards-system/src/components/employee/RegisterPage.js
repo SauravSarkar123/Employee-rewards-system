@@ -104,3 +104,68 @@ backgroundSize: 'cover',
 height: '100%',
 width:"100%"
 }
+// import React, { useState } from 'react';
+// import styles from './reg.module.css';
+
+// function App() {
+//   const [isSignUpActive, setIsSignUpActive] = useState(false);
+
+//   const handleSignUpClick = () => {
+//     setIsSignUpActive(true);
+//   };
+
+//   const handleSignInClick = () => {
+//     setIsSignUpActive(false);
+//   };
+
+//   return (
+//     <div className={styles.body}>
+//     <div className={`container ${isSignUpActive ? 'right-panel-active' : ''}`}>
+//       <div className="form-container sign-up-container">
+//         <form className={styles.form} action="#">
+//           <h1 className={styles.h1}>Create Account</h1>
+//           <div className="social-container">
+//             <a href="#" id='a' className="social"><i className="fab fa-facebook-f"></i></a>
+//             <a href="#" id='a' className="social"><i className="fab fa-google-plus-g"></i></a>
+//             <a href="#" id='a' className="social"><i className="fab fa-linkedin-in"></i></a>
+//           </div>
+//           <span className={styles.span}>or use your email for registration</span>
+//           <input className={styles.input} type="text" placeholder="Name" />
+//           <input  className={styles.input} type="email" placeholder="Email" />
+//           <input className={styles.input} type="password" placeholder="Password" />
+//           <button className={styles.button}>Sign Up</button>
+//         </form>
+//       </div>
+//       <div className="form-container sign-in-container">
+//         <form action="#">
+//           <h1 className={styles.h1}>Sign in</h1>
+//           <div className="social-container">
+//             <a href="#" id='a' className="social"><i className="fab fa-facebook-f"></i></a>
+//             <a href="#" id='a' className="social"><i className="fab fa-google-plus-g"></i></a>
+//             <a href="#" id='a' className="social"><i className="fab fa-linkedin-in"></i></a>
+//           </div>
+//           <span className={styles.span}>or use your account</span>
+//           <input className={styles.input} type="email" placeholder="Email" />
+//           <input className={styles.input} type="password" placeholder="Password" />
+//           <a id='a' href="#">Forgot your password?</a>
+//           <button className='buttonss'>Sign In</button>
+//         </form>
+//       </div>
+//       <div className="overlay-container">
+//         <div className="overlay">
+//           <div className="overlay-panel overlay-left">
+//             <h2 className={styles.h2}>Welcome Back!</h2>
+//             <p className={styles.p}>To keep connected with us please login with your personal info</p>
+//             <button id='button' className="ghost" onClick={handleSignInClick}>Sign In</button>
+//           </div>
+//           <div className="overlay-panel overlay-right">
+//             <h2 className={styles.h2}>Hello, Friend!</h2>
+//             <p className={styles.p}>Enter your personal details and start journey with us</p>
+//             <button id='buttonss' className="ghost" onClick={handleSignUpClick}>Sign Up</button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//     </div>
+//   );
+// }

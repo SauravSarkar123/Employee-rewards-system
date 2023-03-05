@@ -1,5 +1,6 @@
 import User from "../../modals/CompanyReg.js";
-// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const loginComp = async (req, res, next) => {
   const { comName, password } = req.body;
@@ -11,14 +12,14 @@ export const loginComp = async (req, res, next) => {
   }
 
   try {
-    const user = await User.findOne({ comName:comName,password:password});
+    const user = await User.findOne({ comName:comName});
 
     if (!user) {
       return res.status(401).json({ message: "Invalid name or password" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-
+    console.log(isMatch)
      if (!isMatch) {
       return res.status(401).json({ message: "Invalid name or password" });
      }

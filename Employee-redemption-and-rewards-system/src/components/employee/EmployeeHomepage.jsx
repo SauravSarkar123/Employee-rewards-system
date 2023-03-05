@@ -1,8 +1,7 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Onavbar from '../openPage/Onavbar';
-// import Three from './three';
 import React from 'react';
-import '../openPage/openpage.css';
+import '../openPage/openpage.module.css';
 import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer'
 
@@ -20,8 +19,7 @@ const EmployeeHomepage = () => {
     <div>
     <div style={backgroundGradient}>
       <Onavbar />
-       {/* <Three />  */}
-      
+       
 
       <Container>
         <Row>

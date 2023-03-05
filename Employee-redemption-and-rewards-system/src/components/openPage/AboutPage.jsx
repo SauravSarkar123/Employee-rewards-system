@@ -2,7 +2,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import Onavbar from './Onavbar';
 import React from 'react';
-import './openpage.css';
+// import './openpage.css';
 
 const AboutPage = () => {
   // Import the custom font

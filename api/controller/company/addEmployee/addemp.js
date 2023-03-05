@@ -1,7 +1,7 @@
-import AddEmployee from "../../../modals/AddEmployee";
+import AddEmployee from "../../../modals/AddEmployee.js";
 
 export const addEmployee = async (req, res, next) => {
-  const { Name, RegisterNum, Email, Password, Address, Mobile } = req.body;
+  const { Name, RegisterNum, Email, Address, Mobile } = req.body;
 
   if (!Name || !RegisterNum  || !Email || !Address  || !Mobile ) {
     return res

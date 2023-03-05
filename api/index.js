@@ -36,7 +36,7 @@ app.use("/",loginRoute)
 app.use("/", regComp)
 app.use("/", loginComp)
 app.use("/",regComp)
-app.use("/",verifyToken,verifyAdmin,verifyUser, addEmployee)
+app.use("/",verifyAdmin, addEmployee)
 
 
 
