@@ -8,7 +8,7 @@ import cors from "cors";
 import regComp from "./routes/company/registerComp.js";
 import loginComp from "./routes/company/loginComp.js";
 import addEmployee from "./routes/company/addemp.js"
-import getcomp from "./routes/company/getcomp.js";
+import getEmp from "./routes/company/getEmp.js";
 import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
 const app = express()
 dotenv.config();
@@ -38,7 +38,7 @@ app.use("/", regComp)
 app.use("/", loginComp)
 app.use("/",regComp)
 app.use("/",verifyAdmin, addEmployee)
-app.use("/", getcomp)
+app.use("/",verifyAdmin, getEmp)
 
 
 
