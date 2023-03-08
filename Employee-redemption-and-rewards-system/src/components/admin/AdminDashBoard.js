@@ -23,9 +23,11 @@ function AdminDashBoard() {
        axios.get(`${API_URL}/empdetails`,{withCredentials:true})
         // make a GET request to the server
           .then(response => {
-            console.log(response.data.user);
+            //console.log(response.data.user);
             setEmployees(response.data.user); 
-            console.log(employees)// set the employees state with the retrieved data
+            //console.log(employees)
+         
+// set the employees state with the retrieved data
           })
           .catch(error => {
             console.log(error);
@@ -35,6 +37,8 @@ function AdminDashBoard() {
       const filteredEmployees = employees.filter(employee => { // filter employees by search input
         return employee.name.toLowerCase().includes(search.toLowerCase()) || (employee.id && employee.id.toString().includes(search));
       });
+      const employeeId = employees.map(employee => employee._id);
+      console.log(employeeId);
 
   return (
     <div className="container-fluid">
@@ -57,11 +61,11 @@ function AdminDashBoard() {
                     <FaSignOutAlt /> Log Out
                   </button>
                 </Link>
-                <Link to="/addemployee">
+                {/* <Link to="/addemployee">
                   <button className="btn btn-primary" style={{ margin: "1rem" }}>
                     Add Employee
                   </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -84,14 +88,14 @@ function AdminDashBoard() {
               </div>
               <div className="list-group">
                 {filteredEmployees.map(employee =>
-                  <div key={employee.id} className="list-group-item">
+                  <div key={employee._id} className="list-group-item">
                     <div className="d-flex justify-content"></div>
                 <div className="d-flex justify-content-between align-items-center">
                 <div>
                     <h6 className="font-weight-bold mb-0">{employee.name}</h6>
-                    <small>{employee.id}</small>
+                    <small>{employee._id}</small>
                   </div>
-                  <Link to={`/employee/${employee.id}`}>
+                  <Link to={`/empprofile/${employee._id}`}>
                     <button className="btn btn-primary">View Details</button>
                   </Link>
                 </div>

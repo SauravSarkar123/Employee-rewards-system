@@ -9,6 +9,7 @@ import regComp from "./routes/company/registerComp.js";
 import loginComp from "./routes/company/loginComp.js";
 import addEmployee from "./routes/company/addemp.js"
 import getEmp from "./routes/company/getEmp.js";
+import emp from "./routes/company/getOne.js";
 import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
 const app = express()
 dotenv.config();
@@ -39,6 +40,7 @@ app.use("/", loginComp)
 app.use("/",regComp)
 app.use("/",verifyAdmin, addEmployee)
 app.use("/",verifyAdmin, getEmp)
+app.use("/", verifyAdmin, emp)
 
 
 

@@ -7,6 +7,8 @@ import Footer from '../footer/Footer';
 import { Link } from 'react-router-dom';
 import Slideshow from './carousel/car';
 import "./openpage.module.css"
+import bg from "./hero-bg.svg"
+
 
 const Openpage = () => {
   useEffect(() => {
@@ -39,9 +41,13 @@ const Openpage = () => {
 
   return (
     <div>
-      <Onavbar/>
-      <div className={styles.open}>
-        <span className={styles.span}>EMPLOYEE REWARD SYSTEM</span>
+      <div style={{backgroundImage: `url(${bg})`, height:"800px"}}>
+     
+      {/* <Onavbar/> */}
+      
+
+      <div className={styles.open} >
+        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
         <h1 class='home-title'>
           <p className={styles.open1} style={{fontFamily:"Roboto Condensed"}}>
             Recognizing and Rewarding Employees <br /> with Excellence
@@ -49,7 +55,7 @@ const Openpage = () => {
         </h1>
 
         <div className={styles.btn}>
-          <div className={styles.btn_grp}>
+          <div className={styles.btn_grp} >
             <button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginRight: '10px' }}  
             onClick={() =>
     document
@@ -61,8 +67,13 @@ const Openpage = () => {
       .querySelector(".compp")
       .scrollIntoView({ behavior: "smooth" })}>Company</button>
           </div>
+          </div>
+          </div>
+          
         </div>
-
+        
+       
+        <div className={styles.open}>
         <div className={styles.about}>
           <h2>What is the problem we solve</h2>
           <br />
