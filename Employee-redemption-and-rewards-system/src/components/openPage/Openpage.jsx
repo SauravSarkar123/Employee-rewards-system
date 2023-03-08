@@ -7,6 +7,8 @@ import Footer from '../footer/Footer';
 import { Link } from 'react-router-dom';
 import Slideshow from './carousel/car';
 import "./openpage.module.css"
+import bg from "./hero-bg.svg"
+
 
 const Openpage = () => {
   useEffect(() => {
@@ -38,30 +40,48 @@ const Openpage = () => {
   // };
 
   return (
-    <><div>
-      <Onavbar />
-    </div>
     <div>
-    <div className={styles.open}>
-        <span className={styles.span}>EMPLOYEE REWARD SYSTEM</span>
+      <div style={{backgroundImage:`url(${bg})`, height:"800px"}}>
+      <Onavbar />
+    
+
+    
+      
+
+      <div className={styles.open} >
+        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
         <h1 className='home-title'>
-          <p className={styles.open1} style={{ fontFamily: "Roboto Condensed" }}>
+          <p className={styles.open1} style={{fontFamily:"Roboto Condensed"}}>
+
             Recognizing and Rewarding Employees <br /> with Excellence
           </p>
         </h1>
 
         <div className={styles.btn}>
+
           <div className={styles.btn_grp}>
-            <button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginRight: '10px' }}
-              onClick={() => document
-                .querySelector("#empp")
-                .scrollIntoView({ behavior: "smooth" })}>Employee</button>
-            <button className={styles.button} style={{ color: '#000', slant: '40px', border: '8px', marginLeft: '350px' }} onClick={() => document
-              .querySelector(".compp")
-              .scrollIntoView({ behavior: "smooth" })}>Company</button>
+
+
+          <div className={styles.btn_grp} >
+            <button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginRight: '10px' }}  
+            onClick={() =>
+    document
+      .querySelector("#empp")
+      .scrollIntoView({ behavior: "smooth" })
+  }>Employee</button>
+            <button className={styles.button} style={{ color: '#000', slant: '40px', border: '8px', marginLeft: '350px' }} onClick={() =>
+    document
+      .querySelector(".compp")
+      .scrollIntoView({ behavior: "smooth" })}>Company</button>
+
+          </div>
+          </div>
+          </div>
           </div>
         </div>
-
+        
+       
+        <div className={styles.open}>
         <div className={styles.about}>
           <h2>What is the problem we solve</h2>
           <br />
@@ -102,7 +122,8 @@ const Openpage = () => {
         <div className='int'><div className={styles.open}><h3>Stacks Used</h3><Slideshow /></div></div>
         <Footer />
       </div>
-      </div> </>
+      </div> 
+      
   );
 };
 

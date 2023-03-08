@@ -6,6 +6,7 @@
         z-index: 1;
         height: 100%;
         width: 100%
+        
     
 }
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -14,6 +15,7 @@
 
 /*  TITLE  */
 .span {
+  
   font-family: 'Bebas Neue', cursive;
   font-size: 5em;
   /* position: absolute; */

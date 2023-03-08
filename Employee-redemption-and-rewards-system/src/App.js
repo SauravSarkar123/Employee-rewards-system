@@ -20,6 +20,7 @@ import RegisterHeader from './components/header/registerheader'
 import EmployeeHomepage from './components/employee/EmployeeHomepage'
 import CompanyHome from './components/admin/companyhome'
 import CompanyHeader from './components/header/companyheader'
+import EmpProfile from "./components/admin/EmpProfile"
 
 
 import './App.css'
@@ -56,6 +57,7 @@ export default function App() {
                     <Route path="/Companyheader" component={CompanyHeader}/>
                     <Route path="/userprofileheader" component={UserProfileHeader}/>
                     <Route path="/assigntask" component={CompanyProfile}/>
+                    <Route path="/empprofile/:_id" component={EmpProfile}/>
                 </Switch>
             </div>
         </Router>
