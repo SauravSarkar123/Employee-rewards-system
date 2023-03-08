@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import CompanyHeader from '../header/companyheader';
+import Loginheader12 from '../header/compReg';
 import Footer from '../footer/Footer'
 import { useHistory } from "react-router-dom";
 
@@ -45,7 +45,7 @@ export default function RegisterComp(){
   
     return (
       <div style={backgroundGradient}>
-        <CompanyHeader />
+        <Loginheader12 />
         <header style={ HeaderStyle }>
           <div className="container-fluid h-100" >
             <div className="row h-100">

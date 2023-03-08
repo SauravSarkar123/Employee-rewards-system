@@ -1,10 +1,10 @@
  import React, {useState} from 'react'
  import { Link } from 'react-router-dom'
  import axios from 'axios'
- import LoginHeader12 from '../header/loginheader';
+ import Loginheader12 from '../header/loginheader';
  import Footer from '../footer/Footer'
  import { useHistory } from "react-router-dom";
-
+ import styles from '../openPage/openpage.module.css';
 
 
 import '../../App.css'
@@ -21,7 +21,7 @@ export default function SignInPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState('')
   const history = useHistory();
-  const backgroundGradient = { background: 'linear-gradient(to right, #1985FF, #42ECEC)', height: '10%', width: '100%',};
+  const backgroundGradient = { background: '#FFFFFF)', height: '10%', width: '100%',};
 
 
 
@@ -66,11 +66,14 @@ export default function SignInPage() {
 
   return (
       <div style={backgroundGradient}>
-      <header style={ HeaderStyle }>
-          <LoginHeader12/>
-      <div className="text-center m-5-auto">
-          <h2>Sign in to us</h2>
-          <form onSubmit={handleLogin}>
+      
+          <Loginheader12/>
+          <div className={styles.image_container} id="empp">
+
+    
+                   
+          <form style={{margin:'auto',background: "#ADD8E6",borderRadius:"20px",marginRight: '500px'}}onSubmit={handleLogin}>
+          <h2 style={{textAlign:'center'}}>Sign in to us</h2>
               <p>
                   <label>Username</label><br/>
                   <input type="text" title='name' value={name} onChange={e => setname(e.target.value)} required />
@@ -84,15 +87,22 @@ export default function SignInPage() {
               <p>
                   <button id="sub_btn" type="submit">Login</button>
               </p>
-          </form>
+          
           {message && <p>{message}</p>}
           <footer>
-              <p><Link to="/register"> First time? Create an account</Link>.</p>
-              <p><Link to="/">Back to Homepage</Link>.</p>
-          </footer>   
+              <p style={{textAlign:'center'}}><Link to="/register"> First time? Create an account</Link>.</p>
+              <p style={{textAlign:'center'}}><Link to="/">Back to Homepage</Link>.</p>
+          </footer>  
+           
+          </form>
+          <img src='https://go.bonus.ly/hubfs/One-on-one%20Meeting%20Template%20for%20Managers/1-1%20Meeting%20Template%20Blog.png' style={{ width: '600px', height: '500px',marginRight:"100px", marginBottom:'20px'}} alt='Employee' />
+
+          
+     
       </div>
-      </header><Footer/>
-      </div>
+      <div>
+      <Footer/>
+      </div> </div>
   )}
   const HeaderStyle = {
   width: "100%",

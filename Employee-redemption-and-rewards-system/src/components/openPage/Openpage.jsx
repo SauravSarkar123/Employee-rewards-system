@@ -41,23 +41,21 @@ const Openpage = () => {
 
   return (
     <div>
-      <div >
+      <div style={{backgroundImage: `url(${bg})`, height:"800px"}}>
      
-     
+      {/* <Onavbar/> */}
       
 
       <div className={styles.open} >
-         <Onavbar/> 
-        <section style={{backgroundImage: `url(${bg})`, height:"550px", width:"1400px"}}>
-        <span  className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
+        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
         <h1 class='home-title'>
           <p className={styles.open1} style={{fontFamily:"Roboto Condensed"}}>
+
             Recognizing and Rewarding Employees <br /> with Excellence
           </p>
         </h1>
-        
 
-        <div className={styles.btn} style={{marginLeft:"256px"}}>
+        <div className={styles.btn}>
           <div className={styles.btn_grp} >
             <button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginRight: '10px' }}  
             onClick={() =>
@@ -69,12 +67,10 @@ const Openpage = () => {
     document
       .querySelector(".compp")
       .scrollIntoView({ behavior: "smooth" })}>Company</button>
-      
           </div>
           </div>
           </section>
           </div>
-          
         </div>
         
        
@@ -89,36 +85,38 @@ const Openpage = () => {
             gift vouchers. The system provides a reliable and verifiable record of an employee's accomplishments,
             making it easier for recruiters to evaluate their qualifications.
           </p>
-          
-          <Link to="/about"><button className={styles.button} style={{color: '#000', border: '2px', slant: '.5em' , marginTop: "10px"}}>Learn More</button></Link>
+
+          <Link to="/about"><button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginTop: "10px" }}>Learn More</button></Link>
         </div>
 
         {/* <div className={`image ${isVisible ? 'visible' : ''}`}> */}
-          
+
         <div className={styles.image_container} id="empp">
- <img src={employeeImage} style={{ width: '600px', height: '400px'}} alt='Employee' />
+          <img src={employeeImage} style={{ width: '600px', height: '400px' }} alt='Employee' />
           <div className={styles.text_container}>
-      <h3>Employee</h3>
-      <p className={styles.p}>Register as a Employee to get your personal ID</p>
-      <Link to="/register"><button className={styles.button} style={{ marginTop:"50px", color: '#000', border: '2px', slant: '.5em' }}>Register</button></Link>
-    </div>
-    </div>
-    
-          <div className={styles.image_container}>
+            <h3>Employee</h3>
+            <p className={styles.p}>Register as a Employee to get your personal ID</p>
+            <Link to="/register"><button className={styles.button} style={{ marginTop: "50px", color: '#000', border: '2px', slant: '.5em' }}>Register</button></Link>
+          </div>
+        </div>
+
+        <div className={styles.image_container}>
           <div className="compp">
-  <div className={styles.text_container}><h3>COMPANY</h3>
-  
-  <p className={styles.p}>Register as a Company and get your Unique ID <br/></p>
-  <Link to="/registercompany"><button className={styles.button} style={{ marginTop:"50px",color: '#000', border: '2px', slant: '.5em' }}>Register</button></Link></div></div>
-  
-          <img src={companyImage} style={{ width: '600px', height: '400px' }} alt='Company' /> 
-          
-      </div>
+            <div className={styles.text_container}><h3>COMPANY</h3>
+
+              <p className={styles.p}>Register as a Company and get your Unique ID <br /></p>
+              <Link to="/registercompany"><button className={styles.button} style={{ marginTop: "50px", color: '#000', border: '2px', slant: '.5em' }}>Register</button></Link></div></div>
+
+          <img src={companyImage} style={{ width: '600px', height: '400px' }} alt='Company' />
+
+        </div>
         {/* </div> */}
+        {/* </div> */}
+        <div className='int'><div className={styles.open}><h3>Stacks Used</h3><Slideshow /></div></div>
+        <Footer />
       </div>
-      <div className='int'><div className={styles.open}><h3>Stacks Used</h3><Slideshow/></div></div>
-      <Footer/>
-    </div>
+      </div> 
+      
   );
 };
 

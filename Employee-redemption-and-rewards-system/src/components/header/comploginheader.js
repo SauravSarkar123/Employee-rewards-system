@@ -12,25 +12,26 @@ const Loginheader12 = () => {
   }
 
   return (
-    <div className="gpt3__navbar" style={{backgroundColor:"#333333"}}>
+    <div className="gpt3__navbar" style={{backgroundColor:"#FFB6C1"}}>
       <div className="gpt3__navbar-links">
         <div className="gpt3__navbar-links_logo">
           <img src={logo} alt="Logo"/> 
         </div>
-        <div className="gpt3__navbar-links_container" style={{color:"#ffffff"}}>
+        <div className="gpt3__navbar-links_container" >
         
         <p>
-            <a href="/">Home</a>
+        <a href="/" style={{color:'#131111', onMouseOver:() => {this.style.color='#FFFFFF'} }}>Home</a>
+
           </p>
           <p>
-            <a href="/about">About</a>
+            <a href="/about" style={{color:'#131111'}}>About</a>
           </p>
           
           {/* <p><a href="#blog">Library</a></p> */}
         </div>
       </div>
-      <div className="gpt3__navbar-sign">
-      <Link to="/register"><button className="btn-login">Sign up</button></Link>
+      <div className="gpt3__navbar-sign" >
+      <Link to="/RegisterCompany"><button className="btn-login" style={{marginRight:"10px"}}>Sign up</button></Link>
 
       
         

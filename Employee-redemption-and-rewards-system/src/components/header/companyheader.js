@@ -1,56 +1,56 @@
 import React, {useState} from 'react'
 import {RiMenu3Line, RiCloseLine} from "react-icons/ri";
-import './navbar.css'
+import './navbar1.css'
 import logo from "../../image/scroll-header-logo.svg"
 import { Link } from 'react-router-dom';
 
-
-
-const CompanyHeader = () => {
+const Loginheader12 = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const toggle = () => {
+    setToggleMenu(!toggleMenu);
+  }
+
   return (
-    <div className="gpt3__navbar" style={{background:"transparent"}}>
+    <div className="gpt3__navbar" style={{backgroundColor:"#FFB6C1"}} >
       <div className="gpt3__navbar-links">
         <div className="gpt3__navbar-links_logo">
-          <img src={logo} /> 
+          <img src={logo} alt="Logo"/> 
         </div>
-        <div className="gpt3__navbar-links_container" style={{color:"blue"}}>
-       
+        <div className="gpt3__navbar-links_container" style={{color:"#ffffff"}}>
+        
         <p>
-            <Link to="/"><a>Home</a></Link>
+            <a href="/" style={{color:'#131111'}}>Home</a>
           </p>
           <p>
-            <Link to="/about">About</Link>
+            <a href="/about" style={{color:'#131111'}}>About</a>
           </p>
-          <p><a href="#features">Help</a></p>
+          
           {/* <p><a href="#blog">Library</a></p> */}
         </div>
       </div>
-      <div className="gpt3__navbar-sign">
-     <Link to="/logincomp"><button>Login</button></Link>
-     <Link to="/registercompany"><button>Sign up</button></Link>
-     </div>
+      <div className="gpt3__navbar-sign" >
+      <Link to="/register"><button className="btn-login" style={{marginRight:"10px"}}>Sign up</button></Link>
+
+      <Link to="/login"><button className="btn-login">Login</button></Link>
+        
+      </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
-          ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
-          : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
+          ? <RiCloseLine color="#ffffff" size={27} onClick={toggle} />
+          : <RiMenu3Line color="#ffffff" size={27} onClick={toggle} />}
         {toggleMenu && (
-        <div className="gpt3__navbar-menu_container scale-up-center">
-          <div className="gpt3__navbar-menu_container-links" style={{color:"blue"}}>
+        <div className="gpt3__navbar-menu_container slide-in-top">
+          <div className="gpt3__navbar-menu_container-links" style={{color:"#ffffff"}}>
             <p><a href="#home">Home</a></p>
             <p><a href="#wgpt3">Reward System</a></p>
             <p><a href="#possibility">About</a></p>
             <p><a href="#features">Help</a></p>
-             <p><a href="#blog">Library</a></p> 
+            <p><a href="#blog">Library</a></p> 
           </div>
           <div className="gpt3__navbar-menu_container-links-sign">
-            
-            
-             <button type="button">Login</button>
-            
-            <button type="button">Sign up</button>
-                
-            
+            <Link to="/logincomp"><p>Login</p></Link>
+            <Link to="/RegisterCompany"><button className="btn-signup-menu">Sign up</button></Link>
           </div>
         </div>
         )}
@@ -59,4 +59,4 @@ const CompanyHeader = () => {
   );
 }
 
-export default CompanyHeader
+export default Loginheader12 ;

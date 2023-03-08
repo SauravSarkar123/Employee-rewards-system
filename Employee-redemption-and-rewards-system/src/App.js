@@ -54,7 +54,7 @@ export default function App() {
                     <Route path="/registerheader" component={RegisterHeader}/>
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
                     <Route path="/companyhome" component={CompanyHome}/>
-                    <Route path="Companyheader" component={CompanyHeader}/>
+                    <Route path="/Companyheader" component={CompanyHeader}/>
                     <Route path="/userprofileheader" component={UserProfileHeader}/>
                     <Route path="/assigntask" component={CompanyProfile}/>
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
