@@ -7,7 +7,7 @@ import Footer from '../footer/Footer';
 import { Link } from 'react-router-dom';
 import Slideshow from './carousel/car';
 import "./openpage.module.css"
-import bg from "./hero-bg.svg"
+import bg from "./bg.svg"
 
 
 const Openpage = () => {
@@ -41,20 +41,23 @@ const Openpage = () => {
 
   return (
     <div>
-      <div style={{backgroundImage: `url(${bg})`, height:"800px"}}>
+      <div >
      
-      {/* <Onavbar/> */}
+     
       
 
       <div className={styles.open} >
-        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
+         <Onavbar/> 
+        <section style={{backgroundImage: `url(${bg})`, height:"550px", width:"1400px"}}>
+        <span  className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
         <h1 class='home-title'>
           <p className={styles.open1} style={{fontFamily:"Roboto Condensed"}}>
             Recognizing and Rewarding Employees <br /> with Excellence
           </p>
         </h1>
+        
 
-        <div className={styles.btn}>
+        <div className={styles.btn} style={{marginLeft:"256px"}}>
           <div className={styles.btn_grp} >
             <button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginRight: '10px' }}  
             onClick={() =>
@@ -66,8 +69,10 @@ const Openpage = () => {
     document
       .querySelector(".compp")
       .scrollIntoView({ behavior: "smooth" })}>Company</button>
+      
           </div>
           </div>
+          </section>
           </div>
           
         </div>

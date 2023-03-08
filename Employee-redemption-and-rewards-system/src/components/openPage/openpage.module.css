@@ -1,6 +1,5 @@
 .open{
         text-align: center;
-        margin-top: 100px;
         background: transparent;
         position: relative;
         z-index: 1;
@@ -15,7 +14,7 @@
 
 /*  TITLE  */
 .span {
-  
+  color: white;
   font-family: 'Bebas Neue', cursive;
   font-size: 5em;
   /* position: absolute; */
@@ -36,6 +35,7 @@
 
 
 .span:hover {
+  color : black;
   background-size: 100% 100%;
   background-position: 0% 100%;
   transition: background-position .7s, background-size .5s ease-in-out;
