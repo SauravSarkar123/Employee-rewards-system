@@ -40,16 +40,18 @@ const Openpage = () => {
   // };
 
   return (
-    <div>
+    <div >
       <div style={{backgroundImage: `url(${bg})`, height:"800px"}}>
      
-      {/* <Onavbar/> */}
+    
       
 
       <div className={styles.open} >
-        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span>
+      <Onavbar/> 
+      <div style={{marginTop: "100px"}} >
+        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span></div>
         <h1 class='home-title'>
-          <p className={styles.open1} style={{fontFamily:"Roboto Condensed"}}>
+          <p className={styles.open1} style={{fontFamily:"Roboto Condensed", color:"white"}}>
 
             Recognizing and Rewarding Employees <br /> with Excellence
           </p>
@@ -69,7 +71,7 @@ const Openpage = () => {
       .scrollIntoView({ behavior: "smooth" })}>Company</button>
           </div>
           </div>
-          </section>
+         
           </div>
         </div>
         
