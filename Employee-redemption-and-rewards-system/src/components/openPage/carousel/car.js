@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./car.css"
-import node from "../stackPics/node2.png"
-import react from "../stackPics/react.png"
-import mong from "../stackPics/mong.png"
-import eth from "../stackPics/eth2.png"
+import node from "../stackPics/node.png"
+import react from "../stackPics/rjs.png"
+import mong from "../stackPics/q.png"
+import eth from "../stackPics/eth.png"
 import boot from "../stackPics/boot.png"
 const images = [
   node,  mong, eth,react, boot

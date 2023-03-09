@@ -1,8 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-
-import LandingPage from './components/pages/LandingPage'
 import LoginPage from './components/employee/LoginPage'
 import RegisterPage from './components/employee/RegisterPage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
@@ -15,16 +13,8 @@ import RegisterCompany from "./components/admin/RegisterPageComp";
 import LoginComp from "./components/admin/LoginPage";
 import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
-import LoginHeader12 from './components/header/loginheader'
-import RegisterHeader from './components/header/registerheader'
 import EmployeeHomepage from './components/employee/EmployeeHomepage'
-import CompanyHome from './components/admin/companyhome'
-import CompanyHeader from './components/header/companyheader'
 import EmpProfile from "./components/admin/EmpProfile"
-
-
-import './App.css'
-import UserProfileHeader from './components/header/userprofile header'
 import CompanyProfile from './components/admin/Assigntask'
 
 
@@ -39,7 +29,7 @@ export default function App() {
                 <Switch>
                     <Route exact path="/" component={OpenPage}/>
                     <Route exact path="/about" component={ AboutPage } />
-                    <Route exact path="/logsign" component={ LandingPage } />
+                    {/* <Route exact path="/logsign" component={ LandingPage } /> */}
                     <Route path="/login" component={ LoginPage } />
                     <Route path="/register" component={ RegisterPage } />
                     <Route path="/registercompany" component={ RegisterCompany } />
@@ -50,12 +40,8 @@ export default function App() {
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     <Route path="/addtask" component={AddTask}/>
-                    <Route path="/loginheader" component={LoginHeader12}/>
-                    <Route path="/registerheader" component={RegisterHeader}/>
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
-                    <Route path="/companyhome" component={CompanyHome}/>
-                    <Route path="/Companyheader" component={CompanyHeader}/>
-                    <Route path="/userprofileheader" component={UserProfileHeader}/>
+                    {/* <Route path="/companyhome" component={CompanyHome}/> */}
                     <Route path="/assigntask" component={CompanyProfile}/>
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
                 </Switch>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import reg from "../../components/openPage/r5.svg"
 
 import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
@@ -60,15 +61,16 @@ export default function SignInPage() {
   };
 
   return (
-    <div style={backgroundGradient}>
+    <div style={{backgroundImage: `url(${reg})`}}>
+   
       <header style={HeaderStyle}>
         <Loginheader12 />
 
         <div className="text-center m-5-auto">
-          <form style={{background:"#00FF00"}}onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} style={{marginRight:"100px",marginBottom:"100px",boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)',borderRadius:"50px"}}>
             <h2>Sign in to us</h2>
             <p>
-              <label>Username</label>
+              <label>Company Name</label>
               <br />
               <input
                 type="text"
@@ -114,6 +116,7 @@ export default function SignInPage() {
         </div>
       </header>
       <Footer />
+ 
     </div>
   );
 }

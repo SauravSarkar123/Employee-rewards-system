@@ -5,6 +5,7 @@
  import Footer from '../footer/Footer'
  import { useHistory } from "react-router-dom";
  import styles from '../openPage/openpage.module.css';
+ import reg from "../../components/openPage/r5.svg"
 
 
 import '../../App.css'
@@ -65,6 +66,7 @@ export default function SignInPage() {
   
 
   return (
+    <div style={{backgroundImage: `url(${reg})`}}>
       <div style={backgroundGradient}>
       
           <Loginheader12/>
@@ -72,7 +74,7 @@ export default function SignInPage() {
 
     
                    
-          <form style={{margin:'auto',background: "#ADD8E6",borderRadius:"20px",marginRight: '500px'}}onSubmit={handleLogin}>
+          <form style={{margin:'auto',borderRadius:"50px",marginRight: '550px',marginBottom:"100px", boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)'}}onSubmit={handleLogin}>
           <h2 style={{textAlign:'center'}}>Sign in to us</h2>
               <p>
                   <label>Username</label><br/>
@@ -95,7 +97,6 @@ export default function SignInPage() {
           </footer>  
            
           </form>
-          <img src='https://go.bonus.ly/hubfs/One-on-one%20Meeting%20Template%20for%20Managers/1-1%20Meeting%20Template%20Blog.png' style={{ width: '600px', height: '500px',marginRight:"100px", marginBottom:'20px'}} alt='Employee' />
 
           
      
@@ -103,6 +104,7 @@ export default function SignInPage() {
       <div>
       <Footer/>
       </div> </div>
+      </div>
   )}
   const HeaderStyle = {
   width: "100%",

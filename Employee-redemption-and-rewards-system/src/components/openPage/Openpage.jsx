@@ -7,7 +7,7 @@ import Footer from '../footer/Footer';
 import { Link } from 'react-router-dom';
 import Slideshow from './carousel/car';
 import "./openpage.module.css"
-import bg from "./bg.svg"
+import bg from "./op.svg"
 
 
 const Openpage = () => {
@@ -41,7 +41,7 @@ const Openpage = () => {
 
   return (
     <div >
-      <div style={{backgroundImage: `url(${bg})`, height:"800px"}}>
+      <div style={{backgroundImage: `url(${bg})`, height:"700px"}}>
      
     
       
