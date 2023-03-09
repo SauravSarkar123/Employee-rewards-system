@@ -14,30 +14,7 @@ const Openpage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  // const [isVisible, setIsVisible] = useState(false);
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   window.addEventListener('scroll', handleScroll, { passive: true });
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-
-  // const handleScroll = () => {
-  //   const image = document.querySelector('.image');
-  //   const imageTop = image.getBoundingClientRect().top;
-  //   const imageBottom = image.getBoundingClientRect().bottom;
-  //   const windowHeight = window.innerHeight;
-
-  //   if (imageTop < windowHeight && imageBottom >= 0) {
-    //   setTimeout(() => {
-    //   setIsVisible(true);
-    // },10);
-  //  } else {
-  //     setIsVisible(true);
-  //   }
-  // };
+  
 
   return (
     <div >
@@ -50,8 +27,8 @@ const Openpage = () => {
       <Onavbar/> 
       <div style={{marginTop: "100px"}} >
         <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span></div>
-        <h1 class='home-title'>
-          <p className={styles.open1} style={{fontFamily:"Roboto Condensed", color:"white"}}>
+        <h1 className='home-title'>
+          <p className={styles.open1} style={{fontFamily:"Roboto Condensed", color:"white",  lineHeight: '1.5' }}>
 
             Recognizing and Rewarding Employees <br /> with Excellence
           </p>
@@ -80,7 +57,7 @@ const Openpage = () => {
         <div className={styles.about}>
           <h2>What is the problem we solve</h2>
           <br />
-          <p className={styles.p}>
+          <p className={styles.p} style={{ lineHeight: '1.5' }}>
             The Employee Reward System addresses the issue of employees losing proof of their notable achievements or
             certifications when leaving a company. Through the system, employees can be rewarded with tokens for their
             completed tasks or achievements, which are stored on a blockchain. These tokens can then be redeemed for
@@ -97,7 +74,7 @@ const Openpage = () => {
           <img src={employeeImage} style={{ width: '600px', height: '400px' }} alt='Employee' />
           <div className={styles.text_container}>
             <h3>Employee</h3>
-            <p className={styles.p}>Register as a Employee to get your personal ID</p>
+            <p className={styles.p } style={{ lineHeight: '1.5' }}>Register as a Employee to get your personal ID</p>
             <Link to="/register"><button className={styles.button} style={{ marginTop: "50px", color: '#000', border: '2px', slant: '.5em' }}>Register</button></Link>
           </div>
         </div>
@@ -106,7 +83,7 @@ const Openpage = () => {
           <div className="compp">
             <div className={styles.text_container}><h3>COMPANY</h3>
 
-              <p className={styles.p}>Register as a Company and get your Unique ID <br /></p>
+              <p className={styles.p} style={{ lineHeight: '1.5' }}>Register as a Company and get your Unique ID <br /></p>
               <Link to="/registercompany"><button className={styles.button} style={{ marginTop: "50px", color: '#000', border: '2px', slant: '.5em' }}>Register</button></Link></div></div>
 
           <img src={companyImage} style={{ width: '600px', height: '400px' }} alt='Company' />
