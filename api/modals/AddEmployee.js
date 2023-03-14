@@ -8,35 +8,33 @@ const AddEmployee = new mongoose.Schema({
     required: true,
   },
   Name: {
-    type : String,
+    type: String,
     ref: User,
     // required : true,
   },
-  Email:{
+  Email: {
     type: String,
     // required : true,
     ref: User,
-},
-Mobile:{
+  },
+  Mobile: {
     type: Number,
     // required: true,
     ref: User,
-},
-Address:{
+  },
+  Address: {
     type: String,
     // required : true,
     ref: User,
-},
+  },
   comName: {
     type: String,
-    required : true
+    required: true,
   },
   comId: {
     type: Number,
-    required : true
+    required: true,
   },
 });
 
-export default mongoose.model("AddEmployee", AddEmployee)
-
-
+export default mongoose.model("AddEmployee", AddEmployee);

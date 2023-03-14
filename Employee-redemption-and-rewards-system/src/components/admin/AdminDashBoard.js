@@ -1,44 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { FaSignOutAlt } from 'react-icons/fa';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from '../header/Navbar';
-import Footer from '../footer/Footer';
-import { useCookies } from 'react-cookie';
-import { Link } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { FaSignOutAlt } from "react-icons/fa";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "../header/Navbar";
+import Footer from "../footer/Footer";
+import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 function AdminDashBoard() {
-  const [search, setSearch] = useState(''); // state for search input
+  const [search, setSearch] = useState(""); // state for search input
   const [employees, setEmployees] = useState([]);
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token', 'name']);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "access_token",
+    "name",
+  ]);
   const tokenn = jwt_decode(cookies.access_token);
   const API_URL = "http://localhost:8800";
 
   const handleLogout = () => {
-    removeCookie('access_token');
+    removeCookie("access_token");
   };
 
   useEffect(() => {
-       axios.get(`${API_URL}/empdetails`,{withCredentials:true})
-        // make a GET request to the server
-          .then(response => {
-            //console.log(response.data.user);
-            setEmployees(response.data.user); 
-            //console.log(employees)
-         
-// set the employees state with the retrieved data
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }, []);
+    axios
+      .get(`${API_URL}/empdetails`, { withCredentials: true })
+      // make a GET request to the server
+      .then((response) => {
+        //console.log(response.data.user);
+        setEmployees(response.data.user);
+        //console.log(employees)
 
-      const filteredEmployees = employees.filter(employee => { // filter employees by search input
-        return employee.name.toLowerCase().includes(search.toLowerCase()) || (employee.id && employee.id.toString().includes(search));
+        // set the employees state with the retrieved data
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      const employeeId = employees.map(employee => employee._id);
-      console.log(employeeId);
+  }, []);
+
+  const filteredEmployees = employees.filter((employee) => {
+    // filter employees by search input
+    return (
+      employee.name.toLowerCase().includes(search.toLowerCase()) ||
+      (employee.id && employee.id.toString().includes(search))
+    );
+  });
+  const employeeId = employees.map((employee) => employee._id);
+  console.log(employeeId);
 
   return (
     <div className="container-fluid">
@@ -51,13 +59,17 @@ function AdminDashBoard() {
               <img
                 src="https://www.freeiconspng.com/thumbs/profile-icon-png/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
                 alt=""
-                style={{ height: '100px', width: '100px' }}
+                style={{ height: "100px", width: "100px" }}
               />
               <div className="my-3">
                 {/* <div className="font-weight-bold">Employee ID: 12345</div> */}
                 <div className="font-weight-bold">Admin: {tokenn.name}</div>
                 <Link to="/logincomp">
-                  <button onClick={handleLogout} className="btn btn-primary" style={{ margin: "1rem" }}>
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-primary"
+                    style={{ margin: "1rem" }}
+                  >
                     <FaSignOutAlt /> Log Out
                   </button>
                 </Link>
@@ -80,35 +92,41 @@ function AdminDashBoard() {
                   className="form-control"
                   placeholder="Search by name or ID"
                   value={search}
-                  onChange={e => setSearch(e.target.value)}
+                  onChange={(e) => setSearch(e.target.value)}
                 />
                 <div className="input-group-append">
-                  <button className="btn btn-primary" type="button">Search</button>
+                  <button className="btn btn-primary" type="button">
+                    Search
+                  </button>
                 </div>
               </div>
               <div className="list-group">
-                {filteredEmployees.map(employee =>
+                {filteredEmployees.map((employee) => (
                   <div key={employee._id} className="list-group-item">
                     <div className="d-flex justify-content"></div>
-                <div className="d-flex justify-content-between align-items-center">
-                <div>
-                    <h6 className="font-weight-bold mb-0">{employee.name}</h6>
-                    <small>{employee._id}</small>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 className="font-weight-bold mb-0">
+                          {employee.name}
+                        </h6>
+                        <small>{employee._id}</small>
+                      </div>
+                      <Link to={`/empprofile/${employee._id}`}>
+                        <button className="btn btn-primary">
+                          View Details
+                        </button>
+                      </Link>
+                    </div>
                   </div>
-                  <Link to={`/empprofile/${employee._id}`}>
-                    <button className="btn btn-primary">View Details</button>
-                  </Link>
-                </div>
+                ))}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
-  </div>
-  <Footer />
-</div>
-);
+  );
 }
 
 export default AdminDashBoard;
