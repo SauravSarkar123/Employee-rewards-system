@@ -21,6 +21,7 @@ import {
 
 import { useCookies } from 'react-cookie';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 
@@ -81,9 +82,9 @@ const ProfilePage = (props) => {
     </Typography>
   </CardContent>
   <CardActions>
-    <Button variant="contained" color="primary" href="/addemployee" style={{ margin: "1rem" }}>
+    <Link to={`/adde/${employee._id}/${employee.name}/${employee.address}/${employee.mobile}/${employee.email}`}><Button variant="contained" color="primary" style={{ margin: "1rem" }}>
       Add Employee
-    </Button>
+    </Button></Link>
   </CardActions>
   {/* <CardActions>
     <Button onClick={handleLogout} variant="contained" color="primary" href="/login" style={{ margin: "1rem" }}>
