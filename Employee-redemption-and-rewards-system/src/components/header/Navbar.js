@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
 const [toggleMenu, setToggleMenu] = useState(false);
 return (
-<div className="gpt3__navbar" style={{background:"#fff"}}>
+<div className="gpt3__navbar" style={{background:"#fff", height:"120px"}}>
 <div className="gpt3__navbar-links">
 <div className="gpt3__navbar-links_logo">
 <img src={logo} alt="Logo" />
