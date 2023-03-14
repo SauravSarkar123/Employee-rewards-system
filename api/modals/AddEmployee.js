@@ -1,47 +1,40 @@
 import mongoose from "mongoose";
-import  Schema  from "mongoose";
+import User from "./User.js";
 
-const AddEmployeeSchema = new mongoose.Schema({
-    Name:{
-        type: String,
-        required : true,
-        unique : true,
-    },
-    RegisterNum:{
-        type: String,
-        required : true,
-        unique : true
-    },
-    
-    Email:{
-        type: String,
-        required : true,
-        unique: true,
-    },
-  
-    Address:{
-        type : String,
-        unique : true
-    },
-    Mobile:{
-        type : Number,
-        required : true,
-    },
-    // DOJ : {
-    //     type : Date,
-    //     required : true,
-    // }
-    // status:{
-    //     type : Boolean,
-    //     required : true,
-    //     default : true
-    // },
+const AddEmployee = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User,
+    required: true,
+  },
+  Name: {
+    type: String,
+    ref: User,
+    // required : true,
+  },
+  Email: {
+    type: String,
+    // required : true,
+    ref: User,
+  },
+  Mobile: {
+    type: Number,
+    // required: true,
+    ref: User,
+  },
+  Address: {
+    type: String,
+    // required : true,
+    ref: User,
+  },
+  comName: {
+    type: String,
+    required: true,
+  },
+  comId: {
+    type: Number,
+    required: true,
+  },
+});
 
-    // tokensPurchased : {
-    //     type : Number,
-    //     required : true
-    // }
-
-},{timestamps:true})
-
-export default mongoose.model("AddEmployee", AddEmployeeSchema)
+export default mongoose.model("AddEmployee", AddEmployee);

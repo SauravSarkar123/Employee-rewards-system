@@ -15,7 +15,6 @@ import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
 import EmployeeHomepage from './components/employee/EmployeeHomepage'
 import EmpProfile from "./components/admin/EmpProfile"
-import CompanyProfile from './components/admin/Assigntask'
 
 
 
@@ -36,14 +35,14 @@ export default function App() {
                     <Route path="/forget-password" component={ ForgetPasswordPage } />
                     <Route path="/employee" component={EmployeeDashboard} />
                     <Route path="/userprofile" component={ProfilePage} />
-                    <Route path="/addemployee" component={AddEmployee}/>
+                    {/* <Route path="/addemployee" component={AddEmployee}/> */}
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     <Route path="/addtask" component={AddTask}/>
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
                     {/* <Route path="/companyhome" component={CompanyHome}/> */}
-                    <Route path="/assigntask" component={CompanyProfile}/>
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
+                    <Route path="/adde/:_id/:name/:address/:mobile/:email" component={AddEmployee}/>
                 </Switch>
             </div>
         </Router>
