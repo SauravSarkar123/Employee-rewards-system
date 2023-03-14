@@ -17,20 +17,20 @@ const Navbar = () => {
         <div className="gpt3__navbar-links_logo">
           <img src={logo} alt="Logo"/> 
         </div>
-        <div className="gpt3__navbar-links_container" style={{color:"#ffffff"}}>
+        <div className="gpt3__navbar-links_container" style={{color:"#ffffff" }}>
         
         <p>
-            <a href="/">Home</a>
+            <a href="/" style={{color:'#131111', fontSize: '1rem'}}> <b> HOME </b></a>
           </p>
           <p>
-            <a href="/about">About</a>
+            <a href="/about"style={{color:'#131111', fontSize: '1rem'}}> <b> ABOUT</b></a>
           </p>
           
           {/* <p><a href="#blog">Library</a></p> */}
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-      <Link to="/login"><button className="btn-login">Login</button></Link>
+      <Link to="/login" style={{color:'#131111', fontSize: '1rem'}}><button className="btn-login"><b>LOGIN </b></button></Link>
 
       
         
@@ -49,8 +49,8 @@ const Navbar = () => {
             <p><a href="#blog">Library</a></p> 
           </div>
           <div className="gpt3__navbar-menu_container-links-sign">
-            <Link to="/login"><p>Login</p></Link>
-            <Link to="/register"><button className="btn-signup-menu">Sign up</button></Link>
+            <Link to="/login" style={{color:'#131111', fontSize: '1rem'}}><p>Login</p></Link>
+            <Link to="/register" style={{color:'#131111', fontSize: '1rem'}}><button className="btn-signup-menu">Sign up</button></Link>
           </div>
         </div>
         )}

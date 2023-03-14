@@ -17,7 +17,7 @@ const LogoutHeader = () => {
         <div className="gpt3__navbar-links_container" style={{color:"blue"}}>
         <p><a href="#ers">ERS</a></p>
         <p>
-            <Link to="/"><a>Home</a></Link>
+            <Link to="/" style={{color:'#131111', fontSize: '1rem'}}><b> HOME </b></Link>
           </p>
           <p>
             <a href="#dd">Help </a>
@@ -26,13 +26,13 @@ const LogoutHeader = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-      <Link to="/login"><button>Logout</button></Link>
+      <Link to="/login" style={{color:'#131111', fontSize: '1rem'}}><button><b>LOGOUT</b></button></Link>
 
       
        
         
       </div>
-      <div className="gpt3__navbar-menu">
+      <div className="gpt3__navbar-menu" style={{height:"120px"}}>
         {toggleMenu
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
           : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}

@@ -17,12 +17,12 @@ const UserProfileHeader = () => {
         <div className="gpt3__navbar-links_container" style={{color:"blue"}}>
        
         <p>
-            <Link to="/"><a>Home</a></Link>
+            <Link to="/" style={{color:'#131111', fontSize: '1rem'}}><a>HOME</a></Link>
           </p>
           <p>
-            <Link to="/about">About</Link>
+            <Link to="/about" style={{color:'#131111', fontSize: '1rem'}}>ABOUT</Link>
           </p>
-          <p><a href="#features">Help</a></p>
+          <p><a href="#features" style={{color:'#131111', fontSize: '1rem'}}>HELP</a></p>
           {/* <p><a href="#blog">Library</a></p> */}
         </div>
       </div>
@@ -43,7 +43,7 @@ const UserProfileHeader = () => {
           <div className="gpt3__navbar-menu_container-links-sign">
             
             
-            <button type="button">Sign up</button>
+            <button type="button">SIGN UP</button>
             
           </div>
         </div>

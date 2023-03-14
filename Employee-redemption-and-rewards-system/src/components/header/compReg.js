@@ -12,7 +12,7 @@ const Loginheader12 = () => {
   }
 
   return (
-    <div className="gpt3__navbar" style={{backgroundColor:"#FFB6C1"}}>
+    <div className="gpt3__navbar" style={{backgroundColor:"#FFB6C1",height:"120px"}}>
       <div className="gpt3__navbar-links">
         <div className="gpt3__navbar-links_logo">
           <img src={logo} alt="Logo"/> 
@@ -20,10 +20,10 @@ const Loginheader12 = () => {
         <div className="gpt3__navbar-links_container" style={{color:"#ffffff"}}>
         
         <p>
-            <a href="/" style={{color:'#110e0e'}}>Home</a>
+            <a href="/" style={{color:'#131111', fontSize: '1rem'}}> Home</a>
           </p>
           <p>
-            <a href="/about" style={{color:'#110e0e'}}>About</a>
+            <a href="/about" style={{color:'#131111', fontSize: '1rem'}}> About</a>
           </p>
           
           {/* <p><a href="#blog">Library</a></p> */}
@@ -32,7 +32,7 @@ const Loginheader12 = () => {
       <div className="gpt3__navbar-sign" >
       
 
-      <Link to="/logincomp"><button className="btn-login">Login</button></Link>
+      <Link to="/logincomp" style={{color:'#131111', fontSize: '1rem'}}> <button className="btn-login">Login</button></Link>
         
       </div>
       <div className="gpt3__navbar-menu">

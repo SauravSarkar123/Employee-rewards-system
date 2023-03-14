@@ -18,7 +18,7 @@
   .gpt3__navbar-links_container p:hover,
   .gpt3__navbar-sign button:hover {
     background-color: #2f0cf3;
-    color: #ffffff !important;
+    color: #f5f0f0 !important;
     transform: translateY(-2px);
   }
   .gpt3__navbar-links_container:hover {
@@ -92,6 +92,7 @@
   .gpt3__navbar-menu_container.slide-in-top {
     transform: scale(1);
   }
+
   
   .gpt3__navbar-links {
     flex: 1;

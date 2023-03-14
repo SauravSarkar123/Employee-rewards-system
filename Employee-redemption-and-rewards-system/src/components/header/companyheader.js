@@ -12,7 +12,7 @@ const Loginheader12 = () => {
   }
 
   return (
-    <div className="gpt3__navbar" style={{backgroundColor:"#FFB6C1"}} >
+    <div className="gpt3__navbar" style={{backgroundColor:"#FFB6C1",height:"120px"}} >
       <div className="gpt3__navbar-links">
         <div className="gpt3__navbar-links_logo">
           <img src={logo} alt="Logo"/> 
