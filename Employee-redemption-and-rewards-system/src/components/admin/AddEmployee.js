@@ -12,6 +12,7 @@ const AddEmployee = (props) => {
   const employeeName = props.match.params.name;
   const employeeAddress = props.match.params.address;
   const employeeMobile = parseInt(props.match.params.mobile);
+  const employeeWallet = props.match.params.wallet;
 
   const employeeEmail = props.match.params.email;
   console.log(
@@ -19,7 +20,8 @@ const AddEmployee = (props) => {
     employeeAddress,
     employeeEmail,
     employeeMobile,
-    employeeName
+    employeeName,
+    employeeWallet
   );
   const backgroundGradient = {
     background: "linear-gradient(to right, #1985FF, #42ECEC)",
@@ -34,7 +36,7 @@ const AddEmployee = (props) => {
 
     try {
       const response = await axios.post(
-        `${API_URL}/adde/${employeeId}/${employeeName}/${employeeAddress}/${employeeMobile}/${employeeEmail}`,
+        `${API_URL}/addemployee/${employeeId}/${employeeName}/${employeeAddress}/${employeeMobile}/${employeeEmail}/${employeeWallet}`,
         {
           comName,
           comId,

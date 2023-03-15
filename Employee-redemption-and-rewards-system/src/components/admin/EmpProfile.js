@@ -110,7 +110,7 @@ const ProfilePage = (props) => {
               </CardContent>
               <CardActions>
                 <Link
-                  to={`/adde/${employee._id}/${employee.name}/${employee.address}/${employee.mobile}/${employee.email}`}
+                  to={`/addemployee/${employee._id}/${employee.name}/${employee.address}/${employee.mobile}/${employee.email}/${employee.wallet}`}
                 >
                   <Button
                     variant="contained"
@@ -291,6 +291,22 @@ const ProfilePage = (props) => {
                     />
                     <ListItemText
                       secondary={employee.address}
+                      style={{ color: "#666" }}
+                    />
+                  </ListItem>
+                  <ListItem
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: "0",
+                    }}
+                  >
+                    <ListItemText
+                      primary="Wallet Address"
+                      style={{ fontWeight: "bold" }}
+                    />
+                    <ListItemText
+                      secondary={employee.wallet}
                       style={{ color: "#666" }}
                     />
                   </ListItem>

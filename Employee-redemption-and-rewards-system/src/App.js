@@ -20,6 +20,7 @@ import EmpProfile from "./components/admin/EmpProfile"
 
 
 
+
 export default function App() {
     return (
         <Router>
@@ -42,7 +43,8 @@ export default function App() {
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
                     {/* <Route path="/companyhome" component={CompanyHome}/> */}
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
-                    <Route path="/adde/:_id/:name/:address/:mobile/:email" component={AddEmployee}/>
+                   
+                    <Route path="/addemployee/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
                 </Switch>
             </div>
         </Router>

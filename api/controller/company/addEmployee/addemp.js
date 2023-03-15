@@ -1,21 +1,26 @@
+import express from "express";
 import AddEmployee from "../../../modals/AddEmployee.js";
+import User from "../../../modals/User.js";
 
-export const addEmployee = async (req, res, next) => {
-  const { Name, RegisterNum, Email, Address, Mobile } = req.body;
 
-  if (!Name || !RegisterNum  || !Email || !Address  || !Mobile ) {
-    return res
-      .status(400)
-      .json({ message: "All the fields must be filled" });
-  }
-
-  const newEmp = new AddEmployee({Name, RegisterNum, Email, Address, Mobile});
-
+export const addEmp = async (req, res) => {
+    
+  
   try {
-    const savedEmp = await newEmp.save();
-    console.log(savedEmp);
-    res.status(200).json(savedEmp);
+      const userId = req.params._id;
+      const Name = req.params.name
+      const Address = req.params.address;
+      const Mobile = req.params.mobile;
+      const Email = req.params.email;
+      const Wallet = req.params.wallet;
+
+
+      const { user,comName, comId } = req.body;
+      const newUser = new AddEmployee({ user:userId,comName, comId, Name:Name, Address : Address, Mobile:Mobile, Email:Email, Wallet : Wallet});
+      // const user = await User.findById(req.params._id);
+    const newEmployee = await newUser.save();
+    res.status(201).json(newEmployee);
   } catch (err) {
-    next(err);
+    res.status(400).json({ message: err.message });
   }
 };

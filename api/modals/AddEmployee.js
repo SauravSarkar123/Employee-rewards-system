@@ -35,6 +35,10 @@ const AddEmployee = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  Wallet:{
+    type:String,
+    ref : User
+  }
 });
 
 export default mongoose.model("AddEmployee", AddEmployee);
