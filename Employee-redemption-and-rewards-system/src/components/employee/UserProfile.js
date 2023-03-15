@@ -128,53 +128,6 @@ const ProfilePage = () => {
 </Card>
 
 
-{/* <Card variant="outlined" style={{ 
-  marginTop: "1rem",
-  background:"#FFFFFF",
-  border: "1px solid #A9A9A9",
-  borderRadius: "10px",
-  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
-}}>
-  <CardContent style={{ color:"#333333"}}>
-    <Typography gutterBottom variant="h5" component="h2" style={{ 
-      fontSize: '2rem', 
-      fontWeight: 'bold', 
-      marginBottom: '2rem' , 
-      color:"#333333"
-    }}>
-      Contact Information
-    </Typography>
-    <List style={{ color:"#333333"}}>
-      <ListItem>
-        <ListItemIcon>
-          <Language style={{ color:"#333333" }}/>
-        </ListItemIcon>
-        <ListItemText>
-          LinkedIn :{" "}
-          <a href="https://www.linkedin.com" style={{ color:"#333333" }}>LinkedIn</a>
-        </ListItemText>
-      </ListItem>
-      <ListItem>
-        <ListItemIcon>
-          <GitHub style={{ color:"#333333" }}/>
-        </ListItemIcon>
-        <ListItemText>
-          Github :{" "}
-          <a href="https://www.github.com" style={{ color:"#333333" }}>Github</a>
-        </ListItemText>
-      </ListItem>
-      <ListItem>
-        <ListItemIcon>
-          <Twitter style={{ color:"#333333" }}/>
-        </ListItemIcon>
-        <ListItemText>
-          Office :{" "}
-          <a href="https://www.office.com" style={{ color:"#333333" }}>Office</a>
-        </ListItemText>
-      </ListItem>
-    </List>
-  </CardContent>
-</Card> */}
 
           </Grid>
 
@@ -252,9 +205,9 @@ const ProfilePage = () => {
     </Grid>
   </section>
 
-  {/* <footer>
+  <footer>
     <Footercr/>
-  </footer> */}
+  </footer>
 </div>
 );
 };
