@@ -393,6 +393,7 @@ import { FaBars,FaUserPlus, FaTasks, FaGift } from "react-icons/fa";
 import SidebarMenu from "./side.js";
 
 
+
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
@@ -439,7 +440,7 @@ function AdminDashBoard() {
     <div className="container-fluid" style={{height:"3000px"}}>
       {" "}
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
       <div className="row mt-3">
         <div className="col-md-4">

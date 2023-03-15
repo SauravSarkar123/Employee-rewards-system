@@ -368,14 +368,8 @@ const ProfilePage = (props) => {
 
 
     </Card>
-
-      </Grid>
-    </Grid>
-  </section>
-      <footer>
-        <Footercr />
-      </footer>
-      </div>
+    </div>
+  
       
   );
 };
