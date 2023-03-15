@@ -44,9 +44,7 @@ function AdminDashBoard() {
   return (
     <div className="container-fluid" style={{height:"3000px"}}>
       {" "}
-      <div>
-        <Navbar />
-      </div>
+      
       <div className="row mt-3">
         <div className="col-md-4">
           <div className="card">
