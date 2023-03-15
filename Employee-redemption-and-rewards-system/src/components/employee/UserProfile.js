@@ -66,12 +66,12 @@ const ProfilePage = () => {
       marginBottom: '2rem' ,
       color:"#1F1F1F"
     }}>
-      Employee Details
+      EMPLOYEE DETAILS
     </Typography>
     <AccountCircle style={{ fontSize: "7rem", margin: "1rem", color:"#1F1F1F" }} />
     <Typography variant="body2" color="textSecondary" component="p" style={{
-      marginBottom: "0.5rem" ,
-      color:"#1F1F1F" ,
+      marginBottom: "0.5rem" 
+      , color:"#1c4966" ,
       fontSize:"2rem"
     }}>
       Full Stack Developer
@@ -84,7 +84,7 @@ const ProfilePage = () => {
     </Typography>
   </CardContent>
   <CardActions>
-    <Button onClick={handleLogout} variant="contained" color="secondary" href="/login" style={{ margin: "1rem", background:"#1F1F1F", borderRadius: "5px" }}>
+    <Button onClick={handleLogout} variant="contained" color="secondary" href="/login" style={{ margin: "1rem", background:"#FF0000", borderRadius: "5px" }}>
       Log Out
     </Button>
   </CardActions>
@@ -182,12 +182,12 @@ const ProfilePage = () => {
           <Card variant="outlined" className="personal-info-card" style={{ width: '200%', borderRadius: '20px', backgroundColor: '#fff', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)', padding: '2rem', marginLeft: '0px', height: '100%' }}>
   <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
     <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center' }}>
-      Personal Information
+      PERSONAL INFORMATION
     </Typography>
     <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid #e0e0e0', paddingTop: '2rem', width: '100%' }}>
       <div style={{ display: 'flex', marginBottom: '1rem' }}>
         <div style={{ marginRight: '2rem', flex: 1 }}>
-          <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
             Name:
           </Typography>
           <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
@@ -195,7 +195,7 @@ const ProfilePage = () => {
           </Typography>
         </div>
         <div style={{ marginRight: '2rem', flex: 1 }}>
-          <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" style={{ fontWeight: 'bold' , color:"#45b6fe"}}>
             Employee ID:
           </Typography>
           <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
@@ -203,7 +203,7 @@ const ProfilePage = () => {
           </Typography>
         </div>
         <div style={{ flex: 1 }}>
-          <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
             Date of Birth:
           </Typography>
           <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
@@ -215,7 +215,7 @@ const ProfilePage = () => {
       <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid #e0e0e0', paddingTop: '2rem', width: '100%' }}>
         <div style={{ display: 'flex', marginBottom: '1rem' }}>
           <div style={{ marginRight: '2rem', flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe"}}>
               Email:
             </Typography>
             <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
@@ -223,7 +223,7 @@ const ProfilePage = () => {
             </Typography>
           </div>
           <div style={{ marginRight: '2rem', flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold' , color:"#45b6fe"}}>
               Mobile:
             </Typography>
             <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
@@ -231,7 +231,7 @@ const ProfilePage = () => {
             </Typography>
           </div>
           <div style={{ flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
               Address:
             </Typography>
             <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
