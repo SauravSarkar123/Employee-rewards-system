@@ -435,60 +435,40 @@ function AdminDashBoard() {
     );
   });
 
-
-return (
-  <>
-  <div>
-    
-
-    {/* <div className={`${styles.header} shadow-lg`}> */}
-      {/* <div className={`${styles.menuButton}`} onClick={toggleMenu}>
-        <FaBars onClick={handleLinkClick}/>
-      </div> */}
-      
-      
-    {/* </div> */}
-    {/* <div className={`${styles.sidebar} ${showMenu ? styles.show : " "}`  } >
-      <ul className={`${styles.menuList}`}>
-        <li>
-          <Link to="/addemployee" onClick={handleLinkClick}>
-            <FaUserPlus /> Add Employee
-          </Link>
-        </li>
-        <li>
-          <Link to="/assigntask" onClick={handleLinkClick}>
-            <FaTasks /> Assign Task
-          </Link>
-        </li>
-        <li>
-          <Link to="/rewardtokens" onClick={handleLinkClick}>
-            <FaGift /> Reward Tokens
-          </Link>
-        </li>
-      </ul>
-    </div> */}
-    </div>
-    <div className="container" style={{marginLeft:"400px"}}>
-    <SidebarMenu/>
-    <div className={`${styles.welcome} font-weight-bold`} style={{marginLeft:"500px"}}>
-        Welcome {tokenn.name}'s Admin
-        
+  return (
+    <div className="container-fluid" style={{height:"3000px"}}>
+      {" "}
+      <div>
+        <Navbar />
       </div>
-      
-      <div className={`${styles.logout} font-weight-bold`}>
-        <Link to="/logincomp">
-          <button
-            onClick={handleLogout}
-            className={`${styles.btn} btn-primary shadow-sm`}
-          >
-            <FaSignOutAlt /> Log Out
-          </button>
-        </Link>
-      </div>
-      <div className={`${styles.row} mt-7`}>
-        <div className="col-md-6" >
-          <div className={`${styles.card} shadow`} >
-            <h5 className={`${styles.cardHeader} font-weight-bold` } >
+      <div className="row mt-3">
+        <div className="col-md-4">
+          <div className="card">
+            <h5 className="card-header font-weight-bold">User Profile</h5>
+            <div className="card-body d-flex flex-column align-items-center">
+              <img
+                src="https://www.freeiconspng.com/thumbs/profile-icon-png/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
+                alt=""
+                style={{ height: "100px", width: "100px" }}
+              />
+              <div className="my-3">
+                <div className="font-weight-bold">Admin: {tokenn.name}</div>
+                <Link to="/logincomp">
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-primary"
+                    style={{ margin: "1rem" }}
+                  >
+                    <FaSignOutAlt /> Log Out
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card">
+            <h5 className="card-header font-weight-bold">
               Employee Onboarding
             </h5>
             <div className={`${styles.cardBody}`}>
@@ -544,7 +524,7 @@ return (
            </div>
         </div>
       </div>
-     </>
+     
   );
  }
  export default AdminDashBoard;

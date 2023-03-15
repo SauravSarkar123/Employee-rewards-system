@@ -15,12 +15,12 @@ const LogoutHeader = () => {
           <img src={logo} /> 
         </div>
         <div className="gpt3__navbar-links_container" style={{color:"blue"}}>
-        <p><a href="#ers">ERS</a></p>
+        <p><a href="#ers" style={{color:'#131111', fontSize: '1rem'}}><b>ERS</b></a></p>
         <p>
             <Link to="/" style={{color:'#131111', fontSize: '1rem'}}><b> HOME </b></Link>
           </p>
           <p>
-            <a href="#dd">Help </a>
+            <a href="#dd" style={{color:'#131111', fontSize: '1rem'}}><b> HELP</b> </a>
           </p>
           
         </div>
