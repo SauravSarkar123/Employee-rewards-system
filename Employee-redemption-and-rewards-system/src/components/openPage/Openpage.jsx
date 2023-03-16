@@ -18,7 +18,7 @@ const Openpage = () => {
 
   return (
     <div >
-      <div style={{backgroundImage: `url(${bg})`, height:"700px"}}>
+      <div>
      
     
       
@@ -26,7 +26,7 @@ const Openpage = () => {
       <div className={styles.open} >
       <Onavbar/> 
       <div style={{marginTop: "100px"}} >
-        <span className={styles.span}>EMPLOYEE REWARD SYSTEM </span></div>
+        <span className={styles.span}>Employee Reward System </span></div>
         <h1 className='home-title'>
           <p className={styles.open1} style={{fontFamily:"Roboto Condensed", color:"white",  lineHeight: '1.5' }}>
 
@@ -52,9 +52,10 @@ const Openpage = () => {
           </div>
         </div>
         
-       
+       <div style={{backgroundColor:"#E5E5E5"}}>
         <div className={styles.open}>
-        <div className={styles.about}>
+        <div className={styles.border}>
+          <div className={styles.about}>
           <h2>What is the problem we solve</h2>
           <br />
           <p className={styles.p} style={{ lineHeight: '1.5' }}>
@@ -66,6 +67,7 @@ const Openpage = () => {
           </p>
 
           <Link to="/about"><button className={styles.button} style={{ color: '#000', border: '2px', slant: '.5em', marginTop: "10px" }}>Learn More</button></Link>
+        </div>
         </div>
 
         {/* <div className={`image ${isVisible ? 'visible' : ''}`}> */}
@@ -93,6 +95,7 @@ const Openpage = () => {
         {/* </div> */}
         <div className='int'><div className={styles.open}><h3>Stacks Used</h3><Slideshow /></div></div>
         <Footer />
+      </div>
       </div>
       </div> 
       

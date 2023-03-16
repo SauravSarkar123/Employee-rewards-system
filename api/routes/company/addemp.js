@@ -1,5 +1,5 @@
 import express from "express";
-import AddEmployee from "../../modals/AddEmployee.js"
+
 import User from "../../modals/User.js";
 import { addEmp } from "../../controller/company/addEmployee/addemp.js";
 

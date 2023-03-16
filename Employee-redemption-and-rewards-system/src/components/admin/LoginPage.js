@@ -41,7 +41,7 @@ export default function SignInPage() {
       //  console.log(response.data);
 
       // Redirect to admin page on successful login
-      history.push("/admindash");
+      history.push("/real");
     } catch (error) {
       console.error(error);
 

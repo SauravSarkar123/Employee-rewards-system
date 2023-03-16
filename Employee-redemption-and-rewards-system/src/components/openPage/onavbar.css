@@ -29,7 +29,7 @@
 .__navbar-links_container {
     display: flex;
     flex-direction: row;
-    color: rgb(255, 255, 255)  ;
+    color: rgb(0, 0, 0)  ;
     
 }
 
@@ -42,7 +42,7 @@
 .__navbar-links_container p a,
 .__navbar-sign p,
 .__navbar-menu_container p {
-    color: rgb(255, 255, 255)  ;
+    color: rgb(0, 0, 0)  ;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;

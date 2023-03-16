@@ -39,9 +39,9 @@ function AdminDashBoard() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/empdetails`, { withCredentials: true })
+      .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
-        setEmployees(response.data.user);
+        setEmployees(response.data.details);
       })
       .catch((error) => {
         console.log(error);
@@ -50,8 +50,8 @@ function AdminDashBoard() {
 
   const filteredEmployees = employees.filter((employee) => {
     return (
-      employee.name.toLowerCase().includes(search.toLowerCase()) ||
-      (employee.id && employee.id.toString().includes(search))
+      employee._id.toLowerCase().includes(search.toLowerCase()) ||
+      (employee._id && employee.comId.toString().includes(search))
     );
   });
 
@@ -117,7 +117,7 @@ function AdminDashBoard() {
             <div className="col-md-11 " style={{ marginTop: "50px" }}>
               <div className="card">
                 <h5 className="card-header font-weight-bold" style={{textAlign:"center"}}>
-                  Employee Onboarding
+                  Employees
                 </h5>
                 <div className={`${styles.cardBody}`}>
                   <div className={`${styles.inputGroup} mb-3`}>
@@ -148,16 +148,16 @@ function AdminDashBoard() {
                       style={{ maxHeight: "250px", overflowY: "auto" }}
                     >
                       {filteredEmployees.map((employee) => (
-                        <div key={employee._id} className="list-group-item">
+                        <div key={employee.comId} className="list-group-item">
                           <div className="d-flex justify-content"></div>
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
                               <h6 className="font-weight-bold mb-0">
-                                {employee.name}
+                                {employee.Name}
                               </h6>
-                              <small>{employee._id}</small>
+                              <small>{employee.comId}</small>
                             </div>
-                            <Link to={`/empprofile/${employee._id}`}>
+                            <Link to={`/empprofile/${employee.user}`}>
                               <button className="btn btn-primary">
                                 View Profile
                               </button>
