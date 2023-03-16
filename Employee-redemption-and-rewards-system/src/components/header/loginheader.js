@@ -42,7 +42,7 @@ const Loginheader12 = () => {
         {toggleMenu && (
         <div className="gpt3__navbar-menu_container slide-in-top">
           <div className="gpt3__navbar-menu_container-links" style={{color:"#ffffff"}}>
-            <p><a href="#home">Home</a></p>
+            <a href="#home">Home</a>
             <p><a href="#wgpt3">Reward System</a></p>
             <p><a href="#possibility">About</a></p>
             <p><a href="#features">Help</a></p>

@@ -29,6 +29,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required : true,
     },
+    wallet:{
+        type: String,
+        required: true,
+        unique:true
+    }
     
     // proof:{
     //     type:Document,
