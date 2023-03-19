@@ -13,6 +13,7 @@ import SidebarMenu from "./side.js";
 
 
 
+
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
@@ -65,12 +66,12 @@ function AdminDashBoard() {
         </div>
         <div className="col-md-9">
           <div
-            className="font-weight-bold"
-            style={{
-              fontSize: "2.9em",
-              fontFamily: "Roboto Condensed",
-              marginLeft: "70px",
-            }}
+            className={styles.span}
+            // style={{
+            //   fontSize: "2.9em",
+            //   fontFamily: "Roboto Condensed",
+            //   marginLeft: "70px",
+            // }}
           >
             Welcome {tokenn.name}'s Admin
             <Link to="/logincomp">
@@ -84,16 +85,16 @@ function AdminDashBoard() {
             </Link>
           </div>
           <div className="row" style={{marginTop:"40px", marginLeft:"80px"}}>
-            <div className="col-md-3">
+            <div className="col-md-3" >
               <div
                 className="card"
-                style={{ height: "150px", marginBottom: "20px" }}
+                style={{ color:"white",height: "150px", marginBottom: "20px", boxShadow: "20px 40px 10px rgba(10,100,0,0.3)", border:"0px", backgroundColor:"#173D6B"}}
               >
-                <div className="card-body" style={{backgroundColor:"#FC7474"}}>
+                <div className={styles.txt} >
                   <h3>
-                    <b>40</b>
+                    <b style={{marginLeft:"90px", marginBottom:"100px", fontSize:"70px"}}>40</b>
                   </h3>
-                  <br />
+                  <br/>
                   Employee Registrations
                 </div>
               </div>
@@ -101,11 +102,11 @@ function AdminDashBoard() {
             <div className="col-md-3" style={{marginLeft:"80px"}}>
               <div
                 className="card"
-                style={{ height: "150px", marginBottom: "20px" }}
+                style={{ color:"white",border:"0px", backgroundColor:"#173D6B",height: "150px", marginBottom: "20px" , boxShadow: "20px 40px 10px rgba(10,100,0,0.3)"}}
               >
-                <div className="card-body" style={{backgroundColor:"#FC7474"}}>
+                <div className={styles.txt}>
                   <h3>
-                    <b>20</b>
+                    <b style={{marginLeft:"90px", marginBottom:"100px", fontSize:"70px"}}>20</b>
                   </h3>
                   <br />
                   Onboarded
@@ -131,12 +132,7 @@ function AdminDashBoard() {
                     <div
                       className={`${styles.inputGroupAppend} input-group-append`}
                     >
-                      <button
-                        className={`${styles.btn} btn-primary` }
-                        type="button"
-                      >
-                        Search
-                      </button>
+                      
                     </div>
                   </div>
                   <div

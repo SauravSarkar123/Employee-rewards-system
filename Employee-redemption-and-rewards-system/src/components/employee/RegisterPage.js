@@ -9,6 +9,8 @@ import employeeImage from "../../image/employee.jpg";
 import styles from "../openPage/openpage.module.css";
 import reg from "../openPage/r5.svg";
 import "./reg.css";
+import g from "../admin/g.svg"
+import empImg from "../../image/employee.jpg"
 
 export default function Register() {
   const API_URL = "http://localhost:8800";
@@ -47,7 +49,7 @@ export default function Register() {
   };
 
   return (
-    <div style={{ backgroundImage: `url(${reg})` }}>
+    <div style={{ backgroundImage: `url(${g})` }}>
       {/* <Loginheader12 /> */}
       <div
         className={styles.image_cont}
@@ -60,6 +62,9 @@ export default function Register() {
             width: "100%",
           }}
         >
+          <div style={{display:"flex", flexDirection:"row"}}>
+                    <img src={employeeImage} style={{width:"500px", height:"550px", marginLeft:"-100px"}}/>
+
           <form
             onSubmit={handleRegister}
             style={{
@@ -191,6 +196,7 @@ export default function Register() {
               </div>
             </div>
           </form>
+          </div>
         </div>
       </div>
       <Footer />

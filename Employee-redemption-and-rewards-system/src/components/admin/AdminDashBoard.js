@@ -87,9 +87,9 @@ function AdminDashBoard() {
             <div className="col-md-3">
               <div
                 className="card"
-                style={{ height: "150px", marginBottom: "20px" }}
+                style={{ height: "150px", marginBottom: "20px", boxShadow: "20px 40px 10px rgba(10,100,0,0.3)" }}
               >
-                <div className="card-body" style={{backgroundColor:"#FC7474"}}>
+                <div className="card-body" >
                   <h3>
                     <b>40</b>
                   </h3>
@@ -101,9 +101,9 @@ function AdminDashBoard() {
             <div className="col-md-3" style={{marginLeft:"80px"}}>
               <div
                 className="card"
-                style={{ height: "150px", marginBottom: "20px" }}
+                style={{ height: "150px", marginBottom: "20px" , boxShadow: "20px 40px 10px rgba(10,100,0,0.3)"}}
               >
-                <div className="card-body" style={{backgroundColor:"#FC7474"}}>
+                <div className="card-body">
                   <h3>
                     <b>20</b>
                   </h3>

@@ -2,32 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
 
 
-/*  TITLE  */
-.span {
-  color: white;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 2em;
-  /* position: absolute; */
-  margin-right:500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(50%,50%);
-  background-image: linear-gradient(#ffd700, gold);
-  background-size: 50px 5px;
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
-  transition: background-size .7s, background-position .5s ease-in-out;
-
-}
-
-
-.span:hover {
-    color : black;
-    background-size: 35% 100%;
-    background-position: 0% 100%;
-    transition: background-position .7s, background-size .5s ease-in-out;
-  }
-  
 
   /* .header {
     display: flex;
@@ -290,4 +264,21 @@
 
 .list-group-item svg {
   margin-right: 0.5rem;
+}
+.txt{
+  font-family: "Montserrat",sans-serif;
+  font-size: 10;
+
+  font-weight: 1000;
+}
+
+.a1{
+  font-family: "Montserrat",sans-serif;
+  
+}
+
+.span{
+  font-family: "Playfair Display",cursive;
+  font-size: 3.2rem;
+ 
 }
