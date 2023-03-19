@@ -39,7 +39,7 @@ const SidebarMenu = () => {
         <li><a href="/real"><FaHome className="icon" /> Home</a></li>
           <li><a href="/admindash"><IoMdAddCircle className="icon" /> Onboard Employees</a></li>
           <li><a href="/about"><BiTask className="icon" /> Assign Tasks</a></li>
-          <li><a href="/contact"><FaThumbsUp className="icon" /> Approve Tasks</a></li>
+          <li><a href="/approvetask"><FaThumbsUp className="icon" /> Approve Tasks</a></li>
           <li><a href="/contact"><FiGift className="icon" /> Reward Tasks</a></li>
         </ul>
         <div className="sidebar-footer">
