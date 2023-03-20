@@ -5,7 +5,7 @@ import RegisterHeader from "../header/registerheader";
 import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
 import "../../App.css";
-import employeeImage from "../../image/employee.jpg";
+import employeeImage from "../openPage/employees.png"
 import styles from "../openPage/openpage.module.css";
 import reg from "../openPage/r5.svg";
 import "./reg.css";
@@ -63,21 +63,27 @@ export default function Register() {
           }}
         >
           <div style={{display:"flex", flexDirection:"row"}}>
-                    <img src={employeeImage} style={{width:"500px", height:"550px", marginLeft:"-100px"}}/>
+                    <img src={employeeImage} style={{width:"400px", height:"400px",marginTop:"70px", marginLeft:"-100px"}}/>
 
           <form
             onSubmit={handleRegister}
             style={{
-              marginLeft: "200px",
-              borderRadius: "50px",
-              marginBottom: "100px",
+              height:"800px",
+              width:"800px",
+              marginLeft: "100px",
+              borderRadius: "20px",
+              // marginBottom: "100px",
               boxShadow: "10px 90px 40px 10px rgba(0,0,0,0.5)",
+              backgroundColor:"transparent"
             }}
           >
-            <div style={{ textAlign: "center", margin: "auto" }}>
-              <div className="fonty">
-                <h2>JOIN US</h2>
-                <h5>CREATE YOUR USER ACCOUNT</h5>
+            <div style={{ textAlign: "center", margin: "auto" , marginLeft:"300px"}}>
+              <div style={{marginLeft:"0px"}}>
+                <div style={{paddingRight:"-420px"}}>
+                  <h2 className={styles.txt} style={{ marginLeft:"100px",marginTop:"20px"}}>JOIN US</h2>
+                  </div>
+                  <div style={{height:"-400px"}}>
+                <h5 className={styles.p}style={{marginLeft:"-160px"}} >CREATE YOUR USER ACCOUNT</h5></div>
               </div>
             </div>
             <div style={{ color: "black" }}>
@@ -168,7 +174,7 @@ export default function Register() {
                   <div style={{ marginLeft: "110px" }}>
                     <label
                       className="form-check-label"
-                      style={{ color: "black" }}
+                      style={{ color: "black", marginLeft:"50px" }}
                     >
                       <input
                         type="checkbox"
@@ -176,8 +182,9 @@ export default function Register() {
                         checked={checkbox}
                         onChange={(e) => setCheckbox(e.target.checked)}
                         required
+                        style={{marginLeft:"20px"}}
                       />
-                      &nbsp;I_agree_to_the_terms_and_conditions
+                      <div style={{marginLeft:"50px"}}>&nbsp;I_agree_to_the_terms_and_conditions</div>
                     </label>
                   </div>
                 </div>
@@ -185,11 +192,11 @@ export default function Register() {
               <button
                 type="submit"
                 className="btn btn-primary"
-                style={{ marginLeft: "160px" }}
+                style={{ marginLeft: "290px" }}
               >
                 Register
               </button>
-              <div style={{ marginTop: "30px", marginRight: "130px" }}>
+              <div style={{ marginTop: "30px", marginRight: "270px" }}>
                 <p className="forgot-password text-right">
                   Already registered <Link to="/login">log in?</Link>
                 </p>

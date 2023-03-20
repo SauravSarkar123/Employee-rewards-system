@@ -42,6 +42,7 @@ function AdminDashBoard() {
       .get(`${API_URL}/empdetails`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.user);
+        console.log(employees)
       })
       .catch((error) => {
         console.log(error);

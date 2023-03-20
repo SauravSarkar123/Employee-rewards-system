@@ -4,6 +4,7 @@ import axios from "axios";
 import reg from "../../components/openPage/r5.svg"
 import companyImage from "../openPage/comp1.png"
 import g from "./g.svg"
+import styles from "../openPage/openpage.module.css"
 
 import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
@@ -69,9 +70,9 @@ export default function SignInPage() {
 
         <div className="text-center m-5-auto" style={{marginTop:"-10px"}}>
           <div style={{display:"flex", flexDirection:"row"}}>
-        <img src={companyImage} style={{width:"500px", height:"550px", marginLeft:"50px", marginTop:"50px"}}/>
-          <form onSubmit={handleLogin} style={{marginTop:"120px",marginLeft:"140px",marginRight:"50px",marginBottom:"100px",boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)',borderRadius:"50px"}}>
-            <h2>Login</h2>
+        <img src={companyImage} style={{width:"500px", height:"550px", marginLeft:"150px", marginTop:"50px"}}/>
+          <form onSubmit={handleLogin} style={{marginTop:"120px",marginLeft:"145px",marginRight:"50px",marginBottom:"100px",boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)',borderRadius:"20px", backgroundColor:"transparent"}}>
+            <h2 className={styles.txt} style={{marginLeft:"50px", marginTop:"20px"}}>Login</h2>
             <p>
               <label>Company Name</label>
               <br />

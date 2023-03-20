@@ -44,20 +44,21 @@ function AdminDashBoard() {
       .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.details);
-        console.log(employees)
+        console.log(response.data.details)
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
-  const filteredEmployees = employees.filter((employee) => {
+  console.log(employees)
+   const filteredEmployees = employees.filter((employee) => {
     return (
+      
       employee._id.toLowerCase().includes(search.toLowerCase()) ||
-      (employee.comId && employee.comId.toString().includes(search))
+      (employee.comName && employee.comName.toString().includes(search))
+      
     );
   })
-
   return (
     <div>
       <div className="row">
