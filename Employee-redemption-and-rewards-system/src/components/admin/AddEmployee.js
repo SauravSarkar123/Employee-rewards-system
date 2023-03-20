@@ -45,7 +45,7 @@ const AddEmployee = (props) => {
       );
 
       console.log(response.data);
-      history.push("/userprofile");
+      history.push("/real");
     } catch (error) {
       console.error(error);
       alert(error);

@@ -32,7 +32,7 @@ const AddEmployee = new mongoose.Schema({
     required: true,
   },
   comId: {
-    type: Number,
+    type: String,
     required: true,
   },
   Wallet:{

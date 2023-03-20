@@ -13,6 +13,7 @@ import SidebarMenu from "./side.js";
 
 
 
+
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
@@ -39,9 +40,9 @@ function AdminDashBoard() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/empdetails`, { withCredentials: true })
+      .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
-        setEmployees(response.data.user);
+        setEmployees(response.data.details);
       })
       .catch((error) => {
         console.log(error);
@@ -50,8 +51,8 @@ function AdminDashBoard() {
 
   const filteredEmployees = employees.filter((employee) => {
     return (
-      employee.name.toLowerCase().includes(search.toLowerCase()) ||
-      (employee.id && employee.id.toString().includes(search))
+      employee._id.toLowerCase().includes(search.toLowerCase()) ||
+      (employee._id && employee.comId.toString().includes(search))
     );
   });
 
@@ -65,12 +66,12 @@ function AdminDashBoard() {
         </div>
         <div className="col-md-9">
           <div
-            className="font-weight-bold"
-            style={{
-              fontSize: "2.9em",
-              fontFamily: "Roboto Condensed",
-              marginLeft: "70px",
-            }}
+            className={styles.span}
+            // style={{
+            //   fontSize: "2.9em",
+            //   fontFamily: "Roboto Condensed",
+            //   marginLeft: "70px",
+            // }}
           >
             Welcome {tokenn.name}'s Admin
             <Link to="/logincomp">
@@ -84,16 +85,16 @@ function AdminDashBoard() {
             </Link>
           </div>
           <div className="row" style={{marginTop:"40px", marginLeft:"80px"}}>
-            <div className="col-md-3">
+            <div className="col-md-3" >
               <div
                 className="card"
-                style={{ height: "150px", marginBottom: "20px", boxShadow: "20px 40px 10px rgba(10,100,0,0.3)" }}
+                style={{ color:"white",height: "150px", marginBottom: "20px", boxShadow: "20px 40px 10px rgba(10,100,0,0.3)", border:"0px", backgroundColor:"#173D6B"}}
               >
-                <div className="card-body" >
+                <div className={styles.txt} >
                   <h3>
-                    <b>40</b>
+                    <b style={{marginLeft:"90px", marginBottom:"100px", fontSize:"70px"}}>40</b>
                   </h3>
-                  <br />
+                  <br/>
                   Employee Registrations
                 </div>
               </div>
@@ -101,11 +102,11 @@ function AdminDashBoard() {
             <div className="col-md-3" style={{marginLeft:"80px"}}>
               <div
                 className="card"
-                style={{ height: "150px", marginBottom: "20px" , boxShadow: "20px 40px 10px rgba(10,100,0,0.3)"}}
+                style={{ color:"white",border:"0px", backgroundColor:"#173D6B",height: "150px", marginBottom: "20px" , boxShadow: "20px 40px 10px rgba(10,100,0,0.3)"}}
               >
-                <div className="card-body">
+                <div className={styles.txt}>
                   <h3>
-                    <b>20</b>
+                    <b style={{marginLeft:"90px", marginBottom:"100px", fontSize:"70px"}}>20</b>
                   </h3>
                   <br />
                   Onboarded
@@ -117,7 +118,7 @@ function AdminDashBoard() {
             <div className="col-md-11 " style={{ marginTop: "50px" }}>
               <div className="card">
                 <h5 className="card-header font-weight-bold" style={{textAlign:"center"}}>
-                  Employee Onboarding
+                  Employees
                 </h5>
                 <div className={`${styles.cardBody}`}>
                   <div className={`${styles.inputGroup} mb-3`}>
@@ -131,12 +132,7 @@ function AdminDashBoard() {
                     <div
                       className={`${styles.inputGroupAppend} input-group-append`}
                     >
-                      <button
-                        className={`${styles.btn} btn-primary` }
-                        type="button"
-                      >
-                        Search
-                      </button>
+                      
                     </div>
                   </div>
                   <div
@@ -148,16 +144,16 @@ function AdminDashBoard() {
                       style={{ maxHeight: "250px", overflowY: "auto" }}
                     >
                       {filteredEmployees.map((employee) => (
-                        <div key={employee._id} className="list-group-item">
+                        <div key={employee.comId} className="list-group-item">
                           <div className="d-flex justify-content"></div>
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
                               <h6 className="font-weight-bold mb-0">
-                                {employee.name}
+                                {employee.Name}
                               </h6>
-                              <small>{employee._id}</small>
+                              <small>{employee.comId}</small>
                             </div>
-                            <Link to={`/empprofile/${employee._id}`}>
+                            <Link to={`/empprofile/${employee.user}`}>
                               <button className="btn btn-primary">
                                 View Profile
                               </button>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import reg from "../../components/openPage/r5.svg"
+import companyImage from "../openPage/comp1.png"
+import g from "./g.svg"
 
 import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
@@ -41,7 +43,7 @@ export default function SignInPage() {
       //  console.log(response.data);
 
       // Redirect to admin page on successful login
-      history.push("/admindash");
+      history.push("/real");
     } catch (error) {
       console.error(error);
 
@@ -61,14 +63,15 @@ export default function SignInPage() {
   };
 
   return (
-    <div style={{backgroundImage: `url(${reg})`}}>
+    <div style={{ backgroundImage: `url(${g})` }}>
    
-      <header style={HeaderStyle}>
-        <Loginheader12 />
+  
 
-        <div className="text-center m-5-auto">
-          <form onSubmit={handleLogin} style={{marginRight:"100px",marginBottom:"100px",boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)',borderRadius:"50px"}}>
-            <h2>Sign in to us</h2>
+        <div className="text-center m-5-auto" style={{marginTop:"-10px"}}>
+          <div style={{display:"flex", flexDirection:"row"}}>
+        <img src={companyImage} style={{width:"500px", height:"550px", marginLeft:"50px", marginTop:"50px"}}/>
+          <form onSubmit={handleLogin} style={{marginTop:"120px",marginLeft:"140px",marginRight:"50px",marginBottom:"100px",boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)',borderRadius:"50px"}}>
+            <h2>Login</h2>
             <p>
               <label>Company Name</label>
               <br />
@@ -112,9 +115,10 @@ export default function SignInPage() {
               </p>
             </footer>
           </form>
+          </div>
           {message && <p>{message}</p>}
         </div>
-      </header>
+      
       <Footer />
  
     </div>
