@@ -2,7 +2,7 @@ import AddEmployee from "../../modals/AddEmployee.js";
 
 export const comEmps = async (req,res,next)=>{
     try {
-        const details = await AddEmployee.find({}, { Name: 1, comId: 1, user:1 });
+        const details = await AddEmployee.find({}, { Name: 1, comId: 1, user:1 , comName:1});
         res.status(200).json({details});
     } catch (err){
         next(err);

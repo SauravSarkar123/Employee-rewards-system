@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .sidebar-header {
     display: flex;
     justify-content: center;
@@ -82,4 +83,9 @@
 
 .close-btn:hover {
   color: #ffef12;
+}
+
+
+.fonnn{
+  font-family: "Montserrat",sans-serif;
 }
