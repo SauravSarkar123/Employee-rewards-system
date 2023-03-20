@@ -1,6 +1,3 @@
-
-
-
 import React, { useState, useEffect } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useCookies } from "react-cookie";
@@ -8,11 +5,15 @@ import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import styles from "./dash.module.css";
-import { FaBars,FaUserPlus, FaTasks, FaGift } from "react-icons/fa";
+import {
+  FaBars,
+  FaUserPlus,
+  FaTasks,
+  FaGift,
+  FaHome,
+  FaUser,
+} from "react-icons/fa";
 import SidebarMenu from "./side.js";
-
-
-
 
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
@@ -28,9 +29,9 @@ function AdminDashBoard() {
   const handleLinkClick = () => {
     setShowMenu(false);
     toggleMenu();
-    console.log(showMenu)
+    console.log(showMenu);
   };
-  
+
   const tokenn = jwt_decode(cookies.access_token);
   const API_URL = "http://localhost:8800";
 
@@ -43,6 +44,7 @@ function AdminDashBoard() {
       .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.details);
+        console.log(employees)
       })
       .catch((error) => {
         console.log(error);
@@ -52,28 +54,21 @@ function AdminDashBoard() {
   const filteredEmployees = employees.filter((employee) => {
     return (
       employee._id.toLowerCase().includes(search.toLowerCase()) ||
-      (employee._id && employee.comId.toString().includes(search))
+      (employee.comId && employee.comId.toString().includes(search))
     );
-  });
+  })
 
   return (
     <div>
       <div className="row">
         <div className="col-md-3">
-          <div style={{ marginTop: "20px" }}>
+          <div style={{ marginTop: "40px", marginLeft: "20px" }}>
             <SidebarMenu />
           </div>
         </div>
         <div className="col-md-9">
-          <div
-            className={styles.span}
-            // style={{
-            //   fontSize: "2.9em",
-            //   fontFamily: "Roboto Condensed",
-            //   marginLeft: "70px",
-            // }}
-          >
-            Welcome {tokenn.name}'s Admin
+          <div className={styles.span}>
+            WELCOME {tokenn.name.toUpperCase()}'s ADMIN
             <Link to="/logincomp">
               <button
                 onClick={handleLogout}
@@ -84,40 +79,186 @@ function AdminDashBoard() {
               </button>
             </Link>
           </div>
-          <div className="row" style={{marginTop:"40px", marginLeft:"80px"}}>
-            <div className="col-md-3" >
+          <div
+            className="row"
+            style={{ marginTop: "40px", marginLeft: "-280px" }}
+          >
+            <div className="col-md-3">
               <div
                 className="card"
-                style={{ color:"white",height: "150px", marginBottom: "20px", boxShadow: "20px 40px 10px rgba(10,100,0,0.3)", border:"0px", backgroundColor:"#173D6B"}}
+                style={{
+                  color: "white",
+                  height: "150px",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                  border: "0px",
+                  backgroundColor: "#17A2B8",
+                }}
               >
-                <div className={styles.txt} >
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
                   <h3>
-                    <b style={{marginLeft:"90px", marginBottom:"100px", fontSize:"70px"}}>40</b>
+                    <b
+                      style={{
+                        marginLeft: "90px",
+                        marginTop: "680px",
+                        fontSize: "70px",
+                        marginLeft: "",
+                      }}
+                    >
+                      40
+                    </b>
                   </h3>
-                  <br/>
-                  Employee Registrations
+                  <FaUser
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <br />
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Total Users
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3" style={{marginLeft:"80px"}}>
+            <div className="col-md-3">
               <div
                 className="card"
-                style={{ color:"white",border:"0px", backgroundColor:"#173D6B",height: "150px", marginBottom: "20px" , boxShadow: "20px 40px 10px rgba(10,100,0,0.3)"}}
+                style={{
+                  color: "white",
+                  height: "150px",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                  border: "0px",
+                  backgroundColor: "#28A745",
+                }}
               >
-                <div className={styles.txt}>
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
                   <h3>
-                    <b style={{marginLeft:"90px", marginBottom:"100px", fontSize:"70px"}}>20</b>
+                    <b
+                      style={{
+                        marginLeft: "90px",
+                        marginBottom: "100px",
+                        marginLeft: "",
+                        fontSize: "70px",
+                      }}
+                    >
+                      40
+                    </b>
                   </h3>
+                  <FaHome
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
                   <br />
-                  Onboarded
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Users Onboarded
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div
+                className="card"
+                style={{
+                  color: "white",
+                  height: "150px",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                  border: "0px",
+                  backgroundColor: "#FFC107",
+                }}
+              >
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
+                  <h3>
+                    <b
+                      style={{
+                        marginLeft: "90px",
+                        marginBottom: "100px",
+                        marginLeft: "-0px",
+                        fontSize: "70px",
+                      }}
+                    >
+                      40
+                    </b>
+                  </h3>
+                  <FaHome
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <br />
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Tokens
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div
+                className="card"
+                style={{
+                  color: "white",
+                  border: "0px",
+                  backgroundColor: "#DC3545",
+                  height: "150px",
+                  marginLeft: "",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                }}
+              >
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
+                  <h3>
+                    <b
+                      style={{
+                        marginLeft: "0px",
+                        marginTop: "30px",
+                        marginBottom: "-100px",
+                        fontSize: "70px",
+                      }}
+                    >
+                      20
+                    </b>
+                  </h3>
+                  <FaHome
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <br />
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Remaining Tokens
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="row mt-">
-            <div className="col-md-11 " style={{ marginTop: "50px" }}>
+            <div
+              className="col-md-8 "
+              style={{ marginTop: "50px", marginLeft: "-270px" }}
+            >
               <div className="card">
-                <h5 className="card-header font-weight-bold" style={{textAlign:"center"}}>
+                <h5
+                  className="card-header font-weight-bold"
+                  style={{ textAlign: "center", fontFamily: "Montserrat" }}
+                >
                   Employees
                 </h5>
                 <div className={`${styles.cardBody}`}>
@@ -131,9 +272,7 @@ function AdminDashBoard() {
                     />
                     <div
                       className={`${styles.inputGroupAppend} input-group-append`}
-                    >
-                      
-                    </div>
+                    ></div>
                   </div>
                   <div
                     className={`${styles.listGroup} list-group`}
@@ -141,14 +280,17 @@ function AdminDashBoard() {
                   >
                     <div
                       className="list-group"
-                      style={{ maxHeight: "250px", overflowY: "auto" }}
+                      style={{ maxHeight: "1250px", overflowY: "auto" }}
                     >
                       {filteredEmployees.map((employee) => (
                         <div key={employee.comId} className="list-group-item">
                           <div className="d-flex justify-content"></div>
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
-                              <h6 className="font-weight-bold mb-0">
+                              <h6
+                                className="font-weight-bold mb-0"
+                                style={{ fontFamily: "Montserrat" }}
+                              >
                                 {employee.Name}
                               </h6>
                               <small>{employee.comId}</small>
@@ -164,12 +306,12 @@ function AdminDashBoard() {
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-);
+  );
 }
-export default AdminDashBoard;  
+export default AdminDashBoard;
