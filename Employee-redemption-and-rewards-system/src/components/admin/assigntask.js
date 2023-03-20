@@ -66,15 +66,15 @@ const TaskManagementPage = () => {
       <div className="main">
         <h1>Task Management</h1>
         <div className="summary">
-  <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", borderRadius: "5px", marginBottom: "20px" }}>
+  <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
     <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Ongoing Projects</h2>
     <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{projects.filter(p => p.status === 'In progress').length}</p>
   </div>
-  <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", borderRadius: "5px", marginBottom: "20px" }}>
+  <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
     <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Upcoming Deadlines</h2>
     <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{projects.filter(p => new Date(p.deadline) <= new Date()).length}</p>
   </div>
-  <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", borderRadius: "5px", marginBottom: "20px" }}>
+  <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
     <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Pending Tasks</h2>
     <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{tasks.filter(t => t.progress < 100).length}</p>
   </div>
@@ -90,13 +90,14 @@ const TaskManagementPage = () => {
   }}>
   <h2>Tasks</h2>
   <div className="task-list">
+  <div className="task-list">
     <div className="task-list-header">
-      <div className="task-project" style={{ width: '20%' }}>Project</div>
       <div className="task-name" style={{ width: '25%' }}>Task Name</div>
       <div className="task-assigned-to" style={{ width: '20%' }}>Assigned To</div>
       <div className="task-due-date" style={{ width: '10%' }}>Due Date</div>
       <div className="task-progress" style={{ width: '10%' }}>Status</div>
-      <div className="task-status" style={{ width: '15%' }}>Actions</div>
+      
+      <div className="task-status" style={{ width: '15%', paddingLeft: "30px" }}>Actions</div>
     </div>
     {tasks.map((task, index) => (
       <div className="task-list-item" key={index} style={{ 
@@ -106,13 +107,13 @@ const TaskManagementPage = () => {
         borderBottom: '1px solid #ccc',
         paddingBottom: '10px',
       }}>
-        <div className="task-project" style={{ width: '20%' }}>{task.project}</div>
         <div className="task-name" style={{ width: '25%' }}>{task.name}</div>
         <div className="task-assigned-to" style={{ width: '20%' }}>{task.assignedTo}</div>
-        <div className="task-due-date" style={{ width: '10%' }}>{task.dueDate}</div>
-        <div className="task-progress" style={{ width: '10%' }}>
+        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.dueDate}</div>
+        <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>
           {task.approved ? <span className="approved">&#10003;</span> : <span className="rejected">&#10005;</span>}
         </div>
+        
         <div className="task-status" style={{ 
           display: 'flex', 
           justifyContent: 'center', 
@@ -130,12 +131,12 @@ const TaskManagementPage = () => {
                 border: 'none', 
                 borderRadius: '4px', 
                 cursor: 'pointer' 
-              }} onClick={() => handleApproveTask(index)}>Approve</button>
+              }} onClick={() => handleApproveTask(index)}>Approve</button> 
             </div>
           ) : (
             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Approved</div>
           )}
-          {!task.Rejected ? (
+          {!task.rejected ? (
             <div>
               <button style={{ 
                 padding: '8px 16px', 
@@ -152,6 +153,7 @@ const TaskManagementPage = () => {
         </div>
       </div>
     ))}
+</div>
 
 
       </div>
