@@ -15,6 +15,7 @@ import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
 import EmployeeHomepage from './components/employee/EmployeeHomepage'
 import EmpProfile from "./components/admin/EmpProfile"
+import TaskManagementPage from './components/admin/assigntask'
 
 
 
@@ -41,7 +42,7 @@ export default function App() {
                     <Route path="/admindash" component={AdminDashBoard}/>
                     <Route path="/addtask" component={AddTask}/>
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
-                    {/* <Route path="/companyhome" component={CompanyHome}/> */}
+                    <Route path="/taskmanage" component={TaskManagementPage}/>
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
                    
                     <Route path="/addemployee/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
