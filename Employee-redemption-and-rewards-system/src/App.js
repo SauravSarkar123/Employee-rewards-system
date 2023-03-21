@@ -13,8 +13,10 @@ import RegisterCompany from "./components/admin/RegisterPageComp";
 import LoginComp from "./components/admin/LoginPage";
 import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
-import EmployeeHomepage from './components/employee/EmployeeHomepage'
 import EmpProfile from "./components/admin/EmpProfile"
+import CalendarView from './components/employee/EmployeeTaskView'
+import TaskManagementPage from './components/admin/Approvetasks'
+import { assignTasks } from './components/admin/assigntasks'
 
 
 
@@ -39,12 +41,10 @@ export default function App() {
                     {/* <Route path="/addemployee" component={AddEmployee}/> */}
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
-                    <Route path="/approvetask" component={TaskManagementPage}/>
-                    <Route exact path="/employeehome" component={EmployeeHomepage}/>
-                    <Route path="/taskmanage" component={TaskManagementPage}/>
-                    <Route path="/empprofile/:_id" component={EmpProfile}/>
-                    <Route path="/real" component={RealDash}/>
+                    <Route path="/assigntask" component={assignTasks}/>
+                    <Route path="/real" component={TaskManagementPage}/>
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
+                    <Route path="/emptask" component={CalendarView}/>
                 </Switch>
             </div>
         </Router>
