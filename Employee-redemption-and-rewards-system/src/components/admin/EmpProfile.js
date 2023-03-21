@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { AccountCircle, GitHub, Language, Twitter } from "@material-ui/icons";
-
+import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -22,17 +22,54 @@ import Footercr from "../footer/footercr";
 import LogoutHeader from "../header/logoutheader";
 const ProfilePage = (props) => {
   const [progressWidth, setProgressWidth] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token", "name"]);
+  // const [comName, setComName] = useState(" ");
+  // const [comId, setComId] = useState(" ");
   const [employee, setEmployee] = useState([]);
   const API_URL = "http://localhost:8800";
   const employeeId = props.match.params._id;
-  console.log("employee id:", employeeId);
+  const employeeName = employee.name;
+  const employeeAddress = employee.address;
+  const employeeMobile = employee.mobile;
+  const employeeEmail = employee.email;
+  const employeeWallet = employee.wallet;
+  
+  const tokenn = jwt_decode(cookies.access_token);
+  const comName = tokenn.name;
+  const comId = tokenn.name.substr(0,3).toUpperCase();
+  
+ 
 
-  const handlePursuingClick = () => {
-    if (progressWidth < 100) {
-      setProgressWidth(progressWidth + 10);
-    }
-  };
+  const addEmployee = async() =>{
+    const response = await axios.post(
+      `${API_URL}/addemployee/${employeeId}/${employeeName}/${employeeAddress}/${employeeMobile}/${employeeEmail}/${employeeWallet}`,
+      {
+        comName,
+        comId
+      },
+      { withCredentials: true }
+    );
+    // const uid = async(comName, employeeMobile) => {
+    //   const companyCode = comName.substr(0, 3).toUpperCase();
+    //   const mobileNum = employeeMobile.toString();
+    //   const lastFourDigits = mobileNum.substr(mobileNum.length - 4);
+    //   return `${companyCode}-${lastFourDigits}`;
+    // }
+    // const comId = uid(comName, employeeMobile);
+    console.log("comName:",comName);
+    console.log("comId:",comId);
+    console.log("employee id:", employeeId);
+    console.log("name: " , employeeName);
+    console.log("address: " , employeeAddress);
+    console.log("email: " , employeeEmail);
+    console.log("mobile: " , employeeMobile);
+    console.log("wallet: " , employeeWallet);
+    console.log(response.data);
+
+    
+
+  
+  }
   // const handleLogout = () => {
   //   removeCookie('access_token');
   // };
@@ -53,10 +90,6 @@ const ProfilePage = (props) => {
   }, [employeeId]);
   return (
     <div>
-      <nav>
-        <LogoutHeader />
-      </nav>
-
       <section style={{ backgroundColor: "#eee", padding: "1rem 0" }}>
         <Grid container spacing={3}>
           <Grid item md={4}>
@@ -104,9 +137,10 @@ const ProfilePage = (props) => {
   </CardActions>   */}
         <CardActions>
                 <Link
-                  to={`/adde/${employee._id}/${employee.name}/${employee.address}/${employee.mobile}/${employee.email}/${employee.wallet}`}
+                  to={"/real"}
                 >
                   <Button
+                  onClick={addEmployee}
                     variant="contained"
                     color="primary"
                     style={{ margin: "1rem" }}
@@ -149,15 +183,11 @@ const ProfilePage = (props) => {
       </ListItemText>
     </ListItem>
   </List>
-</Card>
-
-
-
-          
+</Card>    
           </Grid>
           <Grid item md={4}>
           <Card variant="outlined" className="personal-info-card" style={{ width: '200%', borderRadius: '20px', backgroundColor: '#fff', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)', padding: '2rem', marginLeft: '0px', height: '100%' }}>
-  <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+  <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%',marginTop:"-150px" }}>
     <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center' }}>
       PERSONAL INFORMATION
     </Typography>

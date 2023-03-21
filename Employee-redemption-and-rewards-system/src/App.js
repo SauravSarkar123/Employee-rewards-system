@@ -16,6 +16,8 @@ import AddTask from './components/admin/AddTask'
 import EmployeeHomepage from './components/employee/EmployeeHomepage'
 import EmpProfile from "./components/admin/EmpProfile"
 import RealDash from "./components/admin/RealDash.js"
+import ApproveTask from "./components/admin/ApproveTask.js";
+import Modal from "./components/admin/CreateModal.jsx";
 
 
 
@@ -30,7 +32,6 @@ export default function App() {
                 <Switch>
                     <Route exact path="/" component={OpenPage}/>
                     <Route exact path="/about" component={ AboutPage } />
-                    {/* <Route exact path="/logsign" component={ LandingPage } /> */}
                     <Route path="/login" component={ LoginPage } />
                     <Route path="/register" component={ RegisterPage } />
                     <Route path="/registercompany" component={ RegisterCompany } />
@@ -40,12 +41,13 @@ export default function App() {
                     {/* <Route path="/addemployee" component={AddEmployee}/> */}
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
-                    {/* <Route path="/approvetask" component={TaskManagementPage}/> */}
+                    {/* <Route path="/viewtask" component={ViewTask}/> */}
                     <Route exact path="/employeehome" component={EmployeeHomepage}/>
-                    {/* <Route path="/taskmanage" component={TaskManagementPage}/> */}
+                    <Route path="/approvetask" component={ApproveTask}/>
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
                     <Route path="/real" component={RealDash}/>
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
+                    <Route path="/modal" component={Modal}/>
                 </Switch>
             </div>
         </Router>
