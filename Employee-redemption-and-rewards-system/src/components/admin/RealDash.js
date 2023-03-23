@@ -264,8 +264,8 @@ function AdminDashBoard() {
               <div
                 className="card"
                 style={{
-                  boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)",
-                  backgroundColor: "#17A2B8",
+                  boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
+                  // backgroundColor: "#CAFFF5",
                   marginBottom: "40px",
                 }}
               >
@@ -275,8 +275,8 @@ function AdminDashBoard() {
                     textAlign: "center",
                     fontFamily: "Montserrat",
                     padding: "20px",
-                    backgroundColor: "#17A2B8",
-                    color: "white",
+                    // backgroundColor: "#CAFFF5",
+                    color: "black",
                   }}
                 >
                   Employees
@@ -307,8 +307,9 @@ function AdminDashBoard() {
                           key={employee.comId}
                           className="list-group-item"
                           style={{
-                            backgroundColor: "#DDDDD2",
+                            backgroundColor: "#0000",
                             border: "0.1px solid black",
+                            
                           }}
                         >
                           <div className="d-flex justify-content"></div>
@@ -345,7 +346,7 @@ function AdminDashBoard() {
               </div>
               
             </div>
-            <div
+            {/* <div
                 className="pendingTasks"
                 style={{
                   height: "429px",
@@ -356,9 +357,97 @@ function AdminDashBoard() {
                   marginLeft:"30px",
                   boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)"
                 }}
+              > */}
+                <div
+              className="col-md-8 "
+              style={{ marginTop: "50px", marginLeft: "-0px", width:"590px", height:"429px"}}
+            >
+              <div
+                className="card"
+                style={{
+                  boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
+                  // backgroundColor: "#17A2B8",
+                  marginBottom: "40px",
+                }}
               >
-                <div style={{height:"50px", width:"470px", border:"solid black", marginTop:"30px", textAlign:"center"}}>Pending Tasks</div>
-                <div class="container">
+                <h5
+                  className="card-header font-weight-bold"
+                  style={{
+                    textAlign: "center",
+                    fontFamily: "Montserrat",
+                    padding: "20px",
+                    // backgroundColor: "#17A2B8",
+                    color: "black",
+                  }}
+                >
+                  Pending Tasks
+                </h5>
+                <div className={`${styles.cardBody}`}>
+                  <div className={`${styles.inputGroup} mb-3`}>
+                    <input
+                      type="text"
+                      className={`${styles.formControl} form-control`}
+                      placeholder="Search by Name"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <div
+                      className={`${styles.inputGroupAppend} input-group-append`}
+                    ></div>
+                  </div>
+                  <div
+                    className={`${styles.listGroup} list-group`}
+                    id="employee-list"
+                  >
+                    <div
+                      className="list-group"
+                      style={{ maxHeight: "1350px", overflowY: "auto" }}
+                    >
+                      {filteredEmployees.map((employee) => (
+                        <div
+                          key={employee.comId}
+                          className="list-group-item"
+                          style={{
+                            // backgroundColor: "#DDDDD2",
+                            border: "0.1px solid black",
+                          }}
+                        >
+                          <div className="d-flex justify-content"></div>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h6
+                                className="font-weight-bold mb-0"
+                                style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "20px",
+                                }}
+                              >
+                                {employee.Name}
+                              </h6>
+                              <small>{employee.comId}</small>
+                            </div>
+                            <Link to={`/empprofile/${employee.user}`}>
+                              <button
+                                className="btn btn-primary"
+                                style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "20px",
+                                }}
+                              >
+                                View Profile
+                              </button>
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            {/* </div> */}
+                {/* <div style={{height:"50px", width:"470px", border:"solid black", marginTop:"30px", textAlign:"center"}}>Pending Tasks</div> */}
+                {/* <div class="container">
 
     <div class="col" style={{border:"solid black"}}>
       1 of 3
@@ -366,7 +455,7 @@ function AdminDashBoard() {
     <div class="col-6" style={{border:"solid black"}}>
       2 of 3 (wider)
     </div>
-    </div>
+    </div> */}
                 
               </div>
           </div>
