@@ -85,7 +85,7 @@ const CreateModal = () => {
         <h2 className="heading" style={{ fontFamily: "Axiforma" }}>
           Add a Modal
         </h2>
-        <br />
+        <br />o
         <form className="modal-form" >
           <label className="modlabel" htmlfor="text">
             Product Name
@@ -127,13 +127,6 @@ const CreateModal = () => {
               // }
             >
               <option value="">Select product</option>
-              <option value="1"> Frontend development</option>
-              <option value="2"> Frontend Design</option>
-              <option value="3"> Backend API Development</option>
-              <option value="4"> Database model</option>
-              <option value="5"> Smart contracts</option>
-              <option value="6"> Blockchain Integration</option>
-              <option value="7"> Documentation</option>
               {/* {products &&
                 products.data.map((product) => (
                   <option key={product.id} value={product.id}>

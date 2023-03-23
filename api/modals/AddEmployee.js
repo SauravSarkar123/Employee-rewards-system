@@ -41,7 +41,8 @@ const AddEmployee = new mongoose.Schema({
   },
   Onboard :{
     type : Boolean,
-    reg : User
+    ref : User,
+    default: false
   }
 });
 

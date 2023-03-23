@@ -1,13 +1,16 @@
- import React, {useState} from 'react'
- import { Link } from 'react-router-dom'
- import axios from 'axios'
- import Loginheader12 from '../header/loginheader';
- import Footer from '../footer/Footer'
- import { useHistory } from "react-router-dom";
- import styles from '../openPage/openpage.module.css';
- import reg from "../../components/openPage/r5.svg"
-
-
+import React, { useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import RegisterHeader from "../header/registerheader";
+import Footer from "../footer/Footer";
+import { useHistory } from "react-router-dom";
+import "../../App.css";
+import employeeImage from "./employees.png";
+import styles from "../openPage/openpage.module.css";
+import reg from "../openPage/r5.svg";
+import "./reg.css";
+import g from "../admin/g.svg"
+import empImg from "../../image/employee.jpg"
 import '../../App.css'
 
 
@@ -66,16 +69,28 @@ export default function SignInPage() {
   
 
   return (
-    <div style={{backgroundImage: `url(${reg})`}}>
-      <div style={backgroundGradient}>
-      
-          {/* <Loginheader12/> */}
-          <div className={styles.image_container} id="empp">
+    <div style={{ backgroundImage: `url(${g})` }}>
+    {/* <Loginheader12 /> */}
+    <div
+      className={styles.image_cont}
+      id="empp"
+      style={{ marginLeft:"200px" , marginRight:"100px"}}
+    >
+      <div
+        className="col-md-18 mx-auto my-auto text-left"
+        style={{
+          width: "100%",
+          
+        }}
+      >
+        <div style={{display:"flex", flexDirection:"row"}}>
+                  <img src={employeeImage} style={{width:"400px", height:"450px", marginLeft:"-100px", marginTop:"50px"}}/>
+
 
     
                    
-          <form style={{margin:'auto',borderRadius:"50px",marginRight: '550px',marginBottom:"100px", boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)'}}onSubmit={handleLogin}>
-          <h2 style={{textAlign:'center'}}>Login</h2>
+          <form style={{margin:'auto',borderRadius:"50px",marginRight: '150px',marginTop:"100px",marginBottom:"100px", boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)', backgroundColor:"transparent"}}onSubmit={handleLogin}>
+          <h2 style={{textAlign:'center', fontFamily:"Montserrat", fontSize:"28px"}}>Login</h2>
               <p>
                   <label>Username</label><br/>
                   <input type="text" title='name' value={name} onChange={e => setname(e.target.value)} required />
@@ -100,11 +115,11 @@ export default function SignInPage() {
 
           
      
+          </div>
+        </div>
       </div>
-      <div>
-      <Footer/>
-      </div> </div>
-      </div>
+      <Footer />
+    </div>
   )}
   const HeaderStyle = {
   width: "100%",

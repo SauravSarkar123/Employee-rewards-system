@@ -44,21 +44,23 @@ function AdminDashBoard() {
       .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.details);
-        console.log(response.data.details)
+        console.log(response.data.details);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  console.log(employees)
+  console.log(employees);
   const filteredEmployees = employees.filter((employee) => {
+    console.log(employee.isOnboarded);
     return (
-      employee.comName === tokenn.name && // Check if employee's company name matches tokenn's company name
+     ( employee.comName === tokenn.name &&
+      employee.Onboard === false ) && // Check if employee's company name matches tokenn's company name
       (employee.Name.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
-      employee.comName.toString().includes(search)) // Check if employee's company name includes the search term
+        employee.comId.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
-  
+
   return (
     <div>
       <div className="row">
@@ -286,7 +288,7 @@ function AdminDashBoard() {
                     <input
                       type="text"
                       className={`${styles.formControl} form-control`}
-                      placeholder="Search by Name"
+                      placeholder="Search by Name or Company ID"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                     />

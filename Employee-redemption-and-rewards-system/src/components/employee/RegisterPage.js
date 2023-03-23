@@ -5,7 +5,7 @@ import RegisterHeader from "../header/registerheader";
 import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
 import "../../App.css";
-import employeeImage from "../../image/employee.jpg";
+import employeeImage from "./employees.png";
 import styles from "../openPage/openpage.module.css";
 import reg from "../openPage/r5.svg";
 import "./reg.css";
@@ -54,16 +54,17 @@ export default function Register() {
       <div
         className={styles.image_cont}
         id="empp"
-        style={{ marginRight: "300px" }}
+        style={{ marginLeft:"200px" , marginRight:"100px"}}
       >
         <div
-          className="col-md-8 mx-auto my-auto text-left"
+          className="col-md-18 mx-auto my-auto text-left"
           style={{
             width: "100%",
+            
           }}
         >
           <div style={{display:"flex", flexDirection:"row"}}>
-                    <img src={employeeImage} style={{width:"500px", height:"550px", marginLeft:"-100px"}}/>
+                    <img src={employeeImage} style={{width:"400px", height:"450px", marginLeft:"-100px", marginTop:"50px"}}/>
 
           <form
             onSubmit={handleRegister}
@@ -72,12 +73,13 @@ export default function Register() {
               borderRadius: "50px",
               marginBottom: "100px",
               boxShadow: "10px 90px 40px 10px rgba(0,0,0,0.5)",
+              
             }}
           >
             <div style={{ textAlign: "center", margin: "auto" }}>
-              <div className="fonty">
-                <h2>JOIN US</h2>
-                <h5>CREATE YOUR USER ACCOUNT</h5>
+              <div>
+                <h2 style={{fontFamily:"Montserrat", fontSize:"28px"}}>JOIN US</h2>
+                <h5 style={{fontFamily:"Montserrat", fontSize:"20px"}}>CREATE YOUR USER ACCOUNT</h5>
               </div>
             </div>
             <div style={{ color: "black" }}>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./task.css";
+// import "./task.css";
 import Footercr from "../footer/footercr";
 import { useCookies } from "react-cookie";
 import Header from "../Headerr/Header";
