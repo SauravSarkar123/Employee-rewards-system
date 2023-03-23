@@ -38,6 +38,10 @@ const AddEmployee = new mongoose.Schema({
   Wallet:{
     type:String,
     ref : User
+  },
+  Onboard :{
+    type : Boolean,
+    reg : User
   }
 });
 

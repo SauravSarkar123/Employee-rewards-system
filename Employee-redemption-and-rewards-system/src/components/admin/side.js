@@ -136,27 +136,27 @@ const SidebarMenu = () => {
       <nav className={`sidebar-menu ${isOpen ? 'open' : ''}`} onMouseLeave={handleMouseLeave}>
         <div className="sidebar-header"></div>
         <ul className="list-unstyled">
-          <li>
-            <a href="/real">
-              <FaHome className="fonnn" id="fonnn" /> Home
+          <li id="fonnn">
+            <a href="/real" >
+              <FaHome className="fonnn"  /> Home
             </a>
           </li>
-          <li>
+          <li id="fonnn">
             <a href="/admindash">
               <IoMdAddCircle className="icon" id="fonnn" /> Onboard Employees
             </a>
           </li>
-          <li>
+          <li id="fonnn">
             <a href="/about">
               <BiTask className="icon" id="fonnn" /> Assign Tasks
             </a>
           </li>
-          <li>
+          <li id="fonnn">
             <a href="/approvetask">
               <FaThumbsUp className="icon" id="fonnn" /> Approve Tasks
             </a>
           </li>
-          <li>
+          <li id="fonnn">
             <a href="/contact">
               <FiGift className="icon" id="fonnn" /> Reward Tasks
             </a>

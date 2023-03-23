@@ -240,7 +240,7 @@
   overflow-y: auto;
 }
 
-.list-group-item {
+.list_group_item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -249,23 +249,23 @@
   transition: all 0.2s ease-in-out;
 }
 
-.list-group-item:hover {
+.list_group_item:hover {
   background-color: #f8f9fa;
 }
 
-.list-group-item:last-of-type {
+.list_group_item:last-of-type {
   border-bottom: none;
 }
 
-.list-group-item h6 {
+.list_group_item h6 {
   margin-bottom: 0.5rem;
 }
 
-.list-group-item small {
+.list_group_item small {
   color: #6c757d;
 }
 
-.list-group-item svg {
+.list_group_item svg {
   margin-right: 0.5rem;
 }
 .txt{

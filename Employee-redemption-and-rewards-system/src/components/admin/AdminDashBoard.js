@@ -12,7 +12,6 @@ import styles from "./dash.module.css";
 import SidebarMenu from "./side.js";
 import { FaBars,FaUserPlus, FaTasks, FaGift, FaHome, FaUser } from "react-icons/fa";
 
-
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
@@ -27,9 +26,9 @@ function AdminDashBoard() {
   const handleLinkClick = () => {
     setShowMenu(false);
     toggleMenu();
-    console.log(showMenu)
+    console.log(showMenu);
   };
-  
+
   const tokenn = jwt_decode(cookies.access_token);
   const API_URL = "http://localhost:8800";
 
@@ -42,6 +41,7 @@ function AdminDashBoard() {
       .get(`${API_URL}/empdetails`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.user);
+        console.log(employees)
       })
       .catch((error) => {
         console.log(error);
@@ -49,9 +49,11 @@ function AdminDashBoard() {
   }, []);
 
   const filteredEmployees = employees.filter((employee) => {
+    console.log(employee.isOnboarded);
     return (
-      employee.name.toLowerCase().includes(search.toLowerCase()) ||
-      (employee.id && employee.id.toString().includes(search))
+       // Check if employee's company name matches tokenn's company name
+      (employee.name.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
+      employee.name.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
 
@@ -59,7 +61,7 @@ function AdminDashBoard() {
     <div>
       <div className="row">
         <div className="col-md-3">
-          <div style={{ marginTop: "40px" , marginLeft:"20px"}}>
+          <div style={{ marginTop: "40px", marginLeft: "20px" }}>
             <SidebarMenu />
           </div>
         </div>
@@ -83,54 +85,47 @@ function AdminDashBoard() {
               </button>
             </Link>
           </div>
-          <div className="row" style={{marginTop:"40px", marginLeft:"-280px"}}>
-            <div className="col-md-3" >
+          <div
+            className="row"
+            style={{ marginTop: "40px", marginLeft: "-280px" }}
+          >
+            <div className="col-md-3">
               <div
                 className="card"
-                style={{ color:"white",height: "150px", marginBottom: "20px", boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)", border:"0px", backgroundColor:"#17A2B8"}}
+                style={{
+                  color: "white",
+                  height: "150px",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                  border: "0px",
+                  backgroundColor: "#17A2B8",
+                }}
               >
-                <div className={styles.txt} style={{marginTop:"20px"}}>
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
                   <h3>
-                    <b style={{marginLeft:"90px", marginTop:"680px", fontSize:"70px",marginLeft:""}}>40</b>
+                    <b
+                      style={{
+                        marginLeft: "90px",
+                        marginTop: "680px",
+                        fontSize: "70px",
+                        marginLeft: "",
+                      }}
+                    >
+                      40
+                    </b>
                   </h3>
-                  <FaUser style={{marginLeft:"200px", marginTop:"-120px", height:"70px", width:"80px", opacity:"0.5"}}/>
-                  <br/>
-                  <div style={{marginTop:"-20px", marginLeft:"10px"}}>
-                  Deleted
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3" >
-              <div
-                className="card"
-                style={{ color:"white",height: "150px", marginBottom: "20px", boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)", border:"0px", backgroundColor:"#28A745"}}
-              >
-                <div className={styles.txt} style={{marginTop:"20px"}}>
-                  <h3>
-                    <b style={{marginLeft:"90px", marginBottom:"100px",marginLeft:"", fontSize:"70px"}}>40</b>
-                  </h3>
-                  <FaHome style={{marginLeft:"200px", marginTop:"-120px", height:"70px", width:"80px", opacity:"0.5"}}/>
-                  <br/>
-                  <div style={{marginTop:"-20px", marginLeft:"10px"}}>
-                  Deleted
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3" >
-              <div
-                className="card"
-                style={{ color:"white",height: "150px", marginBottom: "20px", boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)", border:"0px", backgroundColor:"#FFC107"}}
-              >
-                <div className={styles.txt} style={{marginTop:"20px"}}>
-                  <h3>
-                    <b style={{marginLeft:"90px", marginBottom:"100px",marginLeft:"-0px", fontSize:"70px"}}>40</b>
-                  </h3>
-                  <FaHome style={{marginLeft:"200px", marginTop:"-120px", height:"70px", width:"80px", opacity:"0.5"}}/>
-                  <br/>
-                  <div style={{marginTop:"-20px", marginLeft:"10px"}}>
-                  Deleted
+                  <FaUser
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <br />
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Deleted
                   </div>
                 </div>
               </div>
@@ -138,25 +133,147 @@ function AdminDashBoard() {
             <div className="col-md-3">
               <div
                 className="card"
-                style={{ color:"white",border:"0px", backgroundColor:"#DC3545",height: "150px",marginLeft:"", marginBottom: "20px" , boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)"}}
+                style={{
+                  color: "white",
+                  height: "150px",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                  border: "0px",
+                  backgroundColor: "#28A745",
+                }}
               >
-                <div className={styles.txt}  style={{marginTop:"20px"}}>
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
                   <h3>
-                    <b style={{marginLeft:"0px",marginTop:"30px", marginBottom:"-100px", fontSize:"70px"}}>20</b>
+                    <b
+                      style={{
+                        marginLeft: "90px",
+                        marginBottom: "100px",
+                        marginLeft: "",
+                        fontSize: "70px",
+                      }}
+                    >
+                      40
+                    </b>
                   </h3>
-                  <FaHome style={{marginLeft:"200px", marginTop:"-120px", height:"70px", width:"80px", opacity:"0.5"}}/>
+                  <FaHome
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
                   <br />
-                  <div style={{marginTop:"-20px", marginLeft:"10px"}}>
-                  Deleted
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Deleted
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div
+                className="card"
+                style={{
+                  color: "white",
+                  height: "150px",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                  border: "0px",
+                  backgroundColor: "#FFC107",
+                }}
+              >
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
+                  <h3>
+                    <b
+                      style={{
+                        marginLeft: "90px",
+                        marginBottom: "100px",
+                        marginLeft: "-0px",
+                        fontSize: "70px",
+                      }}
+                    >
+                      40
+                    </b>
+                  </h3>
+                  <FaHome
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <br />
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Deleted
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div
+                className="card"
+                style={{
+                  color: "white",
+                  border: "0px",
+                  backgroundColor: "#DC3545",
+                  height: "150px",
+                  marginLeft: "",
+                  marginBottom: "20px",
+                  boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+                }}
+              >
+                <div className={styles.txt} style={{ marginTop: "20px" }}>
+                  <h3>
+                    <b
+                      style={{
+                        marginLeft: "0px",
+                        marginTop: "30px",
+                        marginBottom: "-100px",
+                        fontSize: "70px",
+                      }}
+                    >
+                      20
+                    </b>
+                  </h3>
+                  <FaHome
+                    style={{
+                      marginLeft: "200px",
+                      marginTop: "-120px",
+                      height: "70px",
+                      width: "80px",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <br />
+                  <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
+                    Deleted
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row mt-">
-            <div className="col-md-11 " style={{ marginTop: "50px" }}>
-              <div className="card">
-                <h5 className="card-header font-weight-bold" style={{textAlign:"center"}}>
+          <div className="row mt-" >
+            <div className="col-md-11 " style={{ marginTop: "50px",marginLeft:"-100px" ,}}>
+              <div
+                className="card"
+                style={{
+                  boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)",
+                  backgroundColor: "#17A2B8",
+                  
+                }}
+              >
+                <h5
+                  className="card-header font-weight-bold"
+                  style={{
+                    textAlign: "center",
+                    color: "white",
+                    fontFamily: "Montserrat",
+                    padding:"20px"
+                  }}
+                >
                   Employee Onboarding
                 </h5>
                 <div className={`${styles.cardBody}`}>
@@ -184,15 +301,21 @@ function AdminDashBoard() {
                     id="employee-list"
                   >
                     <div
-                      className="list-group"
-                      style={{ maxHeight: "250px", overflowY: "auto" }}
+                      className={styles.listGroup}
+                      style={{ maxHeight: "1050px", overflowY: "auto" }}
                     >
                       {filteredEmployees.map((employee) => (
-                        <div key={employee._id} className="list-group-item">
+                        <div key={employee._id} className="list-group-item" style={{
+                          backgroundColor: "#DDDDD2",
+                          border: "0.1px solid black",
+                        }}>
                           <div className="d-flex justify-content"></div>
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
-                              <h6 className="font-weight-bold mb-0">
+                              <h6 className="font-weight-bold mb-0" style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "15px",
+                                }}>
                                 {employee.name}
                               </h6>
                               <small>{employee._id}</small>
@@ -208,12 +331,12 @@ function AdminDashBoard() {
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-);
+  );
 }
-export default AdminDashBoard;  
+export default AdminDashBoard;

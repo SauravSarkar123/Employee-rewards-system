@@ -11,6 +11,7 @@ import addEmployee from "./routes/company/addemp.js"
 import getEmp from "./routes/company/getEmp.js";
 import emp from "./routes/company/getOne.js";
 import comEmp from "./routes/company/comEmp.js"
+import onboard from "./routes/company/onboard.js";
 import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
 const app = express()
 dotenv.config();
@@ -43,6 +44,7 @@ app.use("/",verifyAdmin, addEmployee)
 app.use("/",verifyAdmin, getEmp)
 app.use("/", verifyAdmin, emp)
 app.use("/", comEmp)
+app.use("/",onboard)
 
 
 app.use((req, res, next) => {

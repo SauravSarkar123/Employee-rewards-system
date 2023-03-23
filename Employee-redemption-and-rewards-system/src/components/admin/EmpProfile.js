@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import SidebarMenu12 from "../employee/side1";
+import {IoIosArrowDropdownCircle} from "react-icons/io"
 import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -15,20 +16,24 @@ const ProfilePage = (props) => {
   const employeeMobile = employee.mobile;
   const employeeEmail = employee.email;
   const employeeWallet = employee.wallet;
+  console.log("aksjdakjsdkasdjasd", employeeMobile)
+  // console.log("sdfgjhfsdghfdsghd",respo.data);
+    
+  // console.log("comName:",comName);
+  // console.log("comId:",comId);
+  console.log("employee id:", employeeId);
+  console.log("name: " , employeeName);
+  console.log("address: " , employeeAddress);
+  console.log("email: " , employeeEmail);
+  console.log("mobile: " , employeeMobile);
+  console.log("wallet: " , employeeWallet);
+  // console.log(response.data);
   
   const tokenn = jwt_decode(cookies.access_token);
   const comName = tokenn.name;
-  const comId = tokenn.name.substr(0,3).toUpperCase();
+  const comId = tokenn.name.substr(0, 3).toUpperCase() + employeeId.substr(-4)
   
-  const handlePursuingClick = () => {
-    if (progressWidth < 100) {
-      setProgressWidth(progressWidth + 10);
-    }
-  };
-  // const handleLogout = () => {
-  //   removeCookie("access_token");
-  // };
-
+ 
 
   const addEmployee = async() =>{
     const response = await axios.post(
@@ -39,22 +44,13 @@ const ProfilePage = (props) => {
       },
       { withCredentials: true }
     );
-    // const uid = async(comName, employeeMobile) => {
-    //   const companyCode = comName.substr(0, 3).toUpperCase();
-    //   const mobileNum = employeeMobile.toString();
-    //   const lastFourDigits = mobileNum.substr(mobileNum.length - 4);
-    //   return `${companyCode}-${lastFourDigits}`;
-    // }
-    // const comId = uid(comName, employeeMobile);
-    console.log("comName:",comName);
-    console.log("comId:",comId);
-    console.log("employee id:", employeeId);
-    console.log("name: " , employeeName);
-    console.log("address: " , employeeAddress);
-    console.log("email: " , employeeEmail);
-    console.log("mobile: " , employeeMobile);
-    console.log("wallet: " , employeeWallet);
-    console.log(response.data);
+
+    const respo = await axios.get(
+      `${API_URL}/onboard/${employeeId}`,{withCredentials:true}
+
+    )
+    console.log("asasdasdasdasdsaasdasssssssssssss",respo);
+
 
     
 
@@ -165,7 +161,6 @@ const ProfilePage = (props) => {
         </div>
         <div>
           <div
-            onClick={handleBoxClick}
             style={{
               position: "absolute",
               bottom: "10px",

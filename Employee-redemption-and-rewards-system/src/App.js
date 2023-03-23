@@ -23,6 +23,7 @@ import { assignTasks } from './components/admin/assigntasks'
 
 
 
+
 export default function App() {
     return (
         <Router>
@@ -36,13 +37,16 @@ export default function App() {
                     <Route path="/register" component={ RegisterPage } />
                     <Route path="/registercompany" component={ RegisterCompany } />
                     <Route path="/forget-password" component={ ForgetPasswordPage } />
-                    <Route path="/employee" component={EmployeeDashboard} />
+                    <Route path="/employeetokens" component={EmployeeDashboard} />
                     <Route path="/userprofile" component={ProfilePage} />
                     {/* <Route path="/addemployee" component={AddEmployee}/> */}
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
-                    <Route path="/assigntask" component={assignTasks}/>
-                    <Route path="/real" component={TaskManagementPage}/>
+                    {/* <Route path="/viewtask" component={ViewTask}/> */}
+                    <Route exact path="/employeehome" component={EmployeeDashboard}/>
+                    {/* <Route path="/approvetask" component={ApproveTask}/> */}
+                    <Route path="/empprofile/:_id" component={EmpProfile}/>
+                    <Route path="/real" component={AdminDashBoard}/>
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
                     <Route path="/emptask" component={CalendarView}/>
                 </Switch>
