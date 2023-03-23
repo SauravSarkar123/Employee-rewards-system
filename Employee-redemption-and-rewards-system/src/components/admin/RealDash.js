@@ -44,24 +44,30 @@ function AdminDashBoard() {
       .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.details);
-        console.log(response.data.details)
+        console.log(response.data.details);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  console.log(employees)
+  console.log(employees);
   const filteredEmployees = employees.filter((employee) => {
     return (
       employee.comName === tokenn.name && // Check if employee's company name matches tokenn's company name
       (employee.Name.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
-      employee.comName.toString().includes(search)) // Check if employee's company name includes the search term
+        employee.comName.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
-  
+
   return (
     <div>
       <div className="row">
+        {/* <div
+          style={{
+            borderRadius: "20px",
+            boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
+          }}
+        > */}
         <div className="col-md-3">
           <div style={{ marginTop: "40px", marginLeft: "20px" }}>
             <SidebarMenu />
@@ -82,7 +88,7 @@ function AdminDashBoard() {
           </div>
           <div
             className="row"
-            style={{ marginTop: "40px", marginLeft: "-280px" }}
+            style={{ marginTop: "40px", marginLeft: "-300px" }}
           >
             <div className="col-md-3">
               <div
@@ -253,12 +259,25 @@ function AdminDashBoard() {
           <div className="row mt-">
             <div
               className="col-md-8 "
-              style={{ marginTop: "50px", marginLeft: "-270px" }}
+              style={{ marginTop: "50px", marginLeft: "-290px" }}
             >
-              <div className="card">
+              <div
+                className="card"
+                style={{
+                  boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)",
+                  backgroundColor: "#17A2B8",
+                  marginBottom: "40px",
+                }}
+              >
                 <h5
                   className="card-header font-weight-bold"
-                  style={{ textAlign: "center", fontFamily: "Montserrat" }}
+                  style={{
+                    textAlign: "center",
+                    fontFamily: "Montserrat",
+                    padding: "20px",
+                    backgroundColor: "#17A2B8",
+                    color: "white",
+                  }}
                 >
                   Employees
                 </h5>
@@ -281,23 +300,39 @@ function AdminDashBoard() {
                   >
                     <div
                       className="list-group"
-                      style={{ maxHeight: "1250px", overflowY: "auto" }}
+                      style={{ maxHeight: "1350px", overflowY: "auto" }}
                     >
                       {filteredEmployees.map((employee) => (
-                        <div key={employee.comId} className="list-group-item">
+                        <div
+                          key={employee.comId}
+                          className="list-group-item"
+                          style={{
+                            backgroundColor: "#DDDDD2",
+                            border: "0.1px solid black",
+                          }}
+                        >
                           <div className="d-flex justify-content"></div>
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
                               <h6
                                 className="font-weight-bold mb-0"
-                                style={{ fontFamily: "Montserrat" }}
+                                style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "20px",
+                                }}
                               >
                                 {employee.Name}
                               </h6>
                               <small>{employee.comId}</small>
                             </div>
                             <Link to={`/empprofile/${employee.user}`}>
-                              <button className="btn btn-primary">
+                              <button
+                                className="btn btn-primary"
+                                style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "20px",
+                                }}
+                              >
                                 View Profile
                               </button>
                             </Link>
@@ -308,10 +343,38 @@ function AdminDashBoard() {
                   </div>
                 </div>
               </div>
+              
             </div>
+            <div
+                className="pendingTasks"
+                style={{
+                  height: "429px",
+                  width: "500px",
+                  
+                  borderRadius: "20px",
+                  marginTop:"50px",
+                  marginLeft:"30px",
+                  boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)"
+                }}
+              >
+                <div style={{height:"50px", width:"470px", border:"solid black", marginTop:"30px", textAlign:"center"}}>Pending Tasks</div>
+                <div class="container">
+
+    <div class="col" style={{border:"solid black"}}>
+      1 of 3
+    </div>
+    <div class="col-6" style={{border:"solid black"}}>
+      2 of 3 (wider)
+    </div>
+    </div>
+                
+              </div>
           </div>
+          
         </div>
+        
       </div>
+      
     </div>
   );
 }

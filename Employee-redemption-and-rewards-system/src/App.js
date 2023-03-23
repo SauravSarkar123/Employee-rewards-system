@@ -13,7 +13,6 @@ import RegisterCompany from "./components/admin/RegisterPageComp";
 import LoginComp from "./components/admin/LoginPage";
 import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
-import EmployeeHomepage from './components/employee/EmployeeHomepage'
 import EmpProfile from "./components/admin/EmpProfile"
 import RealDash from "./components/admin/RealDash.js"
 import ApproveTask from "./components/admin/ApproveTask.js";
@@ -36,13 +35,12 @@ export default function App() {
                     <Route path="/register" component={ RegisterPage } />
                     <Route path="/registercompany" component={ RegisterCompany } />
                     <Route path="/forget-password" component={ ForgetPasswordPage } />
-                    <Route path="/employee" component={EmployeeDashboard} />
+                    <Route path="/employeetokens" component={EmployeeDashboard} />
                     <Route path="/userprofile" component={ProfilePage} />
                     {/* <Route path="/addemployee" component={AddEmployee}/> */}
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     {/* <Route path="/viewtask" component={ViewTask}/> */}
-                    <Route exact path="/employeehome" component={EmployeeHomepage}/>
                     <Route path="/approvetask" component={ApproveTask}/>
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
                     <Route path="/real" component={RealDash}/>
