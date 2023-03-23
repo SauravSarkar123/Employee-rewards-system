@@ -86,11 +86,12 @@
 // export default SidebarMenu;
 import React, { useState, useEffect, useRef } from 'react';
 import { FaBars, FaThumbsUp, FaHome , FaPowerOff} from 'react-icons/fa';
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose,AiOutlineMenu } from 'react-icons/ai';
 import { IoMdAddCircle } from 'react-icons/io';
 import { BiTask } from 'react-icons/bi';
 import { FiGift } from 'react-icons/fi';
 import './SidebarMenu.css';
+
 
 const SidebarMenu = () => {
   const [isOpen, setIsOpen] = useState(false); // set isOpen to false by default
@@ -130,8 +131,8 @@ const SidebarMenu = () => {
 
   return (
     <div ref={menuRef} style={{marginTop:"20px"}}>
-      <button className="btn btn-primary" id="menu-toggle" onMouseEnter={toggleSidebar}>
-        {isOpen ? <AiOutlineClose /> : <FaPowerOff style={{width:"100px"}} />}
+     <button className="btn btn-primary" id="menu-toggle" style={{background:"#f5f5f5",color:"#000000",width:"70px",border:"none"}} onMouseEnter={toggleSidebar}>
+        {isOpen ? <AiOutlineClose style={{fontSize:"2rem",position:"relative",right:"0px",}} /> : <AiOutlineMenu style={{fontSize:"2rem",position:"relative",right:"0px",}} />}
       </button>
       <nav className={`sidebar-menu ${isOpen ? 'open' : ''}`} onMouseLeave={handleMouseLeave}>
         <div className="sidebar-header"></div>
