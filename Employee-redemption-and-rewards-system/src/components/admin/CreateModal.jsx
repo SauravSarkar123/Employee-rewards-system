@@ -1,156 +1,120 @@
 import React, { useState, useEffect } from "react";
-
-// import "../../Repeated/font2.css";
-// import "../../Repeated/font.css";
 import "./CreateModal.css";
-// import { Dropdown } from "react-bootstrap";
-// import Form from "react-bootstrap/Form";
-// import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const CreateModal = () => {
-  // const navigate = useNavigate();
-  // const [selectedProduct, setSelectedProduct] = useState(null);
+const CreateModal = (props) => {
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "access_token",
+    "name",
+  ]);
+  const tokenn = jwt_decode(cookies.access_token);
 
-  // const handleSelectProduct = (product) => {
-  //   setSelectedProduct(product);
-  // };
+  const API_URL = "http://localhost:8800";
 
-  // const [products, setProducts] = useState("");
+  const employeeId = props.match.params._id;
+  const compName = tokenn.name;
+  const [task, setTask] = useState(" ");
+  const [taskName, setTaskName] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [deadline, setDeadline] = useState(0);
+  const [rewards, setRewards] = useState(0);
+  // const [comName, setComName] = useState(" ");
+  // const [empId, setEmpId] = useState(" ");
+  
+  
 
-  // useEffect(() => {
-  //   const fetchdata = async () => {
-  //     const data = await axios.get("/add");
-  //     setProducts(data);
-  //   };
-  //   fetchdata();
-  // }, []);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [productId, setProductId] = useState("");
-
-  const [modelName, setModelName] = useState("");
-  const [modelDes, setModelDescription] = useState("");
-
-  const handleSelectProduct = (product) => {
-    setSelectedProduct(product);
-    setProductId(product.productName);
+  const handleTasks = (e) => {
+    setTask(e.target.value);
+ 
+    // setProductId(product.productName);
   };
 
-  const handleModelNameChange = (e) => {
-    setModelName(e.target.value);
+  const handleTaskName = (e) => {
+    setTaskName(e.target.value);
   };
 
-  const handleModelDescriptionChange = (e) => {
-    setModelDescription(e.target.value);
+  const handleTaskDescription = (e) => {
+    setTaskDescription(e.target.value);
   };
 
-  // const handleAddModel = async (e) => {
+  const handleDeadline = (e) => {
+    setDeadline(e.target.value);
+  };
+
+  const handleRewards = (e) => {
+    setRewards(e.target.value);
+  };
+
+  // const handleAddModel = (e) => {
   //   e.preventDefault();
-  //   try {
-  //     const res = await axios.patch(
-  //       `/AddModal/${selectedProduct.productName}`,
-  //       {
-  //         modelName: modelName,
-  //         modelDes: modelDes,
-  //       }
-  //     );
-  //     console.log(res.data);
-  //     // Reset the form
-  //     setSelectedProduct(null);
-  //     setModelName("");
-  //     setModelDescription("");
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
+  //   // console.log(`Selected Product: ${selectedProduct}`);
+  //   // console.log(`Model Name: ${modelName}`);
+  //   // console.log(`Model Description: ${modelDes}`);
+  //   // console.log(`Deadline: ${deadline}`);
   // };
-  const handleAddModel = (e) => {
-    e.preventDefault();
-  }
+ 
+  const handleAddModel = async (event) => {
+    // setComName(compName);
+    // setEmpId(employeeId);
 
-  const [products, setProducts] = useState("");
+    event.preventDefault();
+    
 
-  // useEffect(() => {
-  //   const fetchdata = async () => {
-  //     const data = await axios.get("/AddModal");
-  //     setProducts(data);
-  //   };
-  //   fetchdata();
-  // }, []);
+    try {
+     
+      const response = await axios.post(`${API_URL}/assigntask/${employeeId}/${compName}`,{compName, employeeId, task, taskName,taskDescription,deadline,rewards}, { withCredentials: true })
+      
+      console.log(response.data);
+      console.log(employeeId)
+      console.log(compName)
+      
+    } catch (error) {
+      console.log("wrongyyyy")
+      console.error(error);
+    }
+  };
+
 
   return (
-    <div>
-      
-      {/* <br /> */}
-      <div className="Add-list">
+    <div className="modal-container" >
+      <div className="Add-list" style={{ display: 'block' }}  >
         <br />
         <h2 className="heading" style={{ fontFamily: "Axiforma" }}>
-          Add a Modal
+          ASSIGN TASK
         </h2>
-        <br />o
+        <br />
         <form className="modal-form" >
-          <label className="modlabel" htmlfor="text">
-            Product Name
+          <label className="modlabel" htmlFor="text">
+            Task
           </label>
-          {/* <div className="drop">
-            <Dropdown className="dp">
-              <Dropdown.Toggle
-                id="dropdown-button-dark-example1"
-                variant="secondary"
-              >
-                {selectedProduct
-                  ? selectedProduct.productName
-                  : "Select product"}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu variant="dark">
-                {products &&
-                  products.data.map((product) => (
-                    <Dropdown.Item
-                      active={selectedProduct === product}
-                      onClick={() => handleSelectProduct(product)}
-                    >
-                      {product.productName}
-                    </Dropdown.Item>
-                  ))}
-              </Dropdown.Menu>
-            </Dropdown>
-          </div> */}
           <>
-            <select
-              className="inputfield"
-              // value={}
-              // onChange={(event) =>
-              //   handleSelectProduct(
-              //     products.data.find(
-              //       (product) => product.id === Number(event.target.value)
-              //     )
-              //   )
-              // }
-            >
-              <option value="">Select product</option>
-              {/* {products &&
-                products.data.map((product) => (
-                  <option key={product.id} value={product.id}>
-                    {product.productName}
-                  </option>
-                ))} */}
-            </select>
+          <select className="inputfield" value={task} onChange={handleTasks}>
+  <option value="">Select product</option>
+  <option value="Frontend development">Frontend development</option>
+  <option value="Frontend Design">Frontend Design</option>
+  <option value="Backend API Development">Backend API Development</option>
+  <option value="Database model">Database model</option>
+  <option value="Smart contracts">Smart contracts</option>
+  <option value="Blockchain Integration">Blockchain Integration</option>
+  <option value="Documentation">Documentation</option>
+</select>
           </>
-          <label className="modlabel" htmlfor="text">
-            Modal Name
+          <label className="modlabel" htmlFor="text">
+            Task Name
           </label>
           <input
             className="inputfield"
             id="model_id"
-            name="model_id"
+            name="task name"
             placeholder="Name"
             type="text"
-            // value={modelName}
-            // onChange={handleModelNameChange}
+            onChange={handleTaskName}
           />
-
-          {/* <br /> */}
-          <label className="modlabel" htmlfor="text">
-            Modal Description
+          <label className="modlabel" htmlFor="text">
+            Task Description
           </label>
           <textarea
             className="inputfield"
@@ -158,28 +122,50 @@ const CreateModal = () => {
             name="description_name"
             placeholder="Description"
             type="text"
-            // value={modelDes}
-            // onChange={handleModelDescriptionChange}
+            onChange={handleTaskDescription}
+          />
+          <label className="modlabel" htmlFor="text">
+            Deadline
+          </label>
+          <input
+            className="inputfield"
+            id="deadline"
+            name="deadline"
+            type="date"
+            // value={deadline}
+            onChange={handleDeadline}
           />
           <br />
+          <label className="modlabel" htmlFor="text">
+            Rewards
+          </label>
+          <>
+          <select className="inputfield" value={rewards} onChange={handleRewards}>
+              <option value="">Select Rewards</option>
+              <option value="10"> 10 </option>
+              <option value="20"> 20 </option>
+              <option value="30"> 30  </option>
+             
+            </select>
+          </>
+          <Link>
           <button
             id="singlebutton"
             name="singlebutton"
             className="btM"
-            // onSubmit={handleAddModel}
+            onClick={handleAddModel}
           >
-            Add Modal
+            Submit
           </button>
+          </Link>
           <br />
         </form>
       </div>
+      <br />
       {/* <div className="head2" style={{ fontFamily: "Axiforma" }}>
         Copyright &copy; 2023 | Asset Warrenty
-      </div> */}
-      <br />
-      <div className="headlogin" style={{ fontFamily: "Axiforma" }}>
-        Copyright &copy; 2023 | Asset Warranty
       </div>
+      <br /> */}
     </div>
   );
 };

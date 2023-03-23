@@ -328,7 +328,7 @@ function AdminDashBoard() {
                               </h6>
                               <small>{employee.comId}</small>
                             </div>
-                            <Link to={`/empprofile/${employee.user}`}>
+                            <Link to={`/assigntask/${employee.user}/${tokenn.name}`}>
                               <button
                                 className="btn btn-primary"
                                 style={{
@@ -336,7 +336,7 @@ function AdminDashBoard() {
                                   marginTop: "7px",
                                 }}
                               >
-                                View Profile
+                                Assign Tasks
                               </button>
                             </Link>
                           </div>

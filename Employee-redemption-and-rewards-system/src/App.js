@@ -17,6 +17,7 @@ import AddTask from './components/admin/AddTask'
 import EmpProfile from "./components/admin/EmpProfile"
 import CalendarView from './components/employee/EmployeeTaskView'
 import TaskManagementPage from './components/admin/Approvetasks'
+import AssignTask from "./components/admin/CreateModal"
 
 
 
@@ -51,6 +52,7 @@ export default function App() {
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
                     <Route path="/emptask" component={CalendarView}/>
                     <Route path="/approvetask" component={TaskManagementPage}/>
+                    <Route path="/assigntask" component={AssignTask}/>
                     
                 </Switch>
             </div>
