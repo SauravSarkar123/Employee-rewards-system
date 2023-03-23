@@ -1,38 +1,65 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  LinearProgress,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
-import { AccountCircle, GitHub, Language, Twitter } from "@material-ui/icons";
 
+import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
-import Footercr from "../footer/footercr";
-import LogoutHeader from "../header/logoutheader";
 const ProfilePage = (props) => {
   const [progressWidth, setProgressWidth] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token", "name"]);
+  const [boxVisible, setBoxVisible] = useState(false);
   const [employee, setEmployee] = useState([]);
   const API_URL = "http://localhost:8800";
   const employeeId = props.match.params._id;
-  console.log("employee id:", employeeId);
-
+  const employeeName = employee.name;
+  const employeeAddress = employee.address;
+  const employeeMobile = employee.mobile;
+  const employeeEmail = employee.email;
+  const employeeWallet = employee.wallet;
+  
+  const tokenn = jwt_decode(cookies.access_token);
+  const comName = tokenn.name;
+  const comId = tokenn.name.substr(0,3).toUpperCase();
+  
   const handlePursuingClick = () => {
     if (progressWidth < 100) {
       setProgressWidth(progressWidth + 10);
     }
   };
+  // const handleLogout = () => {
+  //   removeCookie("access_token");
+  // };
+
+
+  const addEmployee = async() =>{
+    const response = await axios.post(
+      `${API_URL}/addemployee/${employeeId}/${employeeName}/${employeeAddress}/${employeeMobile}/${employeeEmail}/${employeeWallet}`,
+      {
+        comName,
+        comId
+      },
+      { withCredentials: true }
+    );
+    // const uid = async(comName, employeeMobile) => {
+    //   const companyCode = comName.substr(0, 3).toUpperCase();
+    //   const mobileNum = employeeMobile.toString();
+    //   const lastFourDigits = mobileNum.substr(mobileNum.length - 4);
+    //   return `${companyCode}-${lastFourDigits}`;
+    // }
+    // const comId = uid(comName, employeeMobile);
+    console.log("comName:",comName);
+    console.log("comId:",comId);
+    console.log("employee id:", employeeId);
+    console.log("name: " , employeeName);
+    console.log("address: " , employeeAddress);
+    console.log("email: " , employeeEmail);
+    console.log("mobile: " , employeeMobile);
+    console.log("wallet: " , employeeWallet);
+    console.log(response.data);
+
+    
+
+  
+  }
   // const handleLogout = () => {
   //   removeCookie('access_token');
   // };
@@ -52,212 +79,193 @@ const ProfilePage = (props) => {
       });
   }, [employeeId]);
   return (
-    <div>
-      <nav>
-        <LogoutHeader />
-      </nav>
+    <div style={{ height: "auto" }}>
+      <header style={{ 
+      backgroundColor: '#f5f5f5',
+      padding: '20px',
+      borderBottom: '1px solid #ddd',
+      display: 'flex',
+      alignItems: 'center'
+    }}>  <div style={{display:"flex",position:"relative",bottom:"10px"}}> <SidebarMenu12/></div>
+      
+      <h1 style={{ 
+        margin: '0',
+        fontSize: '35px',
+        fontWeight: 'bold',
+        color: '#0F6292',
+        flex: 4,
+        textAlign:"center",
+        position:"relative",
+        left:"30px"
+        
 
-      <section style={{ backgroundColor: "#eee", padding: "1rem 0" }}>
-        <Grid container spacing={3}>
-          <Grid item md={4}>
-          <Card variant="outlined" style={{
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "2rem",
-  background:"#FFFFFF",
-  color:"#1F1F1F",
-  border: "1px solid #D8D8D8",
-  borderRadius: "10px",
-  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-  marginLeft:"20px"
-}}>
-  <CardContent style={{ textAlign: "center" }}>
-    <Typography gutterBottom variant="h5" component="h2" style={{
-      fontSize: '2.5rem',
-      fontWeight: 'bold',
-      marginBottom: '2rem' ,
-      color:"#1F1F1F"
-    }}>
-      EMPLOYEE DETAILS
-    </Typography>
-    <AccountCircle style={{ fontSize: "7rem", margin: "1rem", color:"#1F1F1F" }} />
-    <Typography variant="body2" color="textSecondary" component="p" style={{
-      marginBottom: "0.5rem" 
-      , color:"#1c4966" ,
-      fontSize:"2rem"
-    }}>
-      Full Stack Developer
-    </Typography>
-    <Typography variant="body2" color="textSecondary" component="p" style={{
-      marginBottom: "2rem" ,
-      color:"#1F1F1F"
-    }}>
-      Bay Area, San Francisco, CA
-    </Typography>
-  </CardContent>
-  {/* <CardActions>
-    <Button onClick={handleLogout} variant="contained" color="secondary" href="/login" style={{ margin: "1rem", background:"#FF0000", borderRadius: "5px" }}>
-      Log Out
-    </Button>
-  </CardActions>   */}
-        <CardActions>
-                <Link
-                  to={`/adde/${employee._id}/${employee.name}/${employee.address}/${employee.mobile}/${employee.email}/${employee.wallet}`}
-                >
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ margin: "1rem" }}
-                  >
-                    Add Employee
-                  </Button>
-                </Link>
-              </CardActions>
-              {/* <CardActions>
-    <Button onClick={handleLogout} variant="contained" color="primary" href="/login" style={{ margin: "1rem" }}>
-      Log Out
-    </Button>
-  </CardActions> */}
-            <List style={{ color:"#333333", border: "1px solid #D8D8D8", borderRadius: "5px", padding: "1rem", marginTop: "2rem"}}>
-    <ListItem>
-      <ListItemIcon>
-        <Language style={{ color:"#333333" }}/>
-      </ListItemIcon>
-      <ListItemText>
-        LinkedIn :{" "}
-        <a href="https://www.linkedin.com" style={{ color:"#333333", textDecoration: "none" }}>LinkedIn</a>
-      </ListItemText>
-    </ListItem>
-    <ListItem>
-      <ListItemIcon>
-        <GitHub style={{ color:"#333333" }}/>
-      </ListItemIcon>
-      <ListItemText>
-        Github :{" "}
-        <a href="https://www.github.com" style={{ color:"#333333", textDecoration: "none" }}>Github</a>
-      </ListItemText>
-    </ListItem>
-    <ListItem>
-      <ListItemIcon>
-        <Twitter style={{ color:"#333333" }}/>
-      </ListItemIcon>
-      <ListItemText>
-        Office :{" "}
-        <a href="https://www.office.com" style={{ color:"#333333", textDecoration: "none" }}>Office</a>
-      </ListItemText>
-    </ListItem>
-  </List>
-</Card>
+      }}>
+        Employee Profile</h1>
+        
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRCD2IRkg5xxZTdaHZrj4MXtcwuvo2xSPOACVOPvQ&s" alt="User Avatar" style={{ 
+        borderRadius: '50%',
+        marginRight: '20px',
+        width:"50px",
+        height:"50px"
 
+      }} />
+      <p style={{ 
+        margin: '0',
+        fontSize: '16px',
+        color: '#777'
+      }}>John Doe</p>
+    </header>
+    <div
+        className="card"
+        style={{
+          width: "900px",
+          height: "140px",
+          flexDirection: "row",
+          background: "#FFFFFF",
+          margintop: "100px",
+          position: "relative",
+          top: "30px",
+          left: "240px",
+        }}
+      >
+        <img
+          src="https://img.freepik.com/free-icon/user_318-159711.jpg"
+          alt="Avatar"
+          style={{
+            border: "3px solid #ccc",
+            boxShadow: "0px 0px 10px #ccc",
+            borderRadius: "50%",
+            marginLeft: "5%",
+            width: "120px",
+            height: "120px",
+            position: "relative",
+            top: "10px",
+          }}
+        />
 
+        <div
+          classname="red"
+          style={{
+            flexDirection: "column",
+            position: "relative",
+            top: "35px",
+            left: "30px",
+            flexDirection: "column",
+          }}
+        >
+          <p style={{ display: "inline-block" }}>
+            <b style={{ color: "#537FE7", display: "inline" }}>Name : </b> John
+            Doe
+          </p>
 
-          
-          </Grid>
-          <Grid item md={4}>
-          <Card variant="outlined" className="personal-info-card" style={{ width: '200%', borderRadius: '20px', backgroundColor: '#fff', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)', padding: '2rem', marginLeft: '0px', height: '100%' }}>
-  <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-    <Typography gutterBottom variant="h5" component="h2" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center' }}>
-      PERSONAL INFORMATION
-    </Typography>
-    <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid #e0e0e0', paddingTop: '2rem', width: '100%' }}>
-      <div style={{ display: 'flex', marginBottom: '1rem' }}>
-        <div style={{ marginRight: '2rem', flex: 1 }}>
-          <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
-            Name:
-          </Typography>
-          <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-            {employee.name}
-          </Typography>
+          <p>
+            {" "}
+            <b style={{ color: "#537FE7" }}> Wallet Address: </b> dd0n02h20i
+          </p>
         </div>
-        <div style={{ marginRight: '2rem', flex: 1 }}>
-          <Typography variant="subtitle1" style={{ fontWeight: 'bold' , color:"#45b6fe"}}>
-            Employee ID:
-          </Typography>
-          <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-            {employee._id}
-          </Typography>
-        </div>
-        <div style={{ flex: 1 }}>
-          <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
-            Date of Birth:
-          </Typography>
-          <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-          {employee.DOJ}
-          </Typography>
+        <div>
+          <div
+            onClick={handleBoxClick}
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              right: "-10px",
+              height: "20%",
+              width: "20%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              ":hover": {
+                transform: "scale(1.2)",
+                background: "#FFFFFF",
+              },
+            }}
+          >
+            Acheivements{" "}
+            <IoIosArrowDropdownCircle style={{ fontSize: "30px" }} />
+          </div>
         </div>
       </div>
+      <div
+        className="card1"
+        style={{
+          marginLeft: "238px",
+          position: "relative",
+          top: "50px",
+          textAlign: "center",
+          borderRadius: "20px",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <h6>
+            <b style={{ fontSize: "1.4rem", color: "#537FE7" }}>INFORMATION</b>
+          </h6>{" "}
+        </div>
+        <hr className="mt-0 mb-4" />
+        <div className="row pt-1">
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}} >
+            <h6 style={{ color: "#537FE7", marginRight: "20px" }}>Name:</h6>
+            <p className="text-muted  mb-6">John Doe</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Email:</h6>
+            <p className="text-muted mb-6">info@example.com</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Phone:</h6>
+            <p className="text-muted  mb-6">123 456 789</p>
+          </div>
+
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Address:</h6>
+            <p className="text-muted mb-0">123 Main Street, Anytown, USA</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Wallet Address:</h6>
+            <p className="text-muted  mb-6">id822820d1h2d0d</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>ID:</h6>
+            <p className="text-muted  mb-6">0987</p>
+          </div>
+        </div>
+        <div style={{ marginTop: "80px" }}>
+          <div style={{ textAlign: "center" }}>
+            <h6>
+              <b
+                style={{
+                  fontSize: "1.4rem",
+                  color: "#537FE7",
+                  textAlign: "center",
+                }}
+              >
+                COMPANY
+              </b>
+            </h6>
+          </div>
+          <hr className="mt-0 mb-4" />
+          <div className="row pt-1">
+            <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+              <h6 style={{ color: "#537FE7",marginRight: "20px" }}>Company Name:</h6>
+              <p className="text-muted mb-0">SecureKloud</p>
+            </div>
+            <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+              <h6 style={{ color: "#537FE7",marginRight: "20px" }}>EmployeeId:</h6>
+              <p className="text-muted mb-0">SK22125</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid #e0e0e0', paddingTop: '2rem', width: '100%' }}>
-        <div style={{ display: 'flex', marginBottom: '1rem' }}>
-          <div style={{ marginRight: '2rem', flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe"}}>
-              Email:
-            </Typography>
-            <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-              {employee.email}
-            </Typography>
-          </div>
-          <div style={{ marginRight: '2rem', flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold' , color:"#45b6fe"}}>
-              Mobile:
-            </Typography>
-            <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-            {employee.mobile}
-            </Typography>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
-              Address:
-            </Typography>
-            <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-            {employee.address}
-            </Typography>
-          </div>
-          <div style={{ marginRight: '2rem', flex: 1 }}>
-            <Typography variant="subtitle1" style={{ fontWeight: 'bold', color:"#45b6fe" }}>
-              Wallet Address:
-            </Typography>
-            <Typography variant="body1" style={{ color: '#666', fontSize: '1.5rem' }}>
-            {employee.wallet}
-            </Typography>
-          </div>
-        </div>
-        </div>
-     
 
-</CardContent>
+      <div></div>
 
-
-
-    </Card>
-
-      </Grid>
-    </Grid>
-  </section>
-      <footer>
-        <Footercr />
-      </footer>
+      {/* <Footercr/> */}
     </div>
-  );
-};
+  )
+              }
 
 export default ProfilePage;
 
-
-
-
-// <CardActions>
-//                 <Link
-//                   to={`/adde/${employee._id}/${employee.name}/${employee.address}/${employee.mobile}/${employee.email}`}
-//                 >
-//                   <Button
-//                     variant="contained"
-//                     color="primary"
-//                     style={{ margin: "1rem" }}
-//                   >
-//                     Add Employee
-//                   </Button>
-//                 </Link>
-//               </CardActions>
+      

@@ -1,32 +1,16 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  LinearProgress,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
-import {
-  AccountCircle,
-  GitHub,
-  Language,
-  Twitter,
-} from "@material-ui/icons";
-
-import { useCookies } from 'react-cookie';
-
-
+import "./task.css";
 import Footercr from "../footer/footercr";
-import LogoutHeader from '../header/logoutheader';
+import { useCookies } from "react-cookie";
+import Header from "../Headerr/Header";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { Table } from "react-bootstrap";
+import SidebarMenu12 from "./side1";
+
 const ProfilePage = () => {
   const [progressWidth, setProgressWidth] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [boxVisible, setBoxVisible] = useState(false);
 
   const handlePursuingClick = () => {
     if (progressWidth < 100) {
@@ -34,398 +18,295 @@ const ProfilePage = () => {
     }
   };
   const handleLogout = () => {
-    removeCookie('access_token');
+    removeCookie("access_token");
   };
+  const handleBoxClick = () => {
+    setBoxVisible(!boxVisible);
+  };
+  const tokenData = [
+    {
+      companyName: "SecureKloud",
+      rewardDesc: "Vue Certification",
+      date: "02/04/20",
+      rating: "Excellent",
+      tokensEarned: 40,
+    },
+    {
+      companyName: "Zoho",
+      rewardDesc: "React Certification",
+      date: "02/02/22",
+      rating: "Good",
+      tokensEarned: 20,
+    },
+    {
+      companyName: "Prodapt",
+      rewardDesc: "Java Certification",
+      date: "12/9/2022",
+      rating: "Excellent",
+      tokensEarned: 40,
+    },
+    {
+      companyName: "Deloitte",
+      rewardDesc: "Python Certification",
+      date: "23/02/2023",
+      rating: "Average",
+      tokensEarned: 10,
+    },
+    {
+      companyName: "Deloitte",
+      rewardDesc: "Python Certification",
+      date: "23/02/2023",
+      rating: "Average",
+      tokensEarned: 10,
+    },
+  ];
 
   return (
-    <div style={{height:'150%'}}>
-      {/* <nav>
-      <LogoutHeader/>
-      </nav> */}
-
-      <section style={{ backgroundColor: "#eee", padding: "1rem 0" , height:'1000px'}}>
-        <Grid container spacing={3}>
-          <Grid item md={4}>
-          <Card variant="outlined" style={{
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "2rem",
-  background: "#F9F9F9",
-  color: "#333333",
-  border: "1px solid #D8D8D8",
-  borderRadius: "10px",
-  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.7)",
-  margin: "20px",
-  height: "100%",
-  width:"100%"
-}}>
-  <CardContent style={{ textAlign: "center" }}>
-    <AccountCircle style={{
-      fontSize: "8rem",
-      display: "flex",
-      margin: "1rem",
-      color:"#1F1F1F",
-      width: "10rem",
-      height: "10rem",
-      borderRadius: "0.5rem",
-      position:'relative',
-      bottom:'5rem',
-      alignItems:"center",
-      left:"20%",
-      boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
-    }} />
-    <Typography variant="h5" style={{
-      fontSize: '2.0rem',
-      fontWeight: 'bold',
-      marginBottom: '2rem' ,
-      color:"#1F1F1F"
-    }}>
-      John Doe
-    </Typography>
-    <Typography variant="body2" style={{
-      marginBottom: "2rem" ,
-      color:"#1F1F1F",
-      position:'relative',
-      bottom:'4rem',
-      fontSize:"1.5rem"
-    }}>
-      Bay Area, San Francisco, CA
-    </Typography>
-  </CardContent>
-  <List style={{
-    color:"#333333",
-    borderRadius: "5px",
-    padding: "1rem",
-    bottom: '-10rem',
-    width: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  }}>
-    <ListItem>
-      <ListItemIcon>
-        <Language style={{ color:"#1c4966",fontSize:"1rem" }}/>
-      </ListItemIcon>
-      <ListItemText>
-        <a href="https://www.linkedin.com" style={{ color:"#1c4966", textDecoration: "none" ,fontSize:"1rem"}}>LinkedIn{" "}</a>
-      </ListItemText>
-    </ListItem>
-    <ListItem >
-      <ListItemIcon>
-        <GitHub style={{ color:"#1c4966",fontSize:"1rem" }}/>
-      </ListItemIcon>
-      <ListItemText>
-        <a href="https://www.github.com" style={{ color:"#1c4966", textDecoration: "none" ,fontSize:"1rem"}}>Github {" "}</a>
-      </ListItemText>
-    </ListItem>
-    <ListItem>
-      <ListItemIcon>
-        <Twitter style={{ color:"#1c4966",fontSize:"1rem" }}/>
-      </ListItemIcon>
-      <ListItemText>
-        <a href="https://www.office.com" style={{ color:"#1c4966", textDecoration: "none",fontSize:"1rem" }}>Office {" "}</a>
-      </ListItemText>
-    </ListItem>
-  </List>
-</Card>
-
-
-          </Grid>
-
-          <Grid item md={4}>
-          <div style={{ 
- width: '200%', 
- borderRadius: '20px', 
- backgroundColor: '#FDFDFD', 
- boxShadow: '0px 2px 6px rgba(0, 0, 0, 1.0)', 
- height:"55%", 
- padding: '2rem', 
- margin: '0 auto', 
- display: 'grid', 
- gridTemplateColumns: '30% 70%', 
- gridGap: '1rem', 
- alignItems: 'center' ,
- position: 'relative',
- right: '-10px',
- top:'20px',
-}}>
-  <div style={{ 
-     gridColumn: '1 / -1', 
-     background: "#57f542", 
-     textAlign: 'center', 
-     marginBottom: '2rem', 
-     fontWeight: 'bold', 
-     fontSize: '2.0rem', 
-     color: '#000000', 
-     padding: '1rem',
-     borderRadius: '20px'
-  }}>
-    PERSONAL INFORMATION
-  </div>
-  <div className="field-container" style={{ 
-  gridColumn: '1 / -1', 
-  display: 'grid', 
-  gridTemplateColumns: '30% 70%', 
-  alignItems: 'start'
-    
-  }}>
-    <Typography variant="subtitle1" style={{
-fontWeight: 'bold',
-color: '#45b6fe',
-textAlign: 'left',
-fontSize:"1.5rem",
-gridColumn: '1 / 2'
-}}>
-Name:
-</Typography>
-<Typography variant="body1" style={{
-color: '#666',
-fontSize: '1.5rem',
-textAlign: 'left',
-width: '70%',
-marginLeft: '1rem' ,
-fontSize:"1.5rem",
-gridColumn: '2 / -1'
-}}>
-John Doe
-</Typography>
-    </div>
-<div className="field-container" style={{ 
- gridColumn: '1 / -1', 
- display: 'grid', 
- gridTemplateColumns: '30% 70%', 
- alignItems: 'start'
-}}>
-  <Typography variant="subtitle1" style={{ 
-   fontWeight: 'bold',
-   color: '#45b6fe',
-   textAlign: 'left',
-   fontSize:"1.5rem",
-   gridColumn: '1 / 2'
-  }}>
-    Employee ID:
-  </Typography>
-  <Typography variant="body1" style={{ 
-    color: '#666', 
-    fontSize: '1.5rem', 
-    textAlign: 'left', 
-    width: '70%', 
-    marginLeft: '1rem' ,
-    fontSize:"1.5rem",
-  }}>
-    SK2345678
-  </Typography>
-</div>
-<div className="field-container" style={{ 
-  gridColumn: '1 / -1', 
-  display: 'grid', 
-  gridTemplateColumns: '30% 70%', 
-  alignItems: 'start'
-    
-}}>
-  <Typography variant="subtitle1" style={{ 
-  fontWeight: 'bold',
-  color: '#45b6fe',
-  textAlign: 'left',
-  fontSize:"1.5rem",
-  gridColumn: '1 / 2'
-  }}>
-    Email:
-  </Typography>
-  <Typography variant="body1" style={{ 
-    color: '#666', 
-    fontSize: '1.5rem', 
-    textAlign: 'left', 
-    width: '70%', 
-    marginLeft: '1rem' ,
-    fontSize:"1.5rem",
-    
-  }}>
-    johndoe@example.com
-  </Typography>
-</div>
-<div className="field-container" style={{ 
-  gridColumn: '1 / -1', 
-  display: 'grid', 
-  gridTemplateColumns: '30% 70%', 
-  alignItems: 'start'
-}}>
-  <Typography variant="subtitle1" style={{ 
-    fontWeight: 'bold',
-    color: '#45b6fe',
-    textAlign: 'left',
-    fontSize:"1.5rem",
-    gridColumn: '1 / 2'
-  }}>
-    Phone:
-  </Typography>
-  <Typography variant="body1" style={{ 
-    color: '#666', 
-    fontSize: '1.5rem', 
-    textAlign: 'left', 
-    width: '70%', 
-    marginLeft: '1rem' ,
-    fontSize:"1.5rem",
-  }}>
-    +1 (555) 123-4567
-  </Typography>
-</div>
-<div className="field-container" style={{ 
-  gridColumn: '1 / -1', 
-  display: 'grid', 
-  gridTemplateColumns: '30% 70%', 
-  alignItems: 'start'
-    
-    
-}}>
-  <Typography variant="subtitle1" style={{ 
-   fontWeight: 'bold',
-   color: '#45b6fe',
-   textAlign: 'left',
-   fontSize:"1.5rem",
-   gridColumn: '1 / 2'
-  }}>
-    Address:
-  </Typography>
-  <Typography variant="body1" style={{ 
-    color: '#666', 
-    fontSize: '1.5rem', 
-    textAlign: 'left', 
-    width: '70%', 
-    marginLeft: '1rem' ,
-    fontSize:"1.5rem",
-  }}>
-    123 Main Street, Anytown, USA
-  </Typography>
-</div>
-<div style={{ 
-    width: '360%', 
-    borderRadius: '20px', 
-    backgroundColor: '#FDFDFD', 
-    boxShadow: '0px 2px 6px rgba(0, 0, 0, 1.0)', 
-    height:"100%", 
-    padding: '2rem', 
-    margin: '0 auto', 
-    display: 'grid', 
-    gridTemplateColumns: '30% 70%', 
-    gridGap: '1rem', 
-    alignItems: 'center' ,
-    position: 'relative',
-    right: '30px',
-    top:'20px',
-
-
-}}>
-  <div style={{ 
-    gridColumn: '1 / -1', 
-    background: "#57f542", 
-    textAlign: 'center', 
-    marginBottom: '2rem', 
-    fontWeight: 'bold', 
-    fontSize: '2.0rem', 
-    color: '#000000', 
-    padding: '1rem',
-    borderRadius: '20px',
-
-  }}>
-    COMPANY DETAILS
-  </div>
-  <div className="field-container" style={{
-  display: 'grid', 
-    gridTemplateColumns: '30% 70%', 
-    alignItems: 'center', 
-    gridColumn: '1 / -1'
-  }}>
-    <Typography variant="subtitle1" style={{ 
-fontWeight: 'bold',
-color: '#45b6fe',
-textAlign: 'left',
-fontSize:"1.5rem",
-gridColumn: '1 / 2'
-    }}>
-      EmployeeID:
-    </Typography>
-    <Typography variant="body1" style={{ 
-          color: '#666', 
-          fontSize: '1.5rem', 
-          textAlign: 'left', 
-          width: '70%', 
-          marginLeft: '1rem' ,
-          fontSize:"1.5rem",
-
-    }}>
-      SK2345678
-    </Typography>
-  </div>
-  <div className="field-container" style={{ 
-    display: 'grid', 
-    gridTemplateColumns: '30% 70%', 
-    alignItems: 'center', 
-    gridColumn: '1 / -1',
-  }}>
-    <Typography variant="subtitle1" style={{ 
-      fontWeight: 'bold',
-      color: '#45b6fe',
-      textAlign: 'left',
-      fontSize:"1.5rem",
-      gridColumn: '1 / 2'
+    <div style={{ height: "auto" }}>
+      <header style={{ 
+      backgroundColor: '#f5f5f5',
+      padding: '20px',
+      borderBottom: '1px solid #ddd',
+      display: 'flex',
+      alignItems: 'center'
+    }}>  <div style={{display:"flex",position:"relative",bottom:"10px"}}> <SidebarMenu12/></div>
       
-    }}>
-      Company Name:
-    </Typography>
-    <Typography variant="body1" style={{ 
-          color: '#666', 
-          fontSize: '1.5rem', 
-          textAlign: 'left', 
-          width: '70%', 
-          marginLeft: '1rem' ,
-          fontSize:"1.5rem",
-    }}>
-      ACME Corporation
-    </Typography>
-  </div>
-  <div className="field-container" style={{ 
-    display: 'grid', 
-    gridTemplateColumns: '30% 70%', 
-    alignItems: 'center', 
-    gridColumn: '1 / -1' 
-  }}>
-    <Typography variant="subtitle1" style={{ 
-      fontWeight: 'bold',
-      color: '#45b6fe',
-      textAlign: 'left',
-      fontSize:"1.5rem",
-      gridColumn: '1 / 2'
-    }}>
-      Designation:
-    </Typography>
-    <Typography variant="body1" style={{ 
-          color: '#666', 
-          fontSize: '1.5rem', 
-          textAlign: 'left', 
-          width: '70%', 
-          marginLeft: '1rem' ,
-          fontSize:"1.5rem",
-          
-    }}>
-      Software Engineer
-    </Typography>
-  </div>
-</div>
+      <h1 style={{ 
+        margin: '0',
+        fontSize: '35px',
+        fontWeight: 'bold',
+        color: '#0F6292',
+        flex: 4,
+        textAlign:"center",
+        position:"relative",
+        left:"30px"
+        
 
-</div>
+      }}>
+        Employee Profile</h1>
+        
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRCD2IRkg5xxZTdaHZrj4MXtcwuvo2xSPOACVOPvQ&s" alt="User Avatar" style={{ 
+        borderRadius: '50%',
+        marginRight: '20px',
+        width:"50px",
+        height:"50px"
 
+      }} />
+      <p style={{ 
+        margin: '0',
+        fontSize: '16px',
+        color: '#777'
+      }}>John Doe</p>
+    </header>
+      
+      <div
+        className="card"
+        style={{
+          width: "900px",
+          height: "140px",
+          flexDirection: "row",
+          background: "#FFFFFF",
+          margintop: "100px",
+          position: "relative",
+          top: "30px",
+          left: "240px",
+        }}
+      >
+        <img
+          src="https://img.freepik.com/free-icon/user_318-159711.jpg"
+          alt="Avatar"
+          style={{
+            border: "3px solid #ccc",
+            boxShadow: "0px 0px 10px #ccc",
+            borderRadius: "50%",
+            marginLeft: "5%",
+            width: "120px",
+            height: "120px",
+            position: "relative",
+            top: "10px",
+          }}
+        />
 
+        <div
+          classname="red"
+          style={{
+            flexDirection: "column",
+            position: "relative",
+            top: "35px",
+            left: "30px",
+            flexDirection: "column",
+          }}
+        >
+          <p style={{ display: "inline-block" }}>
+            <b style={{ color: "#537FE7", display: "inline" }}>Name : </b> John
+            Doe
+          </p>
 
-      </Grid>
-    </Grid>
-  </section>
+          <p>
+            {" "}
+            <b style={{ color: "#537FE7" }}> Wallet Address: </b> dd0n02h20i
+          </p>
+        </div>
+        <div>
+          <div
+            onClick={handleBoxClick}
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              right: "-10px",
+              height: "20%",
+              width: "20%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              ":hover": {
+                transform: "scale(1.2)",
+                background: "#FFFFFF",
+              },
+            }}
+          >
+            Acheivements{" "}
+            <IoIosArrowDropdownCircle style={{ fontSize: "30px" }} />
+          </div>
+        </div>
+      </div>
+      {boxVisible && (
+        <div
+          className="Acheivements"
+          style={{
+            marginLeft: "238px",
+            position: "relative",
+            top: "55px",
+            borderRadius: "20px",
+          }}
+        >
+          <div style={{ textAlign: "center", height: "40px" }}>
+            <h6>
+              <p
+                style={{
+                  fontSize: "1.4rem",
+                  textAlign: "center",
+                  position: "relative",
+                  top: "10px",
+                  left: "15px",
+                }}
+              >
+                {" "}
+                <b style={{ color: "#537FE7", padding: "40px" }}>
+                  ACHIEVEMENTS
+                </b>{" "}
+              </p>
+            </h6>
+          </div>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th style={{ color: "#537FE7", textAlign: "center" }}>
+                  Company
+                </th>
+                <th style={{ color: "#537FE7", textAlign: "center" }}>
+                  Reward Description
+                </th>
+                <th style={{ color: "#537FE7", textAlign: "center" }}>Date</th>
+                <th style={{ color: "#537FE7", textAlign: "center" }}>
+                  Rating
+                </th>
+                <th style={{ color: "#537FE7", textAlign: "center" }}>
+                  Tokens Earned
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {tokenData.map((token, index) => (
+                <tr key={index}>
+                  <td align="center">{token.companyName}</td>
+                  <td align="center">{token.rewardDesc}</td>
+                  <td align="center">{token.date}</td>
+                  <td align="center">{token.rating}</td>
+                  <td align="center">{token.tokensEarned}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      )}
+      <div
+        className="card1"
+        style={{
+          marginLeft: "238px",
+          position: "relative",
+          top: "50px",
+          textAlign: "center",
+          borderRadius: "20px",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <h6>
+            <b style={{ fontSize: "1.4rem", color: "#537FE7" }}>INFORMATION</b>
+          </h6>{" "}
+        </div>
+        <hr className="mt-0 mb-4" />
+        <div className="row pt-1">
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}} >
+            <h6 style={{ color: "#537FE7", marginRight: "20px" }}>Name:</h6>
+            <p className="text-muted  mb-6">John Doe</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Email:</h6>
+            <p className="text-muted mb-6">info@example.com</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Phone:</h6>
+            <p className="text-muted  mb-6">123 456 789</p>
+          </div>
 
-<footer> <Footercr/> </footer>
-</div>
-);
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Address:</h6>
+            <p className="text-muted mb-0">123 Main Street, Anytown, USA</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Wallet Address:</h6>
+            <p className="text-muted  mb-6">id822820d1h2d0d</p>
+          </div>
+          <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+            <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>ID:</h6>
+            <p className="text-muted  mb-6">0987</p>
+          </div>
+        </div>
+        <div style={{ marginTop: "80px" }}>
+          <div style={{ textAlign: "center" }}>
+            <h6>
+              <b
+                style={{
+                  fontSize: "1.4rem",
+                  color: "#537FE7",
+                  textAlign: "center",
+                }}
+              >
+                COMPANY
+              </b>
+            </h6>
+          </div>
+          <hr className="mt-0 mb-4" />
+          <div className="row pt-1">
+            <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+              <h6 style={{ color: "#537FE7",marginRight: "20px" }}>Company Name:</h6>
+              <p className="text-muted mb-0">SecureKloud</p>
+            </div>
+            <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
+              <h6 style={{ color: "#537FE7",marginRight: "20px" }}>EmployeeId:</h6>
+              <p className="text-muted mb-0">SK22125</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div></div>
+
+      {/* <Footercr/> */}
+    </div>
+  );
 };
-
 export default ProfilePage;

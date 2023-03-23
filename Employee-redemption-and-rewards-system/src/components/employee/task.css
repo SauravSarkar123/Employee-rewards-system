@@ -1,178 +1,51 @@
-.app {
-    padding: 20px;
-    text-align: center;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,200&display=swap');
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #808080;
   
-  h1 {
-    font-size: 32px;
-    margin-bottom: 40px;
-  }
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
   
-  .assigned-tasks {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
   }
-  
-  .tasks,
-  .status {
-    width: 50%;
+
+  .card {
+    width: 190px;
+    height: 254px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    box-shadow: #FFFFFF 0px -23px 25px 0px inset,  #FFFFFF 0px 30px 50px -12px inset, rgb(223, 225, 235) 0px 30px 50px -12px  inset, rgba(223, 225, 235) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(223, 225, 235) 0px 8px 4px, rgba(223, 225, 235) 0px 16px 8px, rgba(223, 225, 235) 0px 32px 16px;
   }
-  
-  .tasks h2,
-  .status h2 {
-    font-size: 24px;
-    margin-bottom: 16px;
+  .red {
+    font-family: 'Bitter', serif;
+    position: relative;
+    top: 35px;
+    left: 30px;
   }
-  
-  .task {
-    border: 1px solid black;
+  .card1 {
+    width: 900px;
+    height: 440px;
+    border-radius: 30px;
+    background: #FFFFFF;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px,
+    rgba(50, 50, 93, 0.25)  0px 18px 26px -18px  ;
+    font-size: 0.9rem;
+    line-height: 1.5;
     padding: 10px;
-    margin-bottom: 8px;
-    cursor: pointer;
+
   }
   
-  .task:hover{
-    background-color: #f0f0f0;
-    }
-    
-    .task p {
-    margin: 0;
-    }
-    
-    .task-details {
-    border: 1px solid black;
-    padding: 20px;
-    margin-top: 40px;
-    }
-    
-    .task-details h3 {
-    font-size: 24px;
-    margin-bottom: 16px;
-    }
-    
-    .task-details p {
-    margin-bottom: 16px;
-    }
-    
-    .task-deadline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    
-    .mark-complete-btn {
-    background-color: #008000;
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    }
-    
-    .mark-complete-btn:hover {
-    background-color: #005300;
-    }
-    
-    /* New styles for the Update KRA page */
-    
-    body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f2f2f2;
-    }
-    
-    .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    }
-    
-    .headline {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    }
-    
-    .tasks-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 40px;
-    }
-    
-    .tasks {
-    width: 60%;
-    }
-    
-    .tasks h2 {
-    margin-bottom: 16px;
-    }
-    
-    .status {
-    width: 30%;
-    }
-    
-    .status h2 {
-    margin-bottom: 16px;
-    }
-    
-    .task {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 16px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    }
-    
-    .task:hover {
-    background-color: #eee;
-    }
-    
-    .task p {
-    margin: 0;
-    }
-    
-    .task.active {
-    background-color: #f0f0f0;
-    border: 1px solid #999;
-    }
-    
-    .task-details-container {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 16px;
-    }
-    
-    .task-details-container h2 {
-    margin-bottom: 16px;
-    }
-    
-    .task-details-container p {
-    margin-bottom: 16px;
-    }
-    
-    .deadline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    
-    .deadline p {
-    margin: 0;
-    }
-    
-    .mark-complete-btn {
-    background-color: #008000;
-    color: #fff;
-    border: none;
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    }
-    
-    .mark-complete-btn:hover {
-    background-color: #005300;
-    }
-  
+  .card1 h6 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .Acheivements {
+    width: 900px;
+    height: auto;
+    border-radius: 30px;
+    background: #FFFFFF;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+  }
