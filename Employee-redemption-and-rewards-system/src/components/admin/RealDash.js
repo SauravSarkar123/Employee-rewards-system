@@ -331,7 +331,7 @@ function AdminDashBoard() {
                                 className="btn btn-primary"
                                 style={{
                                   fontFamily: "Montserrat",
-                                  marginTop: "20px",
+                                  marginTop: "7px",
                                 }}
                               >
                                 View Profile
