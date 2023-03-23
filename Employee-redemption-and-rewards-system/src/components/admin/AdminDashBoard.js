@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import styles from "./dash.module.css";
+import swal from 'sweetalert';
 // import { FaBars,FaUserPlus, FaTasks, FaGift } from "react-icons/fa";
 import SidebarMenu from "./side.js";
 import {
@@ -64,6 +65,7 @@ function AdminDashBoard() {
 
   return (
     <div>
+      
       <div className="row">
         <div className="col-md-3">
           <div style={{ marginTop: "40px", marginLeft: "20px" }}>
@@ -107,6 +109,7 @@ function AdminDashBoard() {
                 }}
               >
                 <div className={styles.txt} style={{ marginTop: "20px" }}>
+               
                   <h3>
                     <b
                       style={{
@@ -266,7 +269,7 @@ function AdminDashBoard() {
                 className="card"
                 style={{
                   boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)",
-                  backgroundColor: "#17A2B8",
+                  backgroundColor: "#fff",
                   
                 }}
               >
@@ -274,7 +277,7 @@ function AdminDashBoard() {
                   className="card-header font-weight-bold"
                   style={{
                     textAlign: "center",
-                    color: "white",
+                    color: "black",
                     fontFamily: "Montserrat",
                     padding:"20px"
                   }}
@@ -311,7 +314,7 @@ function AdminDashBoard() {
                     >
                       {filteredEmployees.map((employee) => (
                         <div key={employee._id} className="list-group-item" style={{
-                          backgroundColor: "#DDDDD2",
+                          backgroundColor: "#fff",
                           border: "0.1px solid black",
                         }}>
                           <div className="d-flex justify-content"></div>
