@@ -10,7 +10,6 @@ import styles from "../openPage/openpage.module.css";
 import reg from "../../components/openPage/r5.svg";
 import g from "./g.svg"
 import companyImage from "../openPage/comp1.png"
-import "./reg.css";
 
 export default function RegisterComp() {
   const API_URL = "http://localhost:8800";
@@ -57,17 +56,17 @@ export default function RegisterComp() {
       <div
         className={styles.image_cont}
         id="empp"
-        style={{ marginRight: "30px" }}
+        style={{ marginRight: "300px" }}
       >
         <div
-          className="col-md-12 mx-auto my-auto text-left"
+          className="col-md-10 mx-auto my-auto text-left"
           style={{
             width: "100%",
-            marginLeft:"300px"
           }}
+          
         >
           <div style={{display:"flex", flexDirection:"row"}}>
-          <img src={companyImage} style={{width:"500px", height:"550px"}}/>
+          <img src={companyImage} style={{width:"500px", height:"550px", marginLeft:"-100px"}}/>
           <form
             onSubmit={handleRegister}
             style={{
@@ -75,7 +74,6 @@ export default function RegisterComp() {
               borderRadius: "20px",
               marginBottom: "100px",
               boxShadow: "10px 90px 40px 10px rgba(0,0,0,0.5)",
-              backgroundColor:"transparent"
             }}
           >
             <div style={{ textAlign: "center", margin: "auto" }}>
@@ -100,10 +98,6 @@ export default function RegisterComp() {
                   />
                 
                 </div>
-                {/* <div className="inputGroup">
-    <input type="text" required="" autocomplete="off"/>
-    <label for="name">Name</label>
-</div> */}
                 <div className="col-md-6 form-group">
                   <input
                     type="email"
@@ -157,7 +151,7 @@ export default function RegisterComp() {
                   <div style={{ marginLeft: "110px" }}>
                     <label
                       className="form-check-label"
-                      style={{ color: "black", marginLeft:"80px" }}
+                      style={{ color: "black" }}
                     >
                       <input
                         type="checkbox"
@@ -174,11 +168,11 @@ export default function RegisterComp() {
               <button
                 type="submit"
                 className="btn btn-primary"
-                style={{ marginLeft: "260px" }}
+                style={{ marginLeft: "160px" }}
               >
                 Register
               </button>
-              <div style={{ marginTop: "30px", marginRight: "200px" }}>
+              <div style={{ marginTop: "30px", marginRight: "130px" }}>
                 <p className="forgot-password text-right">
                   Already registered <Link to="/logincomp">log in?</Link>
                 </p>

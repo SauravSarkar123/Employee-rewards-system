@@ -14,9 +14,10 @@ import LoginComp from "./components/admin/LoginPage";
 import AdminDashBoard from "./components/admin/AdminDashBoard"
 import AddTask from './components/admin/AddTask'
 import EmpProfile from "./components/admin/EmpProfile"
-import RealDash from "./components/admin/RealDash.js"
-import ApproveTask from "./components/admin/ApproveTask.js";
-import Modal from "./components/admin/CreateModal.jsx";
+import CalendarView from './components/employee/EmployeeTaskView'
+import TaskManagementPage from './components/admin/Approvetasks'
+import { assignTasks } from './components/admin/assigntasks'
+
 
 
 
@@ -31,6 +32,7 @@ export default function App() {
                 <Switch>
                     <Route exact path="/" component={OpenPage}/>
                     <Route exact path="/about" component={ AboutPage } />
+                    {/* <Route exact path="/logsign" component={ LandingPage } /> */}
                     <Route path="/login" component={ LoginPage } />
                     <Route path="/register" component={ RegisterPage } />
                     <Route path="/registercompany" component={ RegisterCompany } />
@@ -41,11 +43,12 @@ export default function App() {
                     <Route path="/logincomp" component={LoginComp}/>
                     <Route path="/admindash" component={AdminDashBoard}/>
                     {/* <Route path="/viewtask" component={ViewTask}/> */}
-                    <Route path="/approvetask" component={ApproveTask}/>
+                    <Route exact path="/employeehome" component={EmployeeDashboard}/>
+                    {/* <Route path="/approvetask" component={ApproveTask}/> */}
                     <Route path="/empprofile/:_id" component={EmpProfile}/>
-                    <Route path="/real" component={RealDash}/>
+                    <Route path="/real" component={AdminDashBoard}/>
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
-                    <Route path="/modal" component={Modal}/>
+                    <Route path="/emptask" component={CalendarView}/>
                 </Switch>
             </div>
         </Router>

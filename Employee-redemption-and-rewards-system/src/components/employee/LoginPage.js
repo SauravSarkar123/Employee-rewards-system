@@ -6,8 +6,6 @@
  import { useHistory } from "react-router-dom";
  import styles from '../openPage/openpage.module.css';
  import reg from "../../components/openPage/r5.svg"
- import employeeImage from "../openPage/employees.png"
- import g from "../admin/g.svg"
 
 
 import '../../App.css'
@@ -68,20 +66,18 @@ export default function SignInPage() {
   
 
   return (
-    <div style={{ backgroundImage: `url(${g})` }}>
+    <div style={{backgroundImage: `url(${reg})`}}>
       <div style={backgroundGradient}>
       
           {/* <Loginheader12/> */}
-          <div style={{display:"flex", flexDirection:"row"}}>
-                    <img src={employeeImage} style={{width:"400px", height:"450px",marginTop:"70px", marginLeft:"150px"}}/>
           <div className={styles.image_container} id="empp">
 
     
                    
-          <form style={{margin:'auto',borderRadius:"20px",marginLeft: '250px',marginBottom:"100px", boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)', backgroundColor:"transparent"}}onSubmit={handleLogin}>
-          <h2 className={styles.txt}style={{marginTop:"20px",marginLeft:"60px",textAlign:'center'}}>Login</h2>
+          <form style={{margin:'auto',borderRadius:"50px",marginRight: '550px',marginBottom:"100px", boxShadow: '00px 100px 60px 0px rgba(0,0,0,0.5)'}}onSubmit={handleLogin}>
+          <h2 style={{textAlign:'center'}}>Login</h2>
               <p>
-                  <label style={{marginLeft:"6px"}}>Username</label><br/>
+                  <label>Username</label><br/>
                   <input type="text" title='name' value={name} onChange={e => setname(e.target.value)} required />
               </p>
               <p>
@@ -104,7 +100,6 @@ export default function SignInPage() {
 
           
      
-      </div>
       </div>
       <div>
       <Footer/>

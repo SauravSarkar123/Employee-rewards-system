@@ -1,3 +1,6 @@
+
+
+
 import React, { useState, useEffect } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useCookies } from "react-cookie";
@@ -8,14 +11,7 @@ import styles from "./dash.module.css";
 import swal from 'sweetalert';
 // import { FaBars,FaUserPlus, FaTasks, FaGift } from "react-icons/fa";
 import SidebarMenu from "./side.js";
-import {
-  FaBars,
-  FaUserPlus,
-  FaTasks,
-  FaGift,
-  FaHome,
-  FaUser,
-} from "react-icons/fa";
+import { FaBars,FaUserPlus, FaTasks, FaGift, FaHome, FaUser } from "react-icons/fa";
 
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
@@ -46,7 +42,7 @@ function AdminDashBoard() {
       .get(`${API_URL}/empdetails`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.user);
-        console.log(response.data.user);
+        console.log(employees)
       })
       .catch((error) => {
         console.log(error);
@@ -56,10 +52,9 @@ function AdminDashBoard() {
   const filteredEmployees = employees.filter((employee) => {
     console.log(employee.isOnboarded);
     return (
-      employee.isOnboarded === false &&
-      (employee.name.toLowerCase().includes(search.toLowerCase()) ||
-        employee._id.toString().includes(search))
-      // Check if employee's company name includes the search term
+       // Check if employee's company name matches tokenn's company name
+      (employee.name.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
+      employee.name.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
 
@@ -293,7 +288,7 @@ function AdminDashBoard() {
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                     />
-                    {/* <div
+                    <div
                       className={`${styles.inputGroupAppend} input-group-append`}
                     >
                       <button
@@ -302,7 +297,7 @@ function AdminDashBoard() {
                       >
                         Search
                       </button>
-                    </div> */}
+                    </div>
                   </div>
                   <div
                     className={`${styles.listGroup} list-group`}

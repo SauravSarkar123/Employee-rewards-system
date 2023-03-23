@@ -1,126 +1,145 @@
-import React, { useState } from 'react';
-import { Table, Button, Card, Row, Col } from 'react-bootstrap';
-import LogoutHeader from '../header/logoutheader';
-import Footer from '../footer/Footer';
-import { Center } from '@chakra-ui/react';
+import React from 'react';
+import { FaBell, FaUser } from 'react-icons/fa';
+// import { FaBars, FaUserPlus, FaTasks, FaGift } from "react-icons/fa";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileText } from '@fortawesome/free-solid-svg-icons'
+
+
+const Header = ({ employeeName }) => {
+    return (
+      <header style={{ backgroundColor: 'navy', padding: '30px', display: 'flex', justifyContent: 'space-between',textAlign: 'center' }}>
+        <h1 style={{  color: 'white', marginLeft: '450px' }}>Employee Dashboard</h1>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ marginRight: '10px' }}>
+            <FaUser style={{ color: 'orange' }} />
+            <span style={{ color: 'white', marginLeft: '5px' }}>{employeeName}</span>
+          </div>
+          <FaBell style={{ color: 'white' }} />
+        </div>
+      </header>
+    );
+  }
+  
+
+// const Sidebar = () => {
+//   return (
+//     <aside style={{ backgroundColor: 'bluegrey' }}>
+//       <div style={{ backgroundColor: 'bluegrey', color: 'black' }}>Employee Profile</div>
+//       {/* <h2 style={{ textAlign: 'center', color: 'black' }}>Dashboard</h2> */}
+//       {/* <div style={{ backgroundImage: 'url("path/to/image")' }}>Task</div> */}
+//     </aside>
+//   );
+// }
+
+const Card = (props) => {
+  return (
+    <div style={{ 
+      backgroundColor: props.style.backgroundColor, 
+      color: 'white', 
+      padding: '40px', 
+      fontSize: '20px', 
+      display: 'flex', 
+      flexDirection: 'row-reverse', // change flexDirection to row-reverse
+      justifyContent: 'space-between', // add justifyContent
+      alignItems: 'center',
+      borderRadius: '10px', 
+      boxShadow: '0px 2px 6px rgba(0, 0, 0, 5.0)', 
+      margin: '20px', 
+      width: '500px'
+    }}>
+      <FontAwesomeIcon icon={faFileText} size="4x" style={{ marginBottom: '20px', marginLeft: '20px', opacity: '0.75' }} />
+      <div>
+        <h3 style={{ marginBottom: '10px', fontSize:'60px' }}>{props.count}</h3>
+        <p>{props.title}</p>
+      </div>
+    </div>
+  );
+}
+
+
+
+  
+  const MainBody = () => {
+    return (
+      <main style={{ display: 'flex', justifyContent: 'center', padding: '30px', alignItems: 'center', fontStyle: 'kanit' }}>
+        <Card style={{ 
+  backgroundColor: '#17A2B8', 
+  color: '#fff', 
+  fontWeight: 'bold', 
+  textAlign: 'center',
+  borderRadius: '5px',
+  padding: '20px',
+  boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)',
+  transition: 'box-shadow 0.3s ease-in-out',
+  cursor: 'pointer'
+}} 
+onMouseEnter={(e) => {e.target.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'}}
+onMouseLeave={(e) => {e.target.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.3)'}}
+title="New Task" 
+count="10" />
+
+<Card style={{ 
+  backgroundColor: '#32CD32', 
+  color: '#fff', 
+  fontWeight: 'bold', 
+  textAlign: 'center',
+  borderRadius: '5px',
+  padding: '20px',
+  boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)',
+  transition: 'box-shadow 0.3s ease-in-out',
+  cursor: 'pointer'
+}} 
+onMouseEnter={(e) => {e.target.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'}}
+onMouseLeave={(e) => {e.target.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.3)'}}
+title="In Progress" 
+count="10" />
+
+<Card style={{ 
+  backgroundColor: 'orange', 
+  color: '#fff', 
+  fontWeight: 'bold', 
+  textAlign: 'center',
+  borderRadius: '5px',
+  padding: '20px',
+  boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)',
+  transition: 'box-shadow 0.3s ease-in-out',
+  cursor: 'pointer'
+}} 
+onMouseEnter={(e) => {e.target.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'}}
+onMouseLeave={(e) => {e.target.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.3)'}}
+title="Completed" 
+count="20" />
+
+<Card style={{ 
+  backgroundColor: '#d21f3c', 
+  color: '#fff', 
+  fontWeight: 'bold', 
+  textAlign: 'center',
+  borderRadius: '5px',
+  padding: '20px',
+  boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)',
+  transition: 'box-shadow 0.3s ease-in-out',
+  cursor: 'pointer'
+}} 
+onMouseEnter={(e) => {e.target.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'}}
+onMouseLeave={(e) => {e.target.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.3)'}}
+title="All Tasks" 
+count="30" />
+
+      </main>
+    );
+  }
+  
+  
 
 const EmployeeDashboard = () => {
-const [showTokenTable, setShowTokenTable] = useState(false);
-const [showRewardsTable, setShowRewardsTable] = useState(false);
-
-const toggleTokenTable = () => setShowTokenTable(!showTokenTable);
-const toggleRewardsTable = () => setShowRewardsTable(!showRewardsTable);
-
-const tokenData = [
-{
-companyName: "SecureKloud",
-rewardDesc: "Vue Certification",
-date: "02/04/20",
-rating: "Excellent",
-tokensEarned: 40
-},
-{
-companyName: "Zoho",
-rewardDesc: "React Certification",
-date: "02/02/22",
-rating: "Good",
-tokensEarned: 20
-},
-{
-companyName: "Prodapt",
-rewardDesc: "Java Certification",
-date: "12/9/2022",
-rating: "Excellent",
-tokensEarned: 40
-},
-{
-companyName: "Deloitte",
-rewardDesc: "Python Certification",
-date: "23/02/2023",
-rating: "Average",
-tokensEarned: 10
-}
-];
-
-const totalTokens = tokenData.reduce((total, token) => total + token.tokensEarned, 0);
-
-return (
-<>
-<LogoutHeader />
-<div className="container my-5">
-<Row>
-<Col md={3}>
-<Card style={{ padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}>
-<a href= "/userprofile"> <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmqSWdlFU8Z2oiMcidHb4ZkdSRm2nnaw32w&usqp=CAU" /> </a>
-<Card.Body>
-<Card.Title style={{ fontSize: "1.5em", marginBottom: "10px" }}>John Doe</Card.Title>
-<Card.Text style={{ marginBottom: "5px" }}>Phone: +1 123-456-7890</Card.Text>
-<Card.Text style={{ marginBottom: "10px" }}>Email: john.doe@example.com</Card.Text>
-<Table striped bordered hover>
-<thead>
-<tr>
-<th>Company</th>
-<th>Date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ABC Corporation</td>
-<td>01/01/21</td>
-</tr>
-<tr>
-<td>XYZ Inc.</td>
-<td>05/15/22</td>
-</tr>
-</tbody>
-</Table>
-</Card.Body>
-</Card>
-
-</Col>
-<Col md={9}>
-<Card style={{ padding: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}>
-<Card.Body>
-<Center>
-<h2 style={{ fontSize: "2em", marginBottom: "20px" }}>My Tokens</h2>
-</Center>
-{showTokenTable &&
-<Table striped bordered hover>
-<thead>
-<tr>
-<th>Company</th>
-<th>Reward Description</th>
-<th>Date</th>
-<th>Rating</th>
-<th>Tokens Earned</th>
-</tr>
-</thead>
-<tbody>
-{tokenData.map((token, index) => (
-<tr key={index}>
-<td>{token.companyName}</td>
-<td>{token.rewardDesc}</td>
-<td>{token.date}</td>
-<td>{token.rating}</td>
-<td>{token.tokensEarned}</td>
-</tr>
-))}
-</tbody>
-</Table>
+  return (
+    <div>
+      <Header />
+      {/* <Sidebar /> */}
+      <MainBody />
+    </div>
+  );
 }
 
-<Center><Button variant="primary" className="mt-4" onClick={toggleTokenTable}>View Tokens History</Button> </Center>
-
-<Center>
-<h4 style={{ marginTop: "20px" }}>Total Tokens Earned: {totalTokens}</h4>
-</Center>
-</Card.Body>
-</Card>
-</Col>
-</Row>
-</div>
-<Footer />
-</>
-);
-};
 export default EmployeeDashboard;
