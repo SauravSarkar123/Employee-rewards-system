@@ -52,7 +52,7 @@ export default function App() {
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
                     <Route path="/emptask" component={CalendarView}/>
                     <Route path="/approvetask" component={TaskManagementPage}/>
-                    <Route path="/assigntask" component={AssignTask}/>
+                    <Route path="/assigntask/:Name" component={AssignTask}/>
                     
                 </Switch>
             </div>

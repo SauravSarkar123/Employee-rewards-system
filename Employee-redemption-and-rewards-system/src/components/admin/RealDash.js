@@ -18,6 +18,7 @@ import SidebarMenu from "./side.js";
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies([
     "access_token",
     "name",
@@ -49,15 +50,50 @@ function AdminDashBoard() {
       .catch((error) => {
         console.log(error);
       });
+    // }, []);
+
+    axios
+      .get(`${API_URL}/gettasks`, { withCredentials: true })
+      .then((response) => {
+        setTasks(response.data.tasks);
+        console.log(response.data.tasks);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
   console.log(employees);
   const filteredEmployees = employees.filter((employee) => {
     console.log(employee.isOnboarded);
     return (
-     ( employee.comName === tokenn.name &&
-      employee.Onboard === false ) && // Check if employee's company name matches tokenn's company name
+      employee.comName === tokenn.name &&
+      employee.Onboard === false && // Check if employee's company name matches tokenn's company name
       (employee.Name.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
         employee.comId.toString().includes(search)) // Check if employee's company name includes the search term
+    );
+  });
+
+  // const viewTask = async () => {
+  //   const response = await axios.get(
+  //     `${API_URL}/gettasks`,
+  //     { withCredentials: true }
+  //   )
+  //   .then((response) => {
+  //     setEmployees(response.data.details);
+  //     console.log(response.data.details);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // }, []);
+
+  const filteredTasks = tasks.filter((task) => {
+    console.log(task.isOnboarded);
+    return (
+      task.companyName === tokenn.name &&
+      // Check if employee's company name matches tokenn's company name
+      (task.task.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
+        task.empName.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
 
@@ -260,7 +296,7 @@ function AdminDashBoard() {
           </div>
           <div className="row mt-">
             <div
-              className="col-md-8 "
+              className="col-md-10 "
               style={{ marginTop: "50px", marginLeft: "-290px" }}
             >
               <div
@@ -311,7 +347,6 @@ function AdminDashBoard() {
                           style={{
                             backgroundColor: "#0000",
                             border: "0.1px solid black",
-                            
                           }}
                         >
                           <div className="d-flex justify-content"></div>
@@ -328,7 +363,9 @@ function AdminDashBoard() {
                               </h6>
                               <small>{employee.comId}</small>
                             </div>
-                            <Link to={`/assigntask/${employee.user}/${tokenn.name}`}>
+                            <Link  
+                              to={`/assigntask/${employee.Name}/${tokenn.name}`}
+                            >
                               <button
                                 className="btn btn-primary"
                                 style={{
@@ -346,126 +383,105 @@ function AdminDashBoard() {
                   </div>
                 </div>
               </div>
-              
             </div>
-            {/* <div
-                className="pendingTasks"
-                style={{
-                  height: "429px",
-                  width: "500px",
-                  
-                  borderRadius: "20px",
-                  marginTop:"50px",
-                  marginLeft:"30px",
-                  boxShadow: "0px 0px 10px 15px rgba(0,0,0,0.3)"
-                }}
-              > */}
-                <div
-              className="col-md-8 "
-              style={{ marginTop: "50px", marginLeft: "-0px", width:"590px", height:"429px"}}
+            <div
+            className="col-md-8"
+            style={{
+              marginTop: "50px",
+              marginLeft: "-300px",
+              width: "1290px",
+              height: "629px",
+            }}
+          >
+            <div
+              className="card"
+              style={{
+                boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
+                // backgroundColor: "#17A2B8",
+                marginBottom: "40px",
+                width:"845px"
+              }}
             >
-              <div
-                className="card"
+              <h5
+                className="card-header font-weight-bold"
                 style={{
-                  boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
+                  textAlign: "center",
+                  fontFamily: "Montserrat",
+                  padding: "20px",
                   // backgroundColor: "#17A2B8",
-                  marginBottom: "40px",
+                  color: "black",
                 }}
               >
-                <h5
-                  className="card-header font-weight-bold"
-                  style={{
-                    textAlign: "center",
-                    fontFamily: "Montserrat",
-                    padding: "20px",
-                    // backgroundColor: "#17A2B8",
-                    color: "black",
-                  }}
-                >
-                  Pending Tasks
-                </h5>
-                <div className={`${styles.cardBody}`}>
-                  <div className={`${styles.inputGroup} mb-3`}>
-                    <input
-                      type="text"
-                      className={`${styles.formControl} form-control`}
-                      placeholder="Search by Name"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <div
-                      className={`${styles.inputGroupAppend} input-group-append`}
-                    ></div>
-                  </div>
+                Pending Tasks
+              </h5>
+              <div className={`${styles.cardBody}`}>
+                <div className={`${styles.inputGroup} mb-3`}>
+                  <input
+                    type="text"
+                    className={`${styles.formControl} form-control`}
+                    placeholder="Search by Name"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
                   <div
-                    className={`${styles.listGroup} list-group`}
-                    id="employee-list"
+                    className={`${styles.inputGroupAppend} input-group-append`}
+                  ></div>
+                </div>
+                <div
+                  className={`${styles.listGroup} list-group`}
+                  id="employee-list"
+                >
+                  <div
+                    className="list-group"
+                    style={{ maxHeight: "1350px", overflowY: "auto" }}
                   >
-                    <div
-                      className="list-group"
-                      style={{ maxHeight: "1350px", overflowY: "auto" }}
-                    >
-                      {filteredEmployees.map((employee) => (
-                        <div
-                          key={employee.comId}
-                          className="list-group-item"
-                          style={{
-                            // backgroundColor: "#DDDDD2",
-                            border: "0.1px solid black",
-                          }}
-                        >
-                          <div className="d-flex justify-content"></div>
-                          <div className="d-flex justify-content-between align-items-center">
-                            <div>
-                              <h6
-                                className="font-weight-bold mb-0"
-                                style={{
-                                  fontFamily: "Montserrat",
-                                  marginTop: "20px",
-                                }}
-                              >
-                                {employee.Name}
-                              </h6>
-                              <small>{employee.comId}</small>
-                            </div>
-                            <Link to={`/empprofile/${employee.user}`}>
-                              <button
-                                className="btn btn-primary"
-                                style={{
-                                  fontFamily: "Montserrat",
-                                  marginTop: "7px",
-                                }}
-                              >
-                                View Tasks
-                              </button>
-                            </Link>
+                    {filteredTasks.map((task) => (
+                      <div
+                        key={task.task}
+                        className="list-group-item"
+                        style={{
+                          // backgroundColor: "#DDDDD2",
+                          border: "0.1px solid black",
+                        }}
+                      >
+                        <div className="d-flex justify-content"></div>
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div>
+                            <h6
+                              className="font-weight-bold mb-0"
+                              style={{
+                                fontFamily: "Montserrat",
+                                marginTop: "20px",
+                              }}
+                            >
+                              {task.empName}
+                            </h6>
+                            <small>{task.task}</small>
                           </div>
+                          <Link>
+                            <button
+                              className="btn btn-primary"
+                              style={{
+                                fontFamily: "Montserrat",
+                                marginTop: "20px",
+                              }}
+                            >
+                              View Tasks
+                            </button>
+                          </Link>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-              
-            {/* </div> */}
-                {/* <div style={{height:"50px", width:"470px", border:"solid black", marginTop:"30px", textAlign:"center"}}>Pending Tasks</div> */}
-                {/* <div class="container">
-
-    <div class="col" style={{border:"solid black"}}>
-      1 of 3
-    </div>
-    <div class="col-6" style={{border:"solid black"}}>
-      2 of 3 (wider)
-    </div>
-    </div> */}
-                
-              </div>
+            </div>
           </div>
+          </div>
+
           
         </div>
-        
       </div>
-      
     </div>
   );
 }

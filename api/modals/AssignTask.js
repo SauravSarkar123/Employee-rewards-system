@@ -8,7 +8,7 @@ const TaskSchema = new mongoose.Schema({
         type: String,
         ref : CompanyReg
     },
-    empId:{
+    empName:{
         type : String,
          ref : User
     },

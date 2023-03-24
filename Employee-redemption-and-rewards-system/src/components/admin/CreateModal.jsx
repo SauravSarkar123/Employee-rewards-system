@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SidebarMenu from "./side";
 
 const CreateModal = (props) => {
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -14,7 +15,7 @@ const CreateModal = (props) => {
 
   const API_URL = "http://localhost:8800";
 
-  const employeeId = props.match.params._id;
+  const employeeName = props.match.params.Name;
   const compName = tokenn.name;
   const [task, setTask] = useState(" ");
   const [taskName, setTaskName] = useState("");
@@ -57,18 +58,16 @@ const CreateModal = (props) => {
   // };
  
   const handleAddModel = async (event) => {
-    // setComName(compName);
-    // setEmpId(employeeId);
 
     event.preventDefault();
     
 
     try {
-     
-      const response = await axios.post(`${API_URL}/assigntask/${employeeId}/${compName}`,{compName, employeeId, task, taskName,taskDescription,deadline,rewards}, { withCredentials: true })
+      console.log(compName, employeeName)
+      const response = await axios.post(`${API_URL}/assigntask/${employeeName}/${compName}`, { task, taskName, taskDescription, deadline, rewards }, { withCredentials: true })
       
       console.log(response.data);
-      console.log(employeeId)
+      console.log(employeeName)
       console.log(compName)
       
     } catch (error) {
@@ -80,19 +79,53 @@ const CreateModal = (props) => {
 
   return (
     <div className="modal-container" >
-      <div className="Add-list" style={{ display: 'block' }}  >
-        <br />
-        <h2 className="heading" style={{ fontFamily: "Axiforma" }}>
-          ASSIGN TASK
-        </h2>
-        <br />
+      <header style={{ backgroundColor: '#F2F2F2', padding: '1.5rem 0',height:"100px" }}>
+      <div style={{position:"relative",bottom:"20px",left:"20px"}}>
+      <SidebarMenu /> </div>
+  <h2
+    className="heading"
+    style={{ 
+      fontFamily: 'Axiforma', 
+      fontSize: '2.5rem', 
+      marginBottom: '1.5rem',
+      color: '#333333',
+      textAlign: 'center',
+      textTransform: 'uppercase',
+      position:"relative",
+      bottom:"60px"
+
+    }}>
+    ASSIGN TASK
+  </h2>
+</header>
+<div
+    className="Add-list"
+    style={{
+      backgroundColor: '#f5f5f5',
+      color: '#222',
+      margin: '0 auto',
+      width: '1000px',
+      textAlign: 'center',
+      boxShadow: '0 24px 500px #26214a1a',
+      borderRadius: '12px',
+      padding: '2rem',
+      marginLeft:"250px"
+    }}
+  >
         <form className="modal-form" >
-          <label className="modlabel" htmlFor="text">
+          <label className="modlabel" htmlFor="text" >
             Task
           </label>
           <>
-          <select className="inputfield" value={task} onChange={handleTasks}>
-  <option value="">Select product</option>
+          <select className="inputfield" value={task} onChange={handleTasks} style={{
+              backgroundColor: '#eee',
+              borderRadius: '10px',
+              padding: '1rem',
+              border: 'none',
+              marginBottom: '1rem',
+              width: '100%'
+            }}>
+  <option value="" style={{textDecoration:"line-through", color:"grey"}}>Select Task</option>
   <option value="Frontend development">Frontend development</option>
   <option value="Frontend Design">Frontend Design</option>
   <option value="Backend API Development">Backend API Development</option>
@@ -112,6 +145,14 @@ const CreateModal = (props) => {
             placeholder="Name"
             type="text"
             onChange={handleTaskName}
+            style={{
+              backgroundColor: '#eee',
+              borderRadius: '10px',
+              padding: '1rem',
+              border: 'none',
+              marginBottom: '1rem',
+              width: '100%'
+            }}
           />
           <label className="modlabel" htmlFor="text">
             Task Description
@@ -123,6 +164,14 @@ const CreateModal = (props) => {
             placeholder="Description"
             type="text"
             onChange={handleTaskDescription}
+            style={{
+              backgroundColor: '#eee',
+              borderRadius: '10px',
+              padding: '1rem',
+              border: 'none',
+              marginBottom: '1rem',
+              width: '100%'
+            }}
           />
           <label className="modlabel" htmlFor="text">
             Deadline
@@ -134,13 +183,28 @@ const CreateModal = (props) => {
             type="date"
             // value={deadline}
             onChange={handleDeadline}
+            style={{
+              backgroundColor: '#eee',
+              borderRadius: '10px',
+              padding: '1rem',
+              border: 'none',
+              marginBottom: '1rem',
+              width: '100%'
+            }}
           />
           <br />
           <label className="modlabel" htmlFor="text">
             Rewards
           </label>
           <>
-          <select className="inputfield" value={rewards} onChange={handleRewards}>
+          <select className="inputfield" value={rewards} onChange={handleRewards} style={{
+              backgroundColor: '#eee',
+              borderRadius: '10px',
+              padding: '1rem',
+              border: 'none',
+              marginBottom: '1rem',
+              width: '100%'
+            }}>
               <option value="">Select Rewards</option>
               <option value="10"> 10 </option>
               <option value="20"> 20 </option>
@@ -160,13 +224,14 @@ const CreateModal = (props) => {
           </Link>
           <br />
         </form>
-      </div>
+     </div>
       <br />
       {/* <div className="head2" style={{ fontFamily: "Axiforma" }}>
         Copyright &copy; 2023 | Asset Warrenty
       </div>
       <br /> */}
     </div>
+  
   );
 };
 

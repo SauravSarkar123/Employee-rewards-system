@@ -147,11 +147,11 @@ const SidebarMenu = () => {
               <IoMdAddCircle className="icon" id="fonnn" /> Onboard Employees
             </a>
           </li>
-          <li id="fonnn">
-            <a href="/about">
+          {/* <li id="fonnn">
+            <a href="/assigntask/:employeeId/:compName">
               <BiTask className="icon" id="fonnn" /> Assign Tasks
             </a>
-          </li>
+          </li> */}
           <li id="fonnn">
             <a href="/approvetask">
               <FaThumbsUp className="icon" id="fonnn" /> Approve Tasks
