@@ -256,16 +256,21 @@ function AdminDashBoard() {
               maxWidth="xs"
               fullWidth
             >
-              <div style={{ position: "relative" }}>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "10px",
-                    right: "10px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setOpen(false)}
-                >
+              
+              <div style={{ 
+    padding: '20px', 
+    position: 'relative', 
+    backgroundColor: '#fff', 
+    borderRadius: '5px'
+  }}>
+    <div style={{ 
+      position: 'absolute', 
+      top: '10px', 
+      right: '10px', 
+      cursor: 'pointer'
+    }}>
+      <span onClick={() => setOpen(false)}>Close</span>
+                
                   {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -452,7 +457,7 @@ function AdminDashBoard() {
                               </h6>
                               <small>{employee.comId}</small>
                             </div>
-                            <Link  
+                            <Link
                               to={`/assigntask/${employee.Name}/${tokenn.name}`}
                             >
                               <button
@@ -574,4 +579,9 @@ function AdminDashBoard() {
     </div>
   );
 }
+
 export default AdminDashBoard;
+
+
+
+
