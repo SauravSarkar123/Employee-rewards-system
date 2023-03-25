@@ -13,6 +13,7 @@ import {
   FaHome,
   FaUser,
 } from "react-icons/fa";
+import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import SidebarMenu from "./side.js";
 
 function AdminDashBoard() {
@@ -23,18 +24,27 @@ function AdminDashBoard() {
     "access_token",
     "name",
   ]);
-  const [showMenu, setShowMenu] = useState(false);
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
-  const handleLinkClick = () => {
-    setShowMenu(false);
-    toggleMenu();
-    console.log(showMenu);
-  };
 
+  const onetask = async() =>{
+    const empName=tasks.empName
+    console.log(empName)
+    await axios
+      .get(`${API_URL}/gettask/${empName}`, { withCredentials: true })
+      .then((response) => {
+        setEmployees(response.data.task);
+        console.log(response.data.task);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   const tokenn = jwt_decode(cookies.access_token);
   const API_URL = "http://localhost:8800";
+  // const [showPopup, setShowPopup] = useState(false);
+  const [open, setOpen] = useState(false);
+  const togglePopup = () => {
+    setOpen(true);
+  };
 
   const handleLogout = () => {
     removeCookie("access_token");
@@ -57,11 +67,15 @@ function AdminDashBoard() {
       .then((response) => {
         setTasks(response.data.tasks);
         console.log(response.data.tasks);
+       
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+
+ 
   console.log(employees);
   const filteredEmployees = employees.filter((employee) => {
     console.log(employee.isOnboarded);
@@ -73,22 +87,9 @@ function AdminDashBoard() {
     );
   });
 
-  // const viewTask = async () => {
-  //   const response = await axios.get(
-  //     `${API_URL}/gettasks`,
-  //     { withCredentials: true }
-  //   )
-  //   .then((response) => {
-  //     setEmployees(response.data.details);
-  //     console.log(response.data.details);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }, []);
 
   const filteredTasks = tasks.filter((task) => {
-    console.log(task.isOnboarded);
+    console.log(tasks.task)
     return (
       task.companyName === tokenn.name &&
       // Check if employee's company name matches tokenn's company name
@@ -96,6 +97,8 @@ function AdminDashBoard() {
         task.empName.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
+
+  console.log(tasks.task)
 
   return (
     <div>
@@ -106,6 +109,7 @@ function AdminDashBoard() {
             boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
           }}
         > */}
+
         <div className="col-md-3">
           <div style={{ marginTop: "40px", marginLeft: "20px" }}>
             <SidebarMenu />
@@ -251,6 +255,101 @@ function AdminDashBoard() {
                 </div>
               </div>
             </div>
+
+            <Dialog
+              open={open}
+              onClose={() => setOpen(false)}
+              maxWidth="xs"
+              fullWidth
+            >
+              <div style={{ position: "relative" }}>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setOpen(false)}
+                >
+                </div>
+                <div style={{ padding: "20px", textAlign: "center" }}>
+                  <div
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      marginBottom: "20px",
+                    }}
+                  >{tasks.task}
+                  
+                    {/* <input
+            className="inputfield"
+            id="model_id"
+            name="task name"
+            placeholder="Name"
+            type="text"
+            style={{
+              backgroundColor: '#eee',
+              borderRadius: '10px',
+              padding: '1rem',
+              border: 'none',
+              marginBottom: '1rem',
+              width: '100%'
+            }}
+          > </input> */}
+                  </div>
+                  <div style={{ fontSize: "16px", marginBottom: "20px" }}>
+                    Try to do the register page and login page and also the dashboard 
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <div style={{ fontSize: "14px", marginRight: "10px" }}>
+                      Deadline:
+                    </div>
+                    <div style={{ fontSize: "14px" }}>March 31, 2023</div>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <button
+                      style={{
+                        padding: "10px 20px",
+                        backgroundColor: "#f44336",
+                        color: "#fff",
+                        borderRadius: "4px",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Reward
+                    </button>
+                    <button
+                      style={{
+                        padding: "10px 20px",
+                        backgroundColor: "#4CAF50",
+                        color: "#fff",
+                        borderRadius: "4px",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Accept
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Dialog>
+
             <div className="col-md-3">
               <div
                 className="card"
@@ -363,11 +462,12 @@ function AdminDashBoard() {
                               </h6>
                               <small>{employee.comId}</small>
                             </div>
-                            <Link 
+                            <Link
                               to={`/assigntask/${employee.Name}/${tokenn.name}`}
                             >
                               <button
                                 className="btn btn-primary"
+                                onClick={togglePopup}
                                 style={{
                                   fontFamily: "Montserrat",
                                   marginTop: "7px",
@@ -385,101 +485,100 @@ function AdminDashBoard() {
               </div>
             </div>
             <div
-            className="col-md-8"
-            style={{
-              marginTop: "50px",
-              marginLeft: "-300px",
-              width: "1290px",
-              height: "629px",
-            }}
-          >
-            <div
-              className="card"
+              className="col-md-8"
               style={{
-                boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
-                // backgroundColor: "#17A2B8",
-                marginBottom: "40px",
-                width:"845px"
+                marginTop: "50px",
+                marginLeft: "-300px",
+                width: "1290px",
+                height: "629px",
               }}
             >
-              <h5
-                className="card-header font-weight-bold"
+              <div
+                className="card"
                 style={{
-                  textAlign: "center",
-                  fontFamily: "Montserrat",
-                  padding: "20px",
+                  boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
                   // backgroundColor: "#17A2B8",
-                  color: "black",
+                  marginBottom: "40px",
+                  width: "845px",
                 }}
               >
-                Pending Tasks
-              </h5>
-              <div className={`${styles.cardBody}`}>
-                <div className={`${styles.inputGroup} mb-3`}>
-                  <input
-                    type="text"
-                    className={`${styles.formControl} form-control`}
-                    placeholder="Search by Name"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  <div
-                    className={`${styles.inputGroupAppend} input-group-append`}
-                  ></div>
-                </div>
-                <div
-                  className={`${styles.listGroup} list-group`}
-                  id="employee-list"
+                <h5
+                  className="card-header font-weight-bold"
+                  style={{
+                    textAlign: "center",
+                    fontFamily: "Montserrat",
+                    padding: "20px",
+                    // backgroundColor: "#17A2B8",
+                    color: "black",
+                  }}
                 >
+                  Pending Tasks
+                </h5>
+                <div className={`${styles.cardBody}`}>
+                  <div className={`${styles.inputGroup} mb-3`}>
+                    <input
+                      type="text"
+                      className={`${styles.formControl} form-control`}
+                      placeholder="Search by Name"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <div
+                      className={`${styles.inputGroupAppend} input-group-append`}
+                    ></div>
+                  </div>
                   <div
-                    className="list-group"
-                    style={{ maxHeight: "1350px", overflowY: "auto" }}
+                    className={`${styles.listGroup} list-group`}
+                    id="employee-list"
                   >
-                    {filteredTasks.map((task) => (
-                      <div
-                        key={task.task}
-                        className="list-group-item"
-                        style={{
-                          // backgroundColor: "#DDDDD2",
-                          border: "0.1px solid black",
-                        }}
-                      >
-                        <div className="d-flex justify-content"></div>
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6
-                              className="font-weight-bold mb-0"
-                              style={{
-                                fontFamily: "Montserrat",
-                                marginTop: "20px",
-                              }}
-                            >
-                              {task.empName}
-                            </h6>
-                            <small>{task.task}</small>
+                    <div
+                      className="list-group"
+                      style={{ maxHeight: "1350px", overflowY: "auto" }}
+                    >
+                      {filteredTasks.map((task) => (
+                        <div
+                          key={task.task}
+                          className="list-group-item"
+                          style={{
+                            // backgroundColor: "#DDDDD2",
+                            border: "0.1px solid black",
+                          }}
+                        >
+                          <div className="d-flex justify-content"></div>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h6
+                                className="font-weight-bold mb-0"
+                                style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "20px",
+                                }}
+                              >
+                                {task.empName}
+                              </h6>
+                              <small>{task.task}</small>
+                            </div>
+                            <Link>
+                              <button
+                                className="btn btn-primary"
+                                style={{
+                                  fontFamily: "Montserrat",
+                                  marginTop: "20px",
+                                }}
+                                //  onClick={onetask}
+                              >
+                                View Tasks
+                              </button>
+                            </Link>
                           </div>
-                          <Link>
-                            <button
-                              className="btn btn-primary"
-                              style={{
-                                fontFamily: "Montserrat",
-                                marginTop: "20px",
-                              }}
-                            >
-                              View Tasks
-                            </button>
-                          </Link>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
-
-          
         </div>
       </div>
     </div>
