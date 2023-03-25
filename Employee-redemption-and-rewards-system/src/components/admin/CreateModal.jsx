@@ -212,7 +212,7 @@ const CreateModal = (props) => {
              
             </select>
           </>
-          <Link to="/real">
+          <Link>
           <button
             id="singlebutton"
             name="singlebutton"
