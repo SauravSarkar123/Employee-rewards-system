@@ -1,9 +1,5 @@
+
 import React, { useState, useEffect } from "react";
-import SidebarMenu from "./side";
-import jwt_decode from "jwt-decode";
-import { useCookies } from "react-cookie";
-import { IoIosArrowDropdownCircle } from "react-icons/io";
-import {AiOutlineUserAdd} from "react-icons/ai"
 import {
   Button,
   Card,
@@ -16,17 +12,22 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import SidebarMenu from "./side";
+import { AccountCircle, GitHub, Language, Twitter } from "@material-ui/icons";
+import {AiOutlineUserAdd} from "react-icons/ai"
+import jwt_decode from "jwt-decode";
+import { useCookies } from "react-cookie";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+import Footercr from "../footer/footercr";
+import LogoutHeader from "../header/logoutheader";
 const ProfilePage = (props) => {
   const [progressWidth, setProgressWidth] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "access_token",
-    "name",
-  ]);
-  const [boxVisible, setBoxVisible] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token", "name"]);
+  // const [comName, setComName] = useState(" ");
+  // const [comId, setComId] = useState(" ");
   const [employee, setEmployee] = useState([]);
   const API_URL = "http://localhost:8800";
   const employeeId = props.match.params._id;
@@ -35,49 +36,123 @@ const ProfilePage = (props) => {
   const employeeMobile = employee.mobile;
   const employeeEmail = employee.email;
   const employeeWallet = employee.wallet;
-
+  console.log("aksjdakjsdkasdjasd", employeeMobile)
+  // console.log("sdfgjhfsdghfdsghd",respo.data);
+    
+  // console.log("comName:",comName);
+  // console.log("comId:",comId);
+  console.log("employee id:", employeeId);
+  console.log("name: " , employeeName);
+  console.log("address: " , employeeAddress);
+  console.log("email: " , employeeEmail);
+  console.log("mobile: " , employeeMobile);
+  console.log("wallet: " , employeeWallet);
+  // console.log(response.data);
+  
   const tokenn = jwt_decode(cookies.access_token);
   const comName = tokenn.name;
-  const comId = tokenn.name.substr(0, 3).toUpperCase();
-
-  const handlePursuingClick = () => {
-    if (progressWidth < 100) {
-      setProgressWidth(progressWidth + 10);
-    }
-  };
-  // const handleLogout = () => {
-  //   removeCookie("access_token");
-  // };
-
-  const addEmployee = async () => {
+  const comId = tokenn.name.substr(0, 3).toUpperCase() + employeeId.substr(-4)
+  
+  const addEmployee = async() =>{
     const response = await axios.post(
       `${API_URL}/addemployee/${employeeId}/${employeeName}/${employeeAddress}/${employeeMobile}/${employeeEmail}/${employeeWallet}`,
       {
         comName,
-        comId,
+        comId
       },
       { withCredentials: true }
     );
-    // const uid = async(comName, employeeMobile) => {
-    //   const companyCode = comName.substr(0, 3).toUpperCase();
-    //   const mobileNum = employeeMobile.toString();
-    //   const lastFourDigits = mobileNum.substr(mobileNum.length - 4);
-    //   return `${companyCode}-${lastFourDigits}`;
-    // }
-    // const comId = uid(comName, employeeMobile);
-    console.log("comName:", comName);
-    console.log("comId:", comId);
-    console.log("employee id:", employeeId);
-    console.log("name: ", employeeName);
-    console.log("address: ", employeeAddress);
-    console.log("email: ", employeeEmail);
-    console.log("mobile: ", employeeMobile);
-    console.log("wallet: ", employeeWallet);
-    console.log(response.data);
-  };
-  // const handleLogout = () => {
-  //   removeCookie('access_token');
-  // };
+
+    const respo = await axios.get(
+      `${API_URL}/onboard/${employeeId}`,{withCredentials:true}
+
+    )
+    console.log("asasdasdasdasdsaasdasssssssssssss",respo);
+
+
+    
+
+  
+  }// import React, { useState, useEffect } from "react";
+// 
+// import jwt_decode from "jwt-decode";
+// import { useCookies } from "react-cookie";
+// import { IoIosArrowDropdownCircle } from "react-icons/io";
+// 
+// import {
+//   Button,
+//   Card,
+//   CardActions,
+//   CardContent,
+//   Grid,
+//   LinearProgress,
+//   List,
+//   ListItem,
+//   ListItemIcon,
+//   ListItemText,
+//   Typography,
+
+// } from "@material-ui/core";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// const ProfilePage = (props) => {
+//   const [progressWidth, setProgressWidth] = useState(0);
+//   const [cookies, setCookie, removeCookie] = useCookies([
+//     "access_token",
+//     "name",
+//   ]);
+//   const [boxVisible, setBoxVisible] = useState(false);
+//   const [employee, setEmployee] = useState([]);
+//   const API_URL = "http://localhost:8800";
+//   const employeeId = props.match.params._id;
+//   const employeeName = employee.name;
+//   const employeeAddress = employee.address;
+//   const employeeMobile = employee.mobile;
+//   const employeeEmail = employee.email;
+//   const employeeWallet = employee.wallet;
+
+//   const tokenn = jwt_decode(cookies.access_token);
+//   const comName = tokenn.name;
+//   const comId = tokenn.name.substr(0, 3).toUpperCase();
+
+//   const handlePursuingClick = () => {
+//     if (progressWidth < 100) {
+//       setProgressWidth(progressWidth + 10);
+//     }
+//   };
+//   // const handleLogout = () => {
+//   //   removeCookie("access_token");
+//   // };
+
+//   const addEmployee = async () => {
+//     const response = await axios.post(
+//       `${API_URL}/addemployee/${employeeId}/${employeeName}/${employeeAddress}/${employeeMobile}/${employeeEmail}/${employeeWallet}`,
+//       {
+//         comName,
+//         comId,
+//       },
+//       { withCredentials: true }
+//     );
+//     // const uid = async(comName, employeeMobile) => {
+//     //   const companyCode = comName.substr(0, 3).toUpperCase();
+//     //   const mobileNum = employeeMobile.toString();
+//     //   const lastFourDigits = mobileNum.substr(mobileNum.length - 4);
+//     //   return `${companyCode}-${lastFourDigits}`;
+//     // }
+//     // const comId = uid(comName, employeeMobile);
+//     console.log("comName:", comName);
+//     console.log("comId:", comId);
+//     console.log("employee id:", employeeId);
+//     console.log("name: ", employeeName);
+//     console.log("address: ", employeeAddress);
+//     console.log("email: ", employeeEmail);
+//     console.log("mobile: ", employeeMobile);
+//     console.log("wallet: ", employeeWallet);
+//     console.log(response.data);
+//   };
+//   // const handleLogout = () => {
+//   //   removeCookie('access_token');
+//   // };
 
   useEffect(() => {
     axios
