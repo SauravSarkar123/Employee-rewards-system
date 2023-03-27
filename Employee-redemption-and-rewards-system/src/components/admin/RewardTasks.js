@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import './task.css'
 
-const TaskManagementPage = () => {
+const RewardTasks = (props) => {
+
+  const empName = props.match.params.empName;
+  const reward = props.match.params.reward;
+  const deadline = props.match.params.deadline;
+  const task = props.match.params.task;
   const [projects, setProjects] = useState([
     { name: 'Project 1', deadline: '2023-04-30', status: 'In progress', tasks: 3 },
     { name: 'Project 2', deadline: '2023-05-15', status: 'Not started', tasks: 0 },
+    { name: 'Project 3', deadline: '2023-05-31', status: 'Completed', tasks: 5 },
     { name: 'Project 3', deadline: '2023-05-31', status: 'Completed', tasks: 5 }
   ]);
 
@@ -22,6 +28,14 @@ const TaskManagementPage = () => {
       project: 'Project B',
       name: 'Task B1',
       assignedTo: 'Jane',
+      dueDate: '2023-04-15',
+      progress: 60,
+      approved: false,
+    },
+    {
+      project: 'Project B',
+      name: 'Task B1',
+      assignedTo: 'mathi',
       dueDate: '2023-04-15',
       progress: 60,
       approved: false,
@@ -85,7 +99,7 @@ const TaskManagementPage = () => {
       <div className="task-name" style={{ width: '25%' }}>Task Name</div>
       <div className="task-assigned-to" style={{ width: '20%' }}>Assigned To</div>
       <div className="task-due-date" style={{ width: '10%' }}>Due Date</div>
-      <div className="task-progress" style={{ width: '10%' }}>Status</div>
+      <div className="task-progress" style={{ width: '10%' }}>Rewards</div>
       
       <div className="task-status" style={{ width: '15%', paddingLeft: "30px" }}>Actions</div>
     </div>
@@ -121,12 +135,12 @@ const TaskManagementPage = () => {
                 border: 'none', 
                 borderRadius: '4px', 
                 cursor: 'pointer' 
-              }} onClick={() => handleApproveTask(index)}>Approve</button> 
+              }} onClick={() => handleApproveTask(index)}>Reward</button> 
             </div>
           ) : (
-            <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Approved</div>
+            <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Rewarded</div>
           )}
-          {!task.rejected ? (
+          {/* {!task.rejected ? (
             <div>
               <button style={{ 
                 padding: '8px 16px', 
@@ -139,7 +153,7 @@ const TaskManagementPage = () => {
             </div>
           ) : (
             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Rejected</div>
-          )}
+          )} */}
         </div>
       </div>
     ))}
@@ -151,4 +165,4 @@ const TaskManagementPage = () => {
 );
 };
 
-export default TaskManagementPage;
+export default RewardTasks;

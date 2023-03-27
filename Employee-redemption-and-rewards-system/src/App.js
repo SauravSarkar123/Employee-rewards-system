@@ -16,8 +16,9 @@ import RealDash from "./components/admin/RealDash.js"
 import AddTask from './components/admin/AddTask'
 import EmpProfile from "./components/admin/EmpProfile"
 import CalendarView from './components/employee/EmployeeTaskView'
-import TaskManagementPage from './components/admin/Approvetasks'
+import RewardTasks from './components/admin/RewardTasks'
 import AssignTask from "./components/admin/CreateModal"
+import ViewTask from './components/admin/ViewTask'
 
 
 
@@ -51,8 +52,10 @@ export default function App() {
                     <Route path="/real" component={RealDash}/>
                     <Route path="/adde/:_id/:name/:address/:mobile/:email/:wallet" component={AddEmployee}/>
                     <Route path="/emptask" component={CalendarView}/>
-                    <Route path="/approvetask" component={TaskManagementPage}/>
+                    <Route path="/reward" component={RewardTasks}/>
                     <Route path="/assigntask/:Name" component={AssignTask}/>
+                    <Route path="/viewtask/:empName" component={ViewTask}/>
+                    <Route path="/viewtask/:empName" component={ViewTask}/>
                     
                 </Switch>
             </div>
