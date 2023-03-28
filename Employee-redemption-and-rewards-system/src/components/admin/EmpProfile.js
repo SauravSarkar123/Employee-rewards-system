@@ -259,7 +259,7 @@ const ProfilePage = (props) => {
           <p style={{ display: "inline-block" }}>
             <b style={{ color: "#537FE7", display: "inline" }}>Name : </b>{" "}
             {employee.name}
-            Doe
+          
           </p>
 
           <p>

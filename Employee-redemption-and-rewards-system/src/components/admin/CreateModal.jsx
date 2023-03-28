@@ -69,6 +69,8 @@ const CreateModal = (props) => {
       console.log(response.data);
       console.log(employeeName)
       console.log(compName)
+
+      // history.push("/real")
       
     } catch (error) {
       console.log("wrongyyyy")
@@ -212,8 +214,9 @@ const CreateModal = (props) => {
              
             </select>
           </>
-          <Link>
+          <Link to={"/real"}>
           <button
+
             id="singlebutton"
             name="singlebutton"
             className="btM"

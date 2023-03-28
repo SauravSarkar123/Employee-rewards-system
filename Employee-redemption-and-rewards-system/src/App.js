@@ -26,7 +26,6 @@ import ViewTask from './components/admin/ViewTask'
 
 
 
-
 export default function App() {
     return (
         <Router>
@@ -55,8 +54,7 @@ export default function App() {
                     <Route path="/reward" component={RewardTasks}/>
                     <Route path="/assigntask/:Name" component={AssignTask}/>
                     <Route path="/viewtask/:empName" component={ViewTask}/>
-                    <Route path="/viewtask/:empName" component={ViewTask}/>
-                    
+                    {/* <Route path="/viewtask/:empName" component={ViewTask}/>    */}
                 </Switch>
             </div>
         </Router>
