@@ -18,6 +18,7 @@ import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
 import allrewards from "./routes/company/allrewards.js"
+import viewassigned from "./routes/employee/viewassigned.js"
 const app = express()
 dotenv.config();
 
@@ -55,6 +56,7 @@ app.use("/", getTask)
 app.use("/", oneTask)
 app.use("/", allrewards)
 app.use("/",rewards)
+app.use("/",viewassigned)
 
 
 app.use((req, res, next) => {

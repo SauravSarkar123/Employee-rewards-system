@@ -45,7 +45,7 @@ export default function SignInPage() {
       } , { withCredentials: true });
 
       
-      history.push("/userprofile");
+      history.push("/employeehome");
     } catch (error) {
       console.error(error);
 

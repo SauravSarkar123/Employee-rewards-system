@@ -6,12 +6,16 @@ import Header from "../Headerr/Header";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { Table } from "react-bootstrap";
 import SidebarMenu12 from "./side1";
+import jwt_decode from "jwt-decode";
+
 
 const ProfilePage = () => {
   const [progressWidth, setProgressWidth] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token",
+  "name",]);
+  
   const [boxVisible, setBoxVisible] = useState(false);
-
+  const API_URL = "http://localhost:8800";
   const handlePursuingClick = () => {
     if (progressWidth < 100) {
       setProgressWidth(progressWidth + 10);
@@ -23,6 +27,8 @@ const ProfilePage = () => {
   const handleBoxClick = () => {
     setBoxVisible(!boxVisible);
   };
+  const toke = jwt_decode(cookies.access_token);
+  console.log(toke)
   const tokenData = [
     {
       companyName: "SecureKloud",
@@ -96,7 +102,7 @@ const ProfilePage = () => {
         margin: '0',
         fontSize: '16px',
         color: '#777'
-      }}>John Doe</p>
+      }}>{toke.name}</p>
     </header>
       
       <div
@@ -138,13 +144,12 @@ const ProfilePage = () => {
           }}
         >
           <p style={{ display: "inline-block" }}>
-            <b style={{ color: "#537FE7", display: "inline" }}>Name : </b> John
-            Doe
+            <b style={{ color: "#537FE7", display: "inline" }}>Name : </b> {toke.name}
           </p>
 
           <p>
             {" "}
-            <b style={{ color: "#537FE7" }}> Wallet Address: </b> dd0n02h20i
+            <b style={{ color: "#537FE7" }}> Wallet Address: </b> {toke.wallet}
           </p>
         </div>
         <div>
@@ -251,28 +256,28 @@ const ProfilePage = () => {
         <div className="row pt-1">
           <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}} >
             <h6 style={{ color: "#537FE7", marginRight: "20px" }}>Name:</h6>
-            <p className="text-muted  mb-6">John Doe</p>
+            <p className="text-muted  mb-6">{toke.name}</p>
           </div>
           <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
             <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Email:</h6>
-            <p className="text-muted mb-6">info@example.com</p>
+            <p className="text-muted mb-6">{toke.email}</p>
           </div>
           <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
             <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Phone:</h6>
-            <p className="text-muted  mb-6">123 456 789</p>
+            <p className="text-muted  mb-6">{toke.mobile}</p>
           </div>
 
           <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
             <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Address:</h6>
-            <p className="text-muted mb-0">123 Main Street, Anytown, USA</p>
+            <p className="text-muted mb-0">{toke.address}</p>
           </div>
           <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
             <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>Wallet Address:</h6>
-            <p className="text-muted  mb-6">id822820d1h2d0d</p>
+            <p className="text-muted  mb-6">{toke.wallet}</p>
           </div>
           <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
             <h6 style={{ color: "#537FE7", marginRight: "20px"  }}>ID:</h6>
-            <p className="text-muted  mb-6">0987</p>
+            <p className="text-muted  mb-6">{toke.id}</p>
           </div>
         </div>
         <div style={{ marginTop: "80px" }}>
@@ -293,11 +298,11 @@ const ProfilePage = () => {
           <div className="row pt-1">
             <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
               <h6 style={{ color: "#537FE7",marginRight: "20px" }}>Company Name:</h6>
-              <p className="text-muted mb-0">SecureKloud</p>
+              <p className="text-muted mb-0">{toke.compName}</p>
             </div>
             <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
               <h6 style={{ color: "#537FE7",marginRight: "20px" }}>EmployeeId:</h6>
-              <p className="text-muted mb-0">SK22125</p>
+              <p className="text-muted mb-0">{toke.id}</p>
             </div>
           </div>
         </div>
