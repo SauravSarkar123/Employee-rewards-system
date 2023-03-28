@@ -23,10 +23,16 @@ const CreateModal = (props) => {
   const [taskDescription, setTaskDescription] = useState("");
   const [deadline, setDeadline] = useState(0);
   const [rewards, setRewards] = useState(0);
+  const reward = async() =>{
+    const response = await axios.post(
+      `${API_URL}/reward/${empName}/${task.task}/${task.deadline}/${task.rewards}`,{},{ withCredentials: true }
+    );
 
-  const alerttt =()=>{
+    console.log(response.data)
     alert("You have approved the task. Now you can reward the employee")
   }
+
+ 
   useEffect(() => {
     axios
       .get(`${API_URL}/gettask/${empName}`, { withCredentials: true })
@@ -93,7 +99,7 @@ const CreateModal = (props) => {
               <p>Rewards: {task.rewards}</p>
               <p> Status : </p>
               <div style={{display:"flex", flexDirection:"row"}}>
-              <Link to={`/reward/${task}/${empName}/${rewards}/${deadline}`}><button className="btttn" onClick={alerttt} >Approve</button></Link>
+              <Link to={`/real`}><button className="btttn" onClick={reward} >Approve</button></Link>
               <button className="btttn2" >Reject</button>
               </div></form>
       

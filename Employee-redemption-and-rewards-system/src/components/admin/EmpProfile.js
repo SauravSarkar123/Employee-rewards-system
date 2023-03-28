@@ -51,7 +51,7 @@ const ProfilePage = (props) => {
   
   const tokenn = jwt_decode(cookies.access_token);
   const comName = tokenn.name;
-  const comId = tokenn.name.substr(0, 3).toUpperCase() + employeeId.substr(-4)
+  const comId = tokenn.name.substr(0, 3).toUpperCase() + employeeId.substr(-6)
   
   const addEmployee = async() =>{
     const response = await axios.post(

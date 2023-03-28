@@ -16,6 +16,8 @@ import assignTask from "./routes/company/assignTask.js";
 import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
 import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
+import rewards from "./routes/company/reward.js"
+import allrewards from "./routes/company/allrewards.js"
 const app = express()
 dotenv.config();
 
@@ -51,7 +53,8 @@ app.use("/",onboard)
 app.use("/", assignTask)
 app.use("/", getTask)
 app.use("/", oneTask)
-
+app.use("/", allrewards)
+app.use("/",rewards)
 
 
 app.use((req, res, next) => {

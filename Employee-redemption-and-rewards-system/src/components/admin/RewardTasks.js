@@ -1,12 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './task.css'
+import axios from "axios";
 
 const RewardTasks = (props) => {
+  const [tasks, setTasks] = useState([]);
 
-  const empName = props.match.params.empName;
-  const reward = props.match.params.reward;
-  const deadline = props.match.params.deadline;
-  const task = props.match.params.task;
+  // const empName = props.match.params.empName;
+  // const reward = props.match.params.rewards;
+  // const deadline = props.match.params.deadline;
+  // const task = props.match.params.task;
+  // console.log(empName)
+  // console.log(reward)
+  // console.log(deadline)
+  // console.log(task)
+  const API_URL = "http://localhost:8800";
+
   const [projects, setProjects] = useState([
     { name: 'Project 1', deadline: '2023-04-30', status: 'In progress', tasks: 3 },
     { name: 'Project 2', deadline: '2023-05-15', status: 'Not started', tasks: 0 },
@@ -14,41 +22,19 @@ const RewardTasks = (props) => {
     { name: 'Project 3', deadline: '2023-05-31', status: 'Completed', tasks: 5 }
   ]);
 
- 
-  const [tasks, setTasks] = useState([
-    {
-      project: 'Project A',
-      name: 'Task A1',
-      assignedTo: 'John',
-      dueDate: '2023-03-31',
-      progress: 80,
-      approved: false,
-    },
-    {
-      project: 'Project B',
-      name: 'Task B1',
-      assignedTo: 'Jane',
-      dueDate: '2023-04-15',
-      progress: 60,
-      approved: false,
-    },
-    {
-      project: 'Project B',
-      name: 'Task B1',
-      assignedTo: 'mathi',
-      dueDate: '2023-04-15',
-      progress: 60,
-      approved: false,
-    },
-    {
-      project: 'Project B',
-      name: 'Task B1',
-      assignedTo: 'mathi',
-      dueDate: '2023-04-15',
-      progress: 60,
-      approved: false,
-    },
-  ]);
+ useEffect(()=>{
+  axios
+  .get(`${API_URL}/reward`, { withCredentials: true })
+  .then((response) => {
+    setTasks(response.data.rewards);
+    console.log(response.data.rewards);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+  
 
   const handleApproveTask = (index) => {
     const updatedTasks = [...tasks];
@@ -111,9 +97,9 @@ const RewardTasks = (props) => {
         borderBottom: '1px solid #ccc',
         paddingBottom: '10px',
       }}>
-        <div className="task-name" style={{ width: '25%' }}>{task.name}</div>
-        <div className="task-assigned-to" style={{ width: '20%' }}>{task.assignedTo}</div>
-        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.dueDate}</div>
+        <div className="task-name" style={{ width: '25%' }}>{task.Task}</div>
+        <div className="task-assigned-to" style={{ width: '20%' }}>{task.EmpName}</div>
+        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.Deadline}</div>
         <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>
           {task.approved ? <span className="approved">&#10003;</span> : <span className="rejected">&#10005;</span>}
         </div>

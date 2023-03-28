@@ -11,12 +11,12 @@ const RewardTaskSchema = new mongoose.Schema({
     // },
     EmpName:{
         type : String,
-         ref : User
+    
     },
     Task:{
         type: String,
-        required : true,
-        ref : AssignTask
+    
+      
     },
     // taskName:{
     //     type: String,
@@ -29,13 +29,13 @@ const RewardTaskSchema = new mongoose.Schema({
     // },
     Deadline:{
         type : Date,
-        required : true,
-        ref : AssignTask
+    
+      
     },
     Rewards:{
         type: Number,
-        required : true,
-        ref : AssignTask
+      
+       
 
     }
 
