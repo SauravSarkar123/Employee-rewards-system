@@ -23,7 +23,11 @@ const TaskSchema = new mongoose.Schema({
     },
     taskDescription:{
         type : String,
-        
+        required : true,
+    },
+    status:{ 
+        type : String,
+        default:false,
     },
     deadline:{
         type : Date,
@@ -33,6 +37,7 @@ const TaskSchema = new mongoose.Schema({
         type: Number,
         required : true,
     }
+
 
     // status:{
     //     type : Boolean,

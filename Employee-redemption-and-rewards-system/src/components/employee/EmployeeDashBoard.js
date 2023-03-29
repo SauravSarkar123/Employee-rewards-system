@@ -10,7 +10,6 @@ import axios from "axios";
 import SidebarMenu12 from "./side1";
 import { Link } from "react-router-dom";
 
-
 const Card = (props) => {
   return (
     <div
@@ -45,7 +44,6 @@ const Card = (props) => {
 };
 
 const EmployeeDashboard = (props) => {
-
   const [open, setOpen] = useState(false);
   const togglePopup = () => {
     setOpen(true);
@@ -53,7 +51,7 @@ const EmployeeDashboard = (props) => {
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
-  const [selectedTask, setSelectedTask] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(tasks);
 
   const [cookies, setCookie, removeCookie] = useCookies([
     "access_token",
@@ -67,7 +65,9 @@ const EmployeeDashboard = (props) => {
     axios
       .get(`${API_URL}/viewtask`, { withCredentials: true })
       .then((response) => {
-        setTasks(response.data.tasks);
+        setTasks(
+          response.data.tasks.filter((tasks) => tasks.empName == toke.name)
+        );
         console.log(response.data.tasks);
       })
       .catch((error) => {
@@ -224,43 +224,42 @@ const EmployeeDashboard = (props) => {
             }}
           >
             <span onClick={() => setOpen(false)}> X </span>
-
           </div>
           {tasks.map((task) => (
-          <div style={{ padding: "20px", textAlign: "center" }}>
-            <div
-              style={{
-                fontSize: "24px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              {task.task}
-            </div>
-            <div style={{ fontSize: "16px", marginBottom: "20px" }}>
-              {task.taskDescription}
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
-                marginBottom: "20px",
-              }}
-            >
-              <div style={{ fontSize: "14px", marginRight: "10px" }}>
-                Deadline:
+            <div style={{ padding: "20px", textAlign: "center" }}>
+              <div
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  marginBottom: "20px",
+                }}
+              >
+                {task.task}
               </div>
-              <div style={{ fontSize: "14px" }}>{task.deadline}</div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {/* <button
+              <div style={{ fontSize: "16px", marginBottom: "20px" }}>
+                {task.taskDescription}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  marginBottom: "20px",
+                }}
+              >
+                <div style={{ fontSize: "14px", marginRight: "10px" }}>
+                  Deadline:
+                </div>
+                <div style={{ fontSize: "14px" }}>{task.deadline}</div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* <button
                       style={{
                         padding: "10px 20px",
                         backgroundColor: "#f44336",
@@ -272,26 +271,23 @@ const EmployeeDashboard = (props) => {
                     >
                       Reward
                     </button> */}
-              <button
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: "#4CAF50",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  border: "none",
-                  cursor: "pointer",
-                  // marginLeft:"150px"
-                }}
-              >
-                Mark as Completed
-              </button>
-              
+                <button
+                  style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#4CAF50",
+                    color: "#fff",
+                    borderRadius: "4px",
+                    border: "none",
+                    cursor: "pointer",
+                    // marginLeft:"150px"
+                  }}
+                >
+                  Mark as Completed
+                </button>
+              </div>
             </div>
-            
-          </div>
           ))}
         </div>
-        
       </Dialog>
 
       <div
@@ -302,7 +298,8 @@ const EmployeeDashboard = (props) => {
           width: "845px",
           marginLeft: "auto",
           marginRight: "auto",
-        }}>
+        }}
+      >
         <h5
           className="card-header font-weight-bold"
           style={{
@@ -337,12 +334,22 @@ const EmployeeDashboard = (props) => {
                           marginTop: "20px",
                         }}
                       >
-                        {task.empName}
+                        {task.task}
                       </h6>
-                      <small>{task.task}</small>
+                      <small>{task.deadline}</small>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <p
+                        style={{ display: "inline-block", marginRight: "10px" }}
+                      >
+                        Status:
+                      </p>
+                      <p style={{ display: "inline-block", color: "#ff0000" }}>
+                        <b>{task.status}</b>
+                      </p>
                     </div>
                     <button
-                    onClick={togglePopup}
+                      onClick={togglePopup}
                       className="btn btn-primary"
                       style={{
                         fontFamily: "Montserrat",

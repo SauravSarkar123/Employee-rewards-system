@@ -13,7 +13,7 @@ import emp from "./routes/company/getOne.js";
 import comEmp from "./routes/company/comEmp.js"
 import onboard from "./routes/company/onboard.js";
 import assignTask from "./routes/company/assignTask.js";
-import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
+import {  verifyUser } from "./utils/verifyToken.js";
 import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
@@ -46,9 +46,9 @@ app.use("/",loginRoute)
 app.use("/", regComp)
 app.use("/", loginComp)
 app.use("/",regComp)
-app.use("/",verifyAdmin, addEmployee)
-app.use("/",verifyAdmin, getEmp)
-app.use("/", verifyAdmin, emp)
+app.use("/",verifyUser, addEmployee)
+app.use("/",verifyUser, getEmp)
+app.use("/", verifyUser, emp)
 app.use("/", comEmp)
 app.use("/",onboard)
 app.use("/", assignTask)
@@ -56,7 +56,7 @@ app.use("/", getTask)
 app.use("/", oneTask)
 app.use("/", allrewards)
 app.use("/",rewards)
-app.use("/",viewassigned)
+app.use("/",verifyUser,viewassigned)
 
 
 app.use((req, res, next) => {

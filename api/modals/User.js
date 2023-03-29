@@ -37,6 +37,10 @@ const UserSchema = new mongoose.Schema({
     isOnboarded:{
         type:Boolean,
         default: false
+    },
+    isAdmin:{
+        type:Boolean,
+        default: false,
     }
     
     // proof:{
