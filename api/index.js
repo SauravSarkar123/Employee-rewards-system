@@ -18,7 +18,6 @@ import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
 import allrewards from "./routes/company/allrewards.js"
-import viewassigned from "./routes/employee/viewassigned.js";
 import updatetask from "./routes/employee/updatetask.js"
 import viewassigned from "./routes/employee/viewassigned.js"
 import status from "./routes/company/status.js"
@@ -51,7 +50,7 @@ app.use("/", loginComp)
 app.use("/",regComp)
 app.use("/",verifyUser, addEmployee)
 app.use("/",verifyUser, getEmp)
-app.use("/", verifyUser, emp)
+app.use("/",  emp)
 app.use("/", comEmp)
 app.use("/",onboard)
 app.use("/", assignTask)

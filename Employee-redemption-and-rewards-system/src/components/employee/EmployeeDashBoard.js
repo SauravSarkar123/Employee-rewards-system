@@ -86,7 +86,7 @@ const EmployeeDashboard = (props) => {
       .get(`${API_URL}/viewtask`, { withCredentials: true })
       .then((response) => {
         setTasks(
-          response.data.tasks.filter((tasks) => tasks.empName == toke.name)
+          response.data.tasks.filter((tasks) => tasks.empName == tokenn.name)
         );
         console.log(response.data.tasks);
         console.log("666666666666666666")
