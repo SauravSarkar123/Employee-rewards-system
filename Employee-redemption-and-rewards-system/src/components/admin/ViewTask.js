@@ -98,7 +98,7 @@ const CreateModal = (props) => {
               <p>Description:{task.taskDescription}</p>
               <p>Deadline: {task.deadline}</p>
               <p>Rewards: {task.rewards}</p>
-              <p> Status : </p>
+              <p> Status : {task.status}</p>
               <div style={{display:"flex", flexDirection:"row"}}>
               <Link to={`/real`}><button className="btttn" onClick={reward} >Approve</button></Link>
               <button className="btttn2" >Reject</button>

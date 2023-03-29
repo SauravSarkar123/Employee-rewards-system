@@ -26,10 +26,8 @@ export const loginUser = async (req, res, next) => {
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
-    const token = jwt.sign(
-      { name: user.name,  address: user.address, email: user.email, id: user._id },
-      process.env.JWTT// Set the token expiration time to 1 day
-    );  
+    const token = jwt.sign({name: user.name,mobile:user.mobile,address:user.address, wallet:user.wallet,email:user.email,id:user._id,compName:user.compName,compID:user._id,}, process.env.JWT)
+  
     const { password:userPassword,...otherDetails} = await user._doc;
     console.log(token);
 
