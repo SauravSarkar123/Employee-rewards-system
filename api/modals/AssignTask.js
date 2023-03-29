@@ -32,6 +32,10 @@ const TaskSchema = new mongoose.Schema({
     rewards:{
         type: Number,
         required : true,
+    },
+    isPending:{
+        type:Boolean,
+        default:false
     }
 
     // status:{

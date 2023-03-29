@@ -13,12 +13,14 @@ import emp from "./routes/company/getOne.js";
 import comEmp from "./routes/company/comEmp.js"
 import onboard from "./routes/company/onboard.js";
 import assignTask from "./routes/company/assignTask.js";
-import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
+// import { verifyAdmin, verifyToken, verifyUser } from "./utils/verifyToken.js";
+// import { verifyTokenn, verifyUserr } from "./utils/verifyUserToken.js";
 import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
 import allrewards from "./routes/company/allrewards.js"
 import viewassigned from "./routes/employee/viewassigned.js"
+import status from "./routes/company/status.js"
 const app = express()
 dotenv.config();
 
@@ -46,9 +48,9 @@ app.use("/",loginRoute)
 app.use("/", regComp)
 app.use("/", loginComp)
 app.use("/",regComp)
-app.use("/",verifyAdmin, addEmployee)
-app.use("/",verifyAdmin, getEmp)
-app.use("/", verifyAdmin, emp)
+app.use("/", addEmployee)
+app.use("/", getEmp)
+app.use("/", emp)
 app.use("/", comEmp)
 app.use("/",onboard)
 app.use("/", assignTask)
@@ -57,6 +59,7 @@ app.use("/", oneTask)
 app.use("/", allrewards)
 app.use("/",rewards)
 app.use("/",viewassigned)
+app.use("/",status)
 
 
 app.use((req, res, next) => {
