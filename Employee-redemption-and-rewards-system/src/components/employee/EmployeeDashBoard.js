@@ -44,15 +44,29 @@ const Card = (props) => {
 };
 
 const EmployeeDashboard = (props) => {
-
   const [open, setOpen] = useState(false);
-  const togglePopup = () => {
+  const togglePopup = (task) => {
+    setSelectedTasks(task);
     setOpen(true);
-  };
+  }
+  const MarkasCompleted = (taskk) => {
+  axios
+  .put(`${API_URL}/updatetask/${taskk.task}`, { status: 'Completed' },{withCredentials:true})
+  .then((response) => {
+    console.log(response.data);
+    // update tasks state
+    setTasks(
+      tasks.map((t) => (t._task === taskk._task ? { ...t, status: 'Completed' } : t))
+    );
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
-  const [selectedTask, setSelectedTask] = useState(tasks);
+  const [selectedTasks, setSelectedTasks] = useState(null);
 
   const [cookies, setCookie, removeCookie] = useCookies([
     "employee_token","name"
@@ -71,16 +85,21 @@ const EmployeeDashboard = (props) => {
     axios
       .get(`${API_URL}/viewtask`, { withCredentials: true })
       .then((response) => {
-        setTasks(response.data.tasks);
+        setTasks(
+          response.data.tasks.filter((tasks) => tasks.empName == toke.name)
+        );
         console.log(response.data.tasks);
         console.log("666666666666666666")
       })
+      // const red= response.data.tasks.filter((tasks) => tasks.empName == toke.name)
+      // console.log(rd)
       .catch((error) => {
         console.log("TTTTTTTTTTTTTT")
         console.log(error);
       });
   }, []);
   console.log(tasks);
+  
 
   return (
     <div>
@@ -231,7 +250,7 @@ const EmployeeDashboard = (props) => {
           >
             <span onClick={() => setOpen(false)}> X </span>
           </div>
-          {tasks.map((task) => (
+          {selectedTasks && (
             <div style={{ padding: "20px", textAlign: "center" }}>
               <div
                 style={{
@@ -240,10 +259,10 @@ const EmployeeDashboard = (props) => {
                   marginBottom: "20px",
                 }}
               >
-                {task.task}
+                {selectedTasks.task}
               </div>
               <div style={{ fontSize: "16px", marginBottom: "20px" }}>
-                {task.taskDescription}
+                {selectedTasks.taskDescription}
               </div>
               <div
                 style={{
@@ -256,7 +275,7 @@ const EmployeeDashboard = (props) => {
                 <div style={{ fontSize: "14px", marginRight: "10px" }}>
                   Deadline:
                 </div>
-                <div style={{ fontSize: "14px" }}>{task.deadline}</div>
+                <div style={{ fontSize: "14px" }}>{selectedTasks.deadline}</div>
               </div>
               <div
                 style={{
@@ -265,18 +284,6 @@ const EmployeeDashboard = (props) => {
                   alignItems: "center",
                 }}
               >
-                {/* <button
-                      style={{
-                        padding: "10px 20px",
-                        backgroundColor: "#f44336",
-                        color: "#fff",
-                        borderRadius: "4px",
-                        border: "none",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Reward
-                    </button> */}
                 <button
                   style={{
                     padding: "10px 20px",
@@ -287,12 +294,12 @@ const EmployeeDashboard = (props) => {
                     cursor: "pointer",
                     // marginLeft:"150px"
                   }}
-                >
-                  Mark as Completed
+                 onClick={() => MarkasCompleted(selectedTasks)}>Mark as Completed
                 </button>
+                  
               </div>
             </div>
-          ))}
+          )}
         </div>
       </Dialog>
 
@@ -355,7 +362,10 @@ const EmployeeDashboard = (props) => {
                       </p>
                     </div>
                     <button
-                      onClick={togglePopup}
+                      onClick={() => {
+                        
+                        togglePopup(task);
+                      }}
                       className="btn btn-primary"
                       style={{
                         fontFamily: "Montserrat",
