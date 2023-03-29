@@ -18,7 +18,8 @@ import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
 import allrewards from "./routes/company/allrewards.js"
-import viewassigned from "./routes/employee/viewassigned.js"
+import viewassigned from "./routes/employee/viewassigned.js";
+import updatetask from "./routes/employee/updatetask.js"
 const app = express()
 dotenv.config();
 
@@ -57,7 +58,7 @@ app.use("/", oneTask)
 app.use("/", allrewards)
 app.use("/",rewards)
 app.use("/",verifyUser,viewassigned)
-
+app.use("/",updatetask)
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
