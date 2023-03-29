@@ -565,7 +565,7 @@ function AdminDashBoard() {
 
   const filteredTasks = tasks.filter((task) => {
     return (
-      (task.companyName === tokenn.name && task.isPending === true) &&
+      (task.companyName === tokenn.name && task.isPending === false) &&
       // Check if employee's company name matches tokenn's company name
       (task.task.toLowerCase().includes(search.toLowerCase()) || // Check if employee's name includes the search term
         task.empName.toString().includes(search)) // Check if employee's company name includes the search term

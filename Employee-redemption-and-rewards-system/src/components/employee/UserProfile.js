@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 
 const ProfilePage = () => {
   const [progressWidth, setProgressWidth] = useState(0);
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token",
+  const [cookies, setCookie, removeCookie] = useCookies(["employee_token",
   "name",]);
   
   const [boxVisible, setBoxVisible] = useState(false);
@@ -22,12 +22,12 @@ const ProfilePage = () => {
     }
   };
   const handleLogout = () => {
-    removeCookie("access_token");
+    removeCookie("employee_token");
   };
   const handleBoxClick = () => {
     setBoxVisible(!boxVisible);
   };
-  const toke = jwt_decode(cookies.access_token);
+  const toke = jwt_decode(cookies.employee_token);
   console.log(toke)
   const tokenData = [
     {

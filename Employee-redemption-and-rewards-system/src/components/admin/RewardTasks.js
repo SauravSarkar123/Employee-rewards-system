@@ -42,13 +42,15 @@ const RewardTasks = (props) => {
     updatedTasks[index] = { ...updatedTasks[index], approved: true };
     setTasks(updatedTasks);
     alert('Task has been approved');
-
+console.log(tasks)
     const respo = await axios.get(
       `${API_URL}/status/${tasks.EmpName}`,{withCredentials:true}
      
 
     )
      console.log(respo.data)
+
+    //  const delete = await axios.get()
   };
 
   const handleRejectTask = (index) => {
