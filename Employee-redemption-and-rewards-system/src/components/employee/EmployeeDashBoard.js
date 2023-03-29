@@ -43,7 +43,7 @@ const Card = (props) => {
   );
 };
 
-const EmployeeDashboard = (props) => { 
+const EmployeeDashboard = (props) => {
   const [open, setOpen] = useState(false);
   const togglePopup = (task) => {
     setSelectedTasks(task);
@@ -69,12 +69,17 @@ const EmployeeDashboard = (props) => {
   const [selectedTasks, setSelectedTasks] = useState(null);
 
   const [cookies, setCookie, removeCookie] = useCookies([
-    "access_token",
-    "name",
+    "employee_token","name"
+   
   ]);
 
-  const toke = jwt_decode(cookies.access_token);
-  // console.log(toke)
+ 
+
+  console.log(cookies.employee_token);
+  const tokenn = jwt_decode(cookies.employee_token);
+
+  console.log("token :", tokenn)
+
   const API_URL = "http://localhost:8800";
   useEffect(() => {
     axios
@@ -82,13 +87,14 @@ const EmployeeDashboard = (props) => {
       .then((response) => {
         setTasks(
           response.data.tasks.filter((tasks) => tasks.empName == toke.name)
-          
         );
         console.log(response.data.tasks);
+        console.log("666666666666666666")
       })
       // const red= response.data.tasks.filter((tasks) => tasks.empName == toke.name)
       // console.log(rd)
       .catch((error) => {
+        console.log("TTTTTTTTTTTTTT")
         console.log(error);
       });
   }, []);
@@ -107,13 +113,13 @@ const EmployeeDashboard = (props) => {
         }}
       >
         <div style={{ position: "relative", bottom: "10px" }}>
-          <SidebarMenu12 />{" "}
+          {/* <SidebarMenu12 />{" "} */}
         </div>
         <h1 style={{ color: "white" }}>Employee Dashboard</h1>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ marginRight: "10px" }}>
             <span style={{ color: "white", marginRight: "20px" }}>
-              {toke.name.toUpperCase()}
+              {tokenn.name.toUpperCase()}
             </span>
             <a href="/userprofile">
               <FaUser style={{ color: "orange", marginRight: "20px" }} />{" "}

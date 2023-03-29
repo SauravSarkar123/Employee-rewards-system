@@ -34,13 +34,21 @@ const RewardTasks = (props) => {
   });
 }, []);
 
+
   
 
-  const handleApproveTask = (index) => {
+  const handleApproveTask = async (index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index] = { ...updatedTasks[index], approved: true };
     setTasks(updatedTasks);
     alert('Task has been approved');
+
+    const respo = await axios.get(
+      `${API_URL}/status/${tasks.EmpName}`,{withCredentials:true}
+     
+
+    )
+     console.log(respo.data)
   };
 
   const handleRejectTask = (index) => {
@@ -100,8 +108,7 @@ const RewardTasks = (props) => {
         <div className="task-name" style={{ width: '25%' }}>{task.Task}</div>
         <div className="task-assigned-to" style={{ width: '20%' }}>{task.EmpName}</div>
         <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.Deadline}</div>
-        <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>
-          {task.approved ? <span className="approved">&#10003;</span> : <span className="rejected">&#10005;</span>}
+        <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>{task.Rewards}
         </div>
         
         <div className="task-status" style={{ 

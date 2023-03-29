@@ -7,7 +7,7 @@ import AssignTask from "../../modals/AssignTask.js";
 export const oneTask = async (req, res, next) => {
   try {
     
-    const task = await AssignTask.findOne({empName : req.params.empName});
+    const task = await AssignTask.findOne({empName : req.params.empName, task : req.params.task});
     console.log(task)
     res.status(200).json({task:task});
   } catch (err) {

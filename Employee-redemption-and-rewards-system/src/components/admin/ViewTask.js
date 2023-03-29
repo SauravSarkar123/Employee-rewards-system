@@ -15,6 +15,7 @@ const CreateModal = (props) => {
 
   const API_URL = "http://localhost:8800";
   const empName = props.match.params.empName;
+  const taskk = props.match.params.task;
   console.log(empName);
 
   const compName = tokenn.name;
@@ -35,7 +36,7 @@ const CreateModal = (props) => {
  
   useEffect(() => {
     axios
-      .get(`${API_URL}/gettask/${empName}`, { withCredentials: true })
+      .get(`${API_URL}/gettask/${empName}/${taskk}`, { withCredentials: true })
       // make a GET request to the server
       .then((response) => {
         //console.log(response.data.user);

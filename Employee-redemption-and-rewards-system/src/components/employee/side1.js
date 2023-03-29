@@ -14,12 +14,12 @@ const SidebarMenu12 = () => {
   const [isOpen, setIsOpen] = useState(false); // set isOpen to false by default
   const menuRef = useRef(null);
   const [cookies, setCookie, removeCookie] = useCookies([
-    "access_token",
+    "employee_token",
     "name",
   ]);
 
 
-  const toke = jwt_decode(cookies.access_token);
+  const toke = jwt_decode(cookies.employee_token);
   const API_URL = "http://localhost:8800";
   const toggleSidebar = () => {
     setIsOpen(!isOpen);

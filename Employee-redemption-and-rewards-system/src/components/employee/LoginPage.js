@@ -36,32 +36,22 @@ export default function SignInPage() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
     try {
-      
-      const response = await axios.post(`${API_URL}/login`, {
-        name,
-        password,
-      } , { withCredentials: true });
-
-      
+      const response = await axios.post(
+        `${API_URL}/login`,
+        { name, password },
+        { withCredentials: true }
+      );
       history.push("/employeehome");
     } catch (error) {
       console.error(error);
-
       if (error.response && error.response.status === 404) {
-        // User not found
-        setErrorMessage("name not found");
+        setErrorMessage("User not found");
       } else if (error.response && error.response.status === 400) {
-        // Incorrect password
         setErrorMessage("Incorrect password");
       } else {
-        // Other error
         setErrorMessage("An error occurred");
       }
-      const alertMessage = errorMessage || "Invalid Credentials";
-     
-      alert(alertMessage);
     }
   };
 

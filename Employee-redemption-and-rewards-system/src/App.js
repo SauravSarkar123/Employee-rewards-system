@@ -53,7 +53,7 @@ export default function App() {
                     <Route path="/emptask" component={CalendarView}/>
                     <Route path="/reward" component={RewardTasks}/>
                     <Route path="/assigntask/:Name" component={AssignTask}/>
-                    <Route path="/viewtask/:empName" component={ViewTask}/>
+                    <Route path="/viewtask/:empName/:task" component={ViewTask}/>
                     {/* <Route path="/viewtask/:empName" component={ViewTask}/>    */}
                 </Switch>
             </div>

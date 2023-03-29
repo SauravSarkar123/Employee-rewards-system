@@ -158,7 +158,7 @@ const SidebarMenu = () => {
             </a>
           </li>
           <li id="fonnn">
-            <a href="/contact">
+            <a href="/reward">
               <FiGift className="icon" id="fonnn" /> Reward Tasks
             </a>
           </li>
