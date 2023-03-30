@@ -20,7 +20,6 @@ import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
 import allrewards from "./routes/company/allrewards.js"
 import updatetask from "./routes/employee/updatetask.js"
-import viewassigned from "./routes/employee/viewassigned.js"
 import status from "./routes/company/status.js"
 const app = express()
 dotenv.config();

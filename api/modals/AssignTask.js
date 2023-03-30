@@ -39,7 +39,7 @@ const TaskSchema = new mongoose.Schema({
     },
     isPending:{
         type:Boolean,
-        default:false
+        default:true
     }
 
 
