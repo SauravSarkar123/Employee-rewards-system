@@ -22,19 +22,64 @@ const RewardTasks = (props) => {
     { name: 'Project 3', deadline: '2023-05-31', status: 'Completed', tasks: 5 }
   ]);
 
- useEffect(()=>{
-  axios
-  .get(`${API_URL}/reward`, { withCredentials: true })
-  .then((response) => {
-    setTasks(response.data.rewards);
-    console.log(response.data.rewards);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}, []);
-
-
+  useEffect(() => {
+    Promise.all([
+      axios.get(`${API_URL}/reward`, { withCredentials: true }),
+      axios.get(`${API_URL}/gettasks`, { withCredentials: true })
+    ])
+      .then((responses) => {
+        const rewards = responses[0].data.rewards;
+        const tasks = responses[1].data.tasks;
+        console.log(rewards)
+        console.log(tasks)
+  
+        // Filter empName based on tasks status
+        const approvedTasks = tasks.filter((task) => task.status === "Approved");
+        const approvedEmpNames = approvedTasks.map((task) => task.empName);
+  
+        // Filter rewards based on empName
+        const approvedRewards = rewards.filter((reward) => approvedEmpNames.includes(reward.EmpName));
+  
+        // Set state or do whatever you need with the filtered rewards
+        setTasks(approvedRewards);
+        console.log(approvedRewards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  
+  const Rewarded = (taskk) => {
+    const confirmed = window.confirm(
+      "Clicking on this will approve the task. Are you you want to Approve?"
+    );
+    if (confirmed) {
+      axios
+        .put(
+          `${API_URL}/updatetask/${taskk._id}`,
+          { status: "Rewarded" },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          const updatedTask = response.data.updatedTask;
+          console.log(response.data.updatedTask);
+          // update tasks state
+          setTasks(
+            tasks.map((t) => {
+              if (t._id === updatedTask._id) {
+                return updatedTask;
+              } else {
+                return t;
+              }
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+ 
   
 
   const handleApproveTask = async (index) => {
@@ -53,12 +98,7 @@ console.log(tasks)
     //  const delete = await axios.get()
   };
 
-  const handleRejectTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index] = { ...updatedTasks[index], approved: false };
-    setTasks(updatedTasks);
-    alert('Task has been rejected');
-  };
+  
 
 
   return (
@@ -130,7 +170,7 @@ console.log(tasks)
                 border: 'none', 
                 borderRadius: '4px', 
                 cursor: 'pointer' 
-              }} onClick={() => handleApproveTask(index)}>Reward</button> 
+              }} onClick={() => Rewarded(task)}>Reward</button> 
             </div>
           ) : (
             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Rewarded</div>

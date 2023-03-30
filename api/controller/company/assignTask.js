@@ -20,7 +20,7 @@ export const assignTask = async (req, res) => {
     console.log("companyName:", compName);
     console.log("empName:", employeeName);
 
-    const newStatus = status === "false" ?  "Completed":"Pending" ; // the condition
+    const newStatus = "Pending"
 
     const newTask = new AssignTask({
       companyName: compName,

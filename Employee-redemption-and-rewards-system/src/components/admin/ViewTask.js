@@ -32,7 +32,37 @@ const CreateModal = (props) => {
     console.log(response.data)
     alert("You have approved the task. Now you can reward the employee")
   }
-
+  const status = task.status;
+  const Approval = (taskk) => {
+    const confirmed = window.confirm(
+      "Clicking on this will approve the task. Are you you want to Approve?"
+    );
+    if (confirmed) {
+      axios
+        .put(
+          `${API_URL}/updatetask/${taskk._id}`,
+          { status: "Approved" },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          const updatedTask = response.data.updatedTask;
+          console.log(response.data.updatedTask);
+          // update tasks state
+          setTask(
+            task.map((t) => {
+              if (t._id === updatedTask._id) {
+                return updatedTask;
+              } else {
+                return t;
+              }
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
  
   useEffect(() => {
     axios
@@ -99,10 +129,13 @@ const CreateModal = (props) => {
               <p>Deadline: {task.deadline}</p>
               <p>Rewards: {task.rewards}</p>
               <p> Status : {task.status}</p>
+              {status === "Waiting For Approval" ? (
               <div style={{display:"flex", flexDirection:"row"}}>
-              <Link to={`/real`}><button className="btttn" onClick={reward} >Approve</button></Link>
+              <Link to={`/real`}><button className="btttn" onClick={() => {reward();Approval(task);}} >Approve</button></Link>
               <button className="btttn2" >Reject</button>
-              </div></form>
+              </div>
+              ) : null}
+              </form>
       
       </div>
       <br />

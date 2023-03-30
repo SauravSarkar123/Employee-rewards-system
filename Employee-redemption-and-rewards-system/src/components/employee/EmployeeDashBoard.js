@@ -19,8 +19,8 @@ const Card = (props) => {
         padding: "40px",
         fontSize: "20px",
         display: "flex",
-        flexDirection: "row-reverse", // change flexDirection to row-reverse
-        justifyContent: "space-between", // add justifyContent
+        flexDirection: "row-reverse",
+        justifyContent: "space-between",
         alignItems: "center",
         borderRadius: "10px",
         boxShadow: "0px 2px 6px rgba(0, 0, 0, 5.0)",
@@ -43,58 +43,73 @@ const Card = (props) => {
   );
 };
 
-const EmployeeDashboard = (props) => {
+const EmployeeDashboard = (props) => { 
   const [open, setOpen] = useState(false);
   const togglePopup = (task) => {
     setSelectedTasks(task);
     setOpen(true);
   }
+  
   const MarkasCompleted = (taskk) => {
-  axios
-  .put(`${API_URL}/updatetask/${taskk.task}`, { status: 'Completed' },{withCredentials:true})
-  .then((response) => {
-    console.log(response.data);
-    // update tasks state
-    setTasks(
-      tasks.map((t) => (t._task === taskk._task ? { ...t, status: 'Completed' } : t))
+    const confirmed = window.confirm(
+      "Clicking on mark as completed notifies the admin. Are you sure you want to continue?"
     );
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+    if (confirmed) {
+      axios
+        .put(
+          `${API_URL}/updatetask/${taskk._id}`,
+          { status: "Waiting For Approval" },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          const updatedTask = response.data.updatedTask;
+          console.log(response.data.updatedTask);
+          // update tasks state
+          setTasks(
+            tasks.map((t) => {
+              if (t._id === updatedTask._id) {
+                return updatedTask;
+              } else {
+                return t;
+              }
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+  
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState(null);
 
   const [cookies, setCookie, removeCookie] = useCookies([
-    "employee_token","name"
-   
+    "access_token",
+    "name",
   ]);
-
- 
-
-  console.log(cookies.employee_token);
-  const tokenn = jwt_decode(cookies.employee_token);
-
-  console.log("token :", tokenn)
-
+  const completedTasks = tasks.filter((task) => task.status === "Waiting For Approval").length;
+  const pendingTasks = tasks.filter((task) => task.status === "Pending").length;
+  const Alltasks = tasks.length;
+  
+  const toke = jwt_decode(cookies.employee_token);
+  // console.log(toke)
   const API_URL = "http://localhost:8800";
   useEffect(() => {
     axios
       .get(`${API_URL}/viewtask`, { withCredentials: true })
       .then((response) => {
         setTasks(
-          response.data.tasks.filter((tasks) => tasks.empName == tokenn.name)
+          response.data.tasks.filter((tasks) => tasks.empName == (toke.name))
+          
         );
         console.log(response.data.tasks);
-        console.log("666666666666666666")
       })
       // const red= response.data.tasks.filter((tasks) => tasks.empName == toke.name)
       // console.log(rd)
       .catch((error) => {
-        console.log("TTTTTTTTTTTTTT")
         console.log(error);
       });
   }, []);
@@ -113,13 +128,13 @@ const EmployeeDashboard = (props) => {
         }}
       >
         <div style={{ position: "relative", bottom: "10px" }}>
-          {/* <SidebarMenu12 />{" "} */}
+          <SidebarMenu12 />{" "}
         </div>
         <h1 style={{ color: "white" }}>Employee Dashboard</h1>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ marginRight: "10px" }}>
             <span style={{ color: "white", marginRight: "20px" }}>
-              {tokenn.name.toUpperCase()}
+              {toke.name.toUpperCase()}
             </span>
             <a href="/userprofile">
               <FaUser style={{ color: "orange", marginRight: "20px" }} />{" "}
@@ -138,7 +153,7 @@ const EmployeeDashboard = (props) => {
           fontStyle: "kanit",
         }}
       >
-        <Card
+        {/* <Card
           style={{
             backgroundColor: "#17A2B8",
             color: "#fff",
@@ -158,7 +173,7 @@ const EmployeeDashboard = (props) => {
           }}
           title="New Task"
           count="10"
-        />
+        /> */}
 
         <Card
           style={{
@@ -178,8 +193,8 @@ const EmployeeDashboard = (props) => {
           onMouseLeave={(e) => {
             e.target.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.3)";
           }}
-          title="In Progress"
-          count="10"
+          title="Pending"
+          count={pendingTasks}
         />
 
         <Card
@@ -201,7 +216,7 @@ const EmployeeDashboard = (props) => {
             e.target.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.3)";
           }}
           title="Completed"
-          count="20"
+          count={completedTasks}
         />
 
         <Card
@@ -223,7 +238,7 @@ const EmployeeDashboard = (props) => {
             e.target.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.3)";
           }}
           title="All Tasks"
-          count="30"
+          count={Alltasks}
         />
       </main>
       <Dialog
@@ -386,3 +401,4 @@ const EmployeeDashboard = (props) => {
 };
 
 export default EmployeeDashboard;
+

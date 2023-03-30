@@ -531,7 +531,7 @@ function AdminDashBoard() {
     axios
       .get(`${API_URL}/gettasks`, { withCredentials: true })
       .then((response) => {
-        setTasks(response.data.tasks);
+        setTasks(response.data.tasks.filter((tasks) => tasks.status === "Pending" || tasks.status === "Waiting For Approval" ));
         console.log(response.data.tasks);
       })
       .catch((error) => {
@@ -952,6 +952,15 @@ function AdminDashBoard() {
                               </h6>
                               <small>{task.task}</small>
                             </div>
+                            <div style={{ textAlign: "center" }}>
+                      <p
+                        style={{ display: "inline-block", marginRight: "10px" }}
+                      >
+                        Status:
+                      </p>
+                      <p style={{ display: "inline-block", color: "#ff0000" }}>
+                        <b>{task.status}</b> </p>
+                        </div>
                             <Link to={`/viewtask/${task.empName}/${task.task}`}>                              <button
                                 className="btn btn-primary"
                                 style={{

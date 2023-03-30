@@ -25,7 +25,7 @@ const SidebarMenu12 = () => {
     setIsOpen(!isOpen);
   };
   const handleLogout = () => {
-    removeCookie("access_token");
+    removeCookie("employee_token");
   };
 
 

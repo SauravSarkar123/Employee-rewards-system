@@ -14,6 +14,7 @@ import comEmp from "./routes/company/comEmp.js"
 import onboard from "./routes/company/onboard.js";
 import assignTask from "./routes/company/assignTask.js";
 import {  verifyUser } from "./utils/verifyToken.js";
+import {verifyUserr} from "./utils/verifyUserToken.js"
 import getTask from "./routes/company/getTasks.js";
 import oneTask from "./routes/company/getTask.js";
 import rewards from "./routes/company/reward.js"
@@ -48,9 +49,9 @@ app.use("/",loginRoute)
 app.use("/", regComp)
 app.use("/", loginComp)
 app.use("/",regComp)
-app.use("/",verifyUser, addEmployee)
-app.use("/",verifyUser, getEmp)
-app.use("/",  emp)
+app.use("/", addEmployee)
+app.use("/", getEmp)
+app.use("/", emp)
 app.use("/", comEmp)
 app.use("/",onboard)
 app.use("/", assignTask)
@@ -58,7 +59,7 @@ app.use("/", getTask)
 app.use("/", oneTask)
 app.use("/", allrewards)
 app.use("/",rewards)
-app.use("/",verifyUser,viewassigned)
+app.use("/",viewassigned)
 app.use("/",updatetask)
 
 app.use((req, res, next) => {
