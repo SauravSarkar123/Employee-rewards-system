@@ -34,9 +34,6 @@ const RewardTaskSchema = new mongoose.Schema({
     },
     Rewards:{
         type: Number,
-      
-       
-
     }
 
     // status:{
@@ -45,6 +42,7 @@ const RewardTaskSchema = new mongoose.Schema({
     //     default : true
     // },
 
+    
     // tokensPurchased : {
     //     type : Number,
     //     required : true
