@@ -1,19 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import './task.css'
 import axios from "axios";
-
+import jwt_decode from "jwt-decode";
+import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 const RewardTasks = (props) => {
   const [tasks, setTasks] = useState([]);
+    const [cookies, setCookie, removeCookie] = useCookies([
+      "access_token",
+      "name",
+    ]);
+  
 
-  // const empName = props.match.params.empName;
-  // const reward = props.match.params.rewards;
-  // const deadline = props.match.params.deadline;
-  // const task = props.match.params.task;
-  // console.log(empName)
-  // console.log(reward)
-  // console.log(deadline)
-  // console.log(task)
+
+  
+  const tokenn = jwt_decode(cookies.access_token);
+
   const API_URL = "http://localhost:8800";
+  // const empName = props.match.params.empName;
+  // const taskk = props.match.params.task;
+  // console.log(empName);
+
+  const compName = tokenn.name;
+  const [task, setTask] = useState(" ");
+  const [taskName, setTaskName] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [deadline, setDeadline] = useState(0);
+  const [rewards, setRewards] = useState(0);
+  
 
   const [projects, setProjects] = useState([
     { name: 'Project 1', deadline: '2023-04-30', status: 'In progress', tasks: 3 },
@@ -23,33 +37,19 @@ const RewardTasks = (props) => {
   ]);
 
   useEffect(() => {
-    Promise.all([
-      axios.get(`${API_URL}/reward`, { withCredentials: true }),
-      axios.get(`${API_URL}/gettasks`, { withCredentials: true })
-    ])
-      .then((responses) => {
-        const rewards = responses[0].data.rewards;
-        const tasks = responses[1].data.tasks;
-        console.log(rewards)
-        console.log(tasks)
-  
-        // Filter empName based on tasks status
-        const approvedTasks = tasks.filter((task) => task.status === "Approved");
-        const approvedEmpNames = approvedTasks.map((task) => task.empName);
-  
-        // Filter rewards based on empName
-        const approvedRewards = rewards.filter((reward) => approvedEmpNames.includes(reward.EmpName));
-  
-        // Set state or do whatever you need with the filtered rewards
-        setTasks(approvedRewards);
-        console.log(approvedRewards);
+    axios
+      .get(`${API_URL}/gettasks`, { withCredentials: true })
+      .then((response) => {
+        setTasks(response.data.tasks.filter((tasks) => tasks.status === "Approved"));
+        console.log(response.data.tasks);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  
-  const Rewarded = (taskk) => {
+
+ 
+  const Rewarded = async (taskk) => {
     const confirmed = window.confirm(
       "Clicking on this will approve the task. Are you you want to Approve?"
     );
@@ -64,8 +64,8 @@ const RewardTasks = (props) => {
           const updatedTask = response.data.updatedTask;
           console.log(response.data.updatedTask);
           // update tasks state
-          setTasks(
-            tasks.map((t) => {
+          setTask(
+            task.map((t) => {
               if (t._id === updatedTask._id) {
                 return updatedTask;
               } else {
@@ -79,8 +79,7 @@ const RewardTasks = (props) => {
         });
     }
   };
- 
-  
+
 
   const handleApproveTask = async (index) => {
     const updatedTasks = [...tasks];
@@ -139,18 +138,18 @@ console.log(tasks)
       
       <div className="task-status" style={{ width: '15%', paddingLeft: "30px" }}>Actions</div>
     </div>
-    {tasks.map((task, index) => (
-      <div className="task-list-item" key={index} style={{ 
+    {tasks.map((task) => (
+      <div className="task-list-item"  style={{ 
         display: 'flex', 
         alignItems: 'center', 
         marginTop: '10px', 
         borderBottom: '1px solid #ccc',
         paddingBottom: '10px',
       }}>
-        <div className="task-name" style={{ width: '25%' }}>{task.Task}</div>
-        <div className="task-assigned-to" style={{ width: '20%' }}>{task.EmpName}</div>
-        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.Deadline}</div>
-        <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>{task.Rewards}
+        <div className="task-name" style={{ width: '25%' }}>{task.task}</div>
+        <div className="task-assigned-to" style={{ width: '20%' }}>{task.empName}</div>
+        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.deadline}</div>
+        <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>{task.rewards}
         </div>
         
         <div className="task-status" style={{ 

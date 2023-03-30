@@ -21,6 +21,7 @@ import rewards from "./routes/company/reward.js"
 import allrewards from "./routes/company/allrewards.js"
 import updatetask from "./routes/employee/updatetask.js"
 import status from "./routes/company/status.js"
+import viewassigned from "./routes/employee/viewassigned.js"
 const app = express()
 dotenv.config();
 
