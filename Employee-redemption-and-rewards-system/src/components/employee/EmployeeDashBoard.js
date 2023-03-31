@@ -43,13 +43,13 @@ const Card = (props) => {
   );
 };
 
-const EmployeeDashboard = (props) => { 
+const EmployeeDashboard = (props) => {
   const [open, setOpen] = useState(false);
   const togglePopup = (task) => {
     setSelectedTasks(task);
     setOpen(true);
-  }
-  
+  };
+
   const MarkasCompleted = (taskk) => {
     const confirmed = window.confirm(
       "Clicking on mark as completed notifies the admin. Are you sure you want to continue?"
@@ -68,14 +68,11 @@ const EmployeeDashboard = (props) => {
           setTasks(
             tasks.map((t) => {
               if (t._id === updatedTask._id) {
-                window.location.reload()
+                window.location.reload();
                 return updatedTask;
-               
               } else {
-                window.location.reload()
+                window.location.reload();
                 return t;
-              
-
               }
             })
           );
@@ -85,7 +82,7 @@ const EmployeeDashboard = (props) => {
         });
     }
   };
-  
+
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
@@ -99,7 +96,7 @@ const EmployeeDashboard = (props) => {
   const pendingTasks = tasks.filter((task) => task.status === "Pending").length;
   const Rewarded = tasks.filter((task) => task.status === "Rewarded").length;
   const Alltasks = tasks.length;
-  
+
   const toke = jwt_decode(cookies.employee_token);
   // console.log(toke)
   const API_URL = "http://localhost:8800";
@@ -108,8 +105,7 @@ const EmployeeDashboard = (props) => {
       .get(`${API_URL}/viewtask`, { withCredentials: true })
       .then((response) => {
         setTasks(
-          response.data.tasks.filter((tasks) => tasks.empName == (toke.name))
-          
+          response.data.tasks.filter((tasks) => tasks.empName == toke.name)
         );
         console.log(response.data.tasks);
       })
@@ -120,7 +116,7 @@ const EmployeeDashboard = (props) => {
       });
   }, []);
   console.log(tasks);
-  
+  const status = tasks.status;
 
   return (
     <div>
@@ -315,9 +311,10 @@ const EmployeeDashboard = (props) => {
                     cursor: "pointer",
                     // marginLeft:"150px"
                   }}
-                 onClick={() => MarkasCompleted(selectedTasks)}>Mark as Completed
+                  onClick={() => MarkasCompleted(selectedTasks)}
+                >
+                  Mark as Completed
                 </button>
-                  
               </div>
             </div>
           )}
@@ -382,19 +379,21 @@ const EmployeeDashboard = (props) => {
                         <b>{task.status}</b>
                       </p>
                     </div>
-                    <button
-                      onClick={() => {
-                        
-                        togglePopup(task);
-                      }}
-                      className="btn btn-primary"
-                      style={{
-                        fontFamily: "Montserrat",
-                        marginTop: "20px",
-                      }}
-                    >
-                      View Tasks
-                    </button>
+
+                    {task.status === "Pending" ? (
+                      <button
+                        onClick={() => {
+                          togglePopup(task);
+                        }}
+                        className="btn btn-primary"
+                        style={{
+                          fontFamily: "Montserrat",
+                          marginTop: "20px",
+                        }}
+                      >
+                        View Tasks
+                      </button>
+                    ) : null}
                   </div>
                 </div>
               ))}
@@ -407,4 +406,3 @@ const EmployeeDashboard = (props) => {
 };
 
 export default EmployeeDashboard;
-

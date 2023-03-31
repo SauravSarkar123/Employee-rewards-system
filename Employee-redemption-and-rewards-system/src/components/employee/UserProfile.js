@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./task.css"
 import Footercr from "../footer/footercr";
 import { useCookies } from "react-cookie";
@@ -7,13 +7,14 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { Table } from "react-bootstrap";
 import SidebarMenu12 from "./side1";
 import jwt_decode from "jwt-decode";
+import axios from "axios";
 
-
-const ProfilePage = () => {
+const ProfilePage = (props) => {
   const [progressWidth, setProgressWidth] = useState(0);
   const [cookies, setCookie, removeCookie] = useCookies(["employee_token",
   "name",]);
-  
+  const [employees, setEmployees] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [boxVisible, setBoxVisible] = useState(false);
   const API_URL = "http://localhost:8800";
   const handlePursuingClick = () => {
@@ -27,46 +28,40 @@ const ProfilePage = () => {
   const handleBoxClick = () => {
     setBoxVisible(!boxVisible);
   };
+ const setemployees=(data)=>{
+  setEmployees(data)
+  console.log('function',employees)
+ }
   const toke = jwt_decode(cookies.employee_token);
   console.log(toke)
-  const tokenData = [
-    {
-      companyName: "SecureKloud",
-      rewardDesc: "Vue Certification",
-      date: "02/04/20",
-      rating: "Excellent",
-      tokensEarned: 40,
-    },
-    {
-      companyName: "Zoho",
-      rewardDesc: "React Certification",
-      date: "02/02/22",
-      rating: "Good",
-      tokensEarned: 20,
-    },
-    {
-      companyName: "Prodapt",
-      rewardDesc: "Java Certification",
-      date: "12/9/2022",
-      rating: "Excellent",
-      tokensEarned: 40,
-    },
-    {
-      companyName: "Deloitte",
-      rewardDesc: "Python Certification",
-      date: "23/02/2023",
-      rating: "Average",
-      tokensEarned: 10,
-    },
-    {
-      companyName: "Deloitte",
-      rewardDesc: "Python Certification",
-      date: "23/02/2023",
-      rating: "Average",
-      tokensEarned: 10,
-    },
-  ];
-
+  useEffect(() => {
+  axios
+      .get(`${API_URL}/viewtask`, { withCredentials: true })
+      .then((response) => {
+        setTasks(
+          response.data.tasks.filter((tasks) => tasks.empName === (toke.name) && tasks.status === "Rewarded" )
+          
+        );
+        console.log(response.data.tasks);
+      })
+      // const red= response.data.tasks.filter((tasks) => tasks.empName == toke.name)
+      // console.log(rd)
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  console.log(tasks);
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/comemps`, { withCredentials: true })
+      .then((response) => {
+        setemployees(response.data.details.filter((details) => details.Name === toke.name));
+       
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    })
   return (
     <div style={{ height: "auto" }}>
       <header style={{ 
@@ -172,7 +167,7 @@ const ProfilePage = () => {
               },
             }}
           >
-            Acheivements{" "}
+            Token History{" "}
             <IoIosArrowDropdownCircle style={{ fontSize: "30px" }} />
           </div>
         </div>
@@ -200,7 +195,7 @@ const ProfilePage = () => {
               >
                 {" "}
                 <b style={{ color: "#537FE7", padding: "40px" }}>
-                  ACHIEVEMENTS
+                  Token History
                 </b>{" "}
               </p>
             </h6>
@@ -209,28 +204,28 @@ const ProfilePage = () => {
             <thead>
               <tr>
                 <th style={{ color: "#537FE7", textAlign: "center" }}>
-                  Company
+                  Company 
                 </th>
                 <th style={{ color: "#537FE7", textAlign: "center" }}>
-                  Reward Description
+                  Rewarded Tasks
                 </th>
-                <th style={{ color: "#537FE7", textAlign: "center" }}>Date</th>
-                <th style={{ color: "#537FE7", textAlign: "center" }}>
-                  Rating
-                </th>
+                <th style={{ color: "#537FE7", textAlign: "center" }}>Completion Date</th>
+                {/* <th style={{ color: "#537FE7", textAlign: "center" }}>
+                  Deadline
+                </th> */}
                 <th style={{ color: "#537FE7", textAlign: "center" }}>
                   Tokens Earned
                 </th>
               </tr>
             </thead>
             <tbody>
-              {tokenData.map((token, index) => (
+              {tasks.map((token, index) => (
                 <tr key={index}>
                   <td align="center">{token.companyName}</td>
-                  <td align="center">{token.rewardDesc}</td>
-                  <td align="center">{token.date}</td>
-                  <td align="center">{token.rating}</td>
-                  <td align="center">{token.tokensEarned}</td>
+                  <td align="center">{token.task}</td>
+                  <td align="center">{token.deadline}</td>
+                  {/* <td align="center">{token.rating}</td> */}
+                  <td align="center">{token.rewards}</td>
                 </tr>
               ))}
             </tbody>
@@ -295,17 +290,19 @@ const ProfilePage = () => {
             </h6>
           </div>
           <hr className="mt-0 mb-4" />
-          <div className="row pt-1">
+          {employees.map((emp)=>( <div className="row pt-1">
             <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
               <h6 style={{ color: "#537FE7",marginRight: "20px" }}>Company Name:</h6>
-              <p className="text-muted mb-0">{toke.compName}</p>
+              <p className="text-muted mb-0">{emp.comName}</p>
             </div>
             <div className="col-6 mb-3 d-flex align-items-left" style={{position:"relative",left:"50px"}}>
               <h6 style={{ color: "#537FE7",marginRight: "20px" }}>EmployeeId:</h6>
-              <p className="text-muted mb-0">{toke.id}</p>
+              <p className="text-muted mb-0">{emp.comId}</p>
             </div>
+            </div>))}
+         
           </div>
-        </div>
+       
       </div>
 
       <div></div>
