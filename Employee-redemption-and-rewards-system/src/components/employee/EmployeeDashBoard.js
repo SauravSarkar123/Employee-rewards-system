@@ -68,9 +68,14 @@ const EmployeeDashboard = (props) => {
           setTasks(
             tasks.map((t) => {
               if (t._id === updatedTask._id) {
+                window.location.reload()
                 return updatedTask;
+               
               } else {
+                window.location.reload()
                 return t;
+              
+
               }
             })
           );
@@ -90,8 +95,9 @@ const EmployeeDashboard = (props) => {
     "access_token",
     "name",
   ]);
-  const completedTasks = tasks.filter((task) => task.status === "Waiting For Approval").length;
+  const Approved = tasks.filter((task) => task.status === "Approved").length;
   const pendingTasks = tasks.filter((task) => task.status === "Pending").length;
+  const Rewarded = tasks.filter((task) => task.status === "Rewarded").length;
   const Alltasks = tasks.length;
   
   const toke = jwt_decode(cookies.employee_token);
@@ -153,7 +159,7 @@ const EmployeeDashboard = (props) => {
           fontStyle: "kanit",
         }}
       >
-        {/* <Card
+        <Card
           style={{
             backgroundColor: "#17A2B8",
             color: "#fff",
@@ -171,9 +177,9 @@ const EmployeeDashboard = (props) => {
           onMouseLeave={(e) => {
             e.target.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.3)";
           }}
-          title="New Task"
-          count="10"
-        /> */}
+          title="Rewarded"
+          count={Rewarded}
+        />
 
         <Card
           style={{
@@ -215,8 +221,8 @@ const EmployeeDashboard = (props) => {
           onMouseLeave={(e) => {
             e.target.style.boxShadow = "0 0 5px rgba(0, 0, 0, 0.3)";
           }}
-          title="Completed"
-          count={completedTasks}
+          title="Approved"
+          count={Approved}
         />
 
         <Card

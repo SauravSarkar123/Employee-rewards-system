@@ -499,6 +499,7 @@ function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [Alltasks, setAllTasks] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies([
     "access_token",
     "name",
@@ -531,6 +532,7 @@ function AdminDashBoard() {
     axios
       .get(`${API_URL}/gettasks`, { withCredentials: true })
       .then((response) => {
+        setAllTasks(response.data.tasks)
         setTasks(response.data.tasks.filter((tasks) => tasks.status === "Pending" || tasks.status === "Waiting For Approval" ));
         console.log(response.data.tasks);
       })
@@ -548,20 +550,17 @@ function AdminDashBoard() {
         employee.comId.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
+  
 
-  // const viewTask = async () => {
-  //   const response = await axios.get(
-  //     `${API_URL}/gettasks`,
-  //     { withCredentials: true }
-  //   )
-  //   .then((response) => {
-  //     setEmployees(response.data.details);
-  //     console.log(response.data.details);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }, []);
+  const OnboardedEmployees = filteredEmployees.length;
+  console.log(OnboardedEmployees)
+  const PendingApprovals = tasks.filter((task) => task.status === "Waiting For Approval").length;
+  const TaskIncentive = Alltasks.filter((task) => task.status === "Approved").length;
+  const Assignedtasks = tasks.filter((task) => task.status === "Pending" ).length;
+
+
+
+
 
   const filteredTasks = tasks.filter((task) => {
     return (
@@ -571,20 +570,7 @@ function AdminDashBoard() {
         task.empName.toString().includes(search)) // Check if employee's company name includes the search term
     );
   });
-  // const onetask = async (empName) => {
-  //   setOpen(true);
-  //   console.log(empName)
-  //   await axios
-  //     .get(`${API_URL}/gettask/${empName}`, { withCredentials: true })
-  //     .then((response) => {
-  //       console.log(response.data.task);
-  //       console.log("gfhhgjhjhh")
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-  
+ 
 
   return (
     <div>
@@ -640,7 +626,7 @@ function AdminDashBoard() {
                         marginLeft: "",
                       }}
                     >
-                      40
+                      {OnboardedEmployees}
                     </b>
                   </h3>
                   <FaUser
@@ -654,7 +640,7 @@ function AdminDashBoard() {
                   />
                   <br />
                   <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
-                    Total Users
+                    Total Onboarded Employees
                   </div>
                 </div>
               </div>
@@ -681,7 +667,7 @@ function AdminDashBoard() {
                         fontSize: "70px",
                       }}
                     >
-                      40
+                      {Assignedtasks}
                     </b>
                   </h3>
                   <FaHome
@@ -695,7 +681,7 @@ function AdminDashBoard() {
                   />
                   <br />
                   <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
-                    Users Onboarded
+                    Total Assigned Tasks
                   </div>
                 </div>
               </div>
@@ -722,7 +708,7 @@ function AdminDashBoard() {
                         fontSize: "70px",
                       }}
                     >
-                      40
+                      {PendingApprovals}
                     </b>
                   </h3>
                   <FaHome
@@ -736,15 +722,15 @@ function AdminDashBoard() {
                   />
                   <br />
                   <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
-                    Tokens
+                    Pending for Approval
                   </div>
                 </div>
               </div>
             </div>
 
            
-
             <div className="col-md-3">
+            <a style={{textDecoration:"none"}}href="/reward">
               <div
                 className="card"
                 style={{
@@ -767,7 +753,7 @@ function AdminDashBoard() {
                         fontSize: "70px",
                       }}
                     >
-                      20
+                      {TaskIncentive}
                     </b>
                   </h3>
                   <FaHome
@@ -781,11 +767,15 @@ function AdminDashBoard() {
                   />
                   <br />
                   <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
-                    Remaining Tokens
+                    Pending For Task Incentive
                   </div>
+                  
                 </div>
+                
               </div>
+              </a>
             </div>
+            
           </div>
           <div className="row mt-">
             <div

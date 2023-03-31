@@ -22,7 +22,7 @@ const RewardTasks = (props) => {
   // console.log(empName);
 
   const compName = tokenn.name;
-  const [task, setTask] = useState(" ");
+  const [task, setTask] = useState([]);
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [deadline, setDeadline] = useState(0);
@@ -51,7 +51,7 @@ const RewardTasks = (props) => {
  
   const Rewarded = async (taskk) => {
     const confirmed = window.confirm(
-      "Clicking on this will approve the task. Are you you want to Approve?"
+      "Reward this Employee?"
     );
     if (confirmed) {
       axios
@@ -62,13 +62,16 @@ const RewardTasks = (props) => {
         )
         .then((response) => {
           const updatedTask = response.data.updatedTask;
+          window.location.reload()
           console.log(response.data.updatedTask);
           // update tasks state
           setTask(
             task.map((t) => {
               if (t._id === updatedTask._id) {
+                window.location.reload()
                 return updatedTask;
               } else {
+                window.location.reload()
                 return t;
               }
             })
