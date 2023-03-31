@@ -480,7 +480,7 @@
 import React, { useState, useEffect } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useCookies } from "react-cookie";
-import { Link } from "react-router-dom";
+import { Link,  useHistory  } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import styles from "./dash.module.css";
@@ -504,8 +504,10 @@ function AdminDashBoard() {
     "access_token",
     "name",
   ]);
+    const history = useHistory();
   // const [open, setOpen] = useState(false);
   const tokenn = jwt_decode(cookies.access_token);
+  console.log(tokenn)
   const API_URL = "http://localhost:8800";
   // const [showPopup, setShowPopup] = useState(false);
   const [open, setOpen] = useState(false);
@@ -518,6 +520,20 @@ function AdminDashBoard() {
   };
 
   useEffect(() => {
+    const token = cookies.access_token;
+    
+    if (token) {
+      const decoded = jwt_decode(token);
+      if (!decoded.isAdmin) {
+        alert("Your account will be verified soon.");
+        window.location.replace("/logincomp");
+        return;
+      }
+    } else {
+      // Handle case where token is not present
+    }
+    
+
     axios
       .get(`${API_URL}/comemps`, { withCredentials: true })
       .then((response) => {
@@ -541,8 +557,11 @@ function AdminDashBoard() {
       });
   }, []);
   console.log(employees);
+  if (cookies.access_token && jwt_decode(cookies.access_token).isAdmin) {
+
   const filteredEmployees = employees.filter((employee) => {
     console.log(employee.isOnboarded);
+    
     return (
       employee.comName === tokenn.name &&
       employee.Onboard === false && // Check if employee's company name matches tokenn's company name
@@ -975,5 +994,7 @@ function AdminDashBoard() {
       </div>
     </div>
   );
-}
+} else{
+  return null;
+}}
 export default AdminDashBoard;

@@ -24,7 +24,7 @@ export const loginComp = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid name or password" });
      }
 
-     const token = jwt.sign({name: user.comName, password: user.password, isAdmin : user.isAdmin}, process.env.JWT)
+     const token = jwt.sign({name: user.comName, password: user.password, isAdmin : user.isAdmin, wallet : user.walletAddress, email : user.comEmail}, process.env.JWT)
      const { password:userPassword,isAdmin,...otherDetails} = await user._doc;
      console.log(token);
 
