@@ -4,6 +4,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
+import SidebarMenu from './side';
 const RewardTasks = (props) => {
   const [tasks, setTasks] = useState([]);
     const [cookies, setCookie, removeCookie] = useCookies([
@@ -106,8 +107,11 @@ console.log(tasks)
   return (
     <div className="container">
             <div className="main">
+              
         <h1>Task Management</h1>
+        <div style={{position:"relative",right:"550px",bottom:"70px"}}> <SidebarMenu/> </div>
         <div className="summary">
+        
   <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
     <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Ongoing Projects</h2>
     <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{projects.filter(p => p.status === 'In progress').length}</p>

@@ -131,7 +131,7 @@ const SidebarMenu = () => {
 
   return (
     <div ref={menuRef} style={{marginTop:"20px"}}>
-     <button className="btn btn-primary" id="menu-toggle" style={{background:"#f5f5f5",color:"#000000",width:"70px",border:"none"}} onMouseEnter={toggleSidebar}>
+     <button className="btn btn-primary" id="menu-toggle" style={{background:"#FFFFFF",color:"#000000",width:"70px",border:"none"}} onMouseEnter={toggleSidebar}>
         {isOpen ? <AiOutlineClose style={{fontSize:"2rem",position:"relative",right:"0px",}} /> : <AiOutlineMenu style={{fontSize:"2rem",position:"relative",right:"0px",}} />}
       </button>
       <nav className={`sidebar-menu ${isOpen ? 'open' : ''}`} onMouseLeave={handleMouseLeave}>
@@ -152,11 +152,6 @@ const SidebarMenu = () => {
               <BiTask className="icon" id="fonnn" /> Assign Tasks
             </a>
           </li> */}
-          <li id="fonnn">
-            <a href="/approvetask">
-              <FaThumbsUp className="icon" id="fonnn" /> Approve Tasks
-            </a>
-          </li>
           <li id="fonnn">
             <a href="/reward">
               <FiGift className="icon" id="fonnn" /> Reward Tasks

@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SidebarMenu from "./side";
+import { useHistory } from "react-router-dom";
 
 const CreateModal = (props) => {
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -12,6 +13,7 @@ const CreateModal = (props) => {
     "name",
   ]);
   const tokenn = jwt_decode(cookies.access_token);
+  const history = useHistory();
 
   const API_URL = "http://localhost:8800";
 
@@ -70,7 +72,7 @@ const CreateModal = (props) => {
       console.log(employeeName)
       console.log(compName)
 
-      // history.push("/real")
+      history.push("/real")
       
     } catch (error) {
       console.log("wrongyyyy")

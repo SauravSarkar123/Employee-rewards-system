@@ -325,7 +325,7 @@ const ProfilePage = (props) => {
               <h6 style={{ color: "#537FE7", marginRight: "20px" }}>
                 Company Name:
               </h6>
-              <p className="text-muted mb-0">{employee.compName}</p>
+              <p className="text-muted mb-0"> </p>
             </div>
             <div
               className="col-6 mb-3 d-flex align-items-left"
@@ -334,7 +334,7 @@ const ProfilePage = (props) => {
               <h6 style={{ color: "#537FE7", marginRight: "20px" }}>
                 EmployeeId:
               </h6>
-              <p className="text-muted mb-0">{employee._id}</p>
+              <p className="text-muted mb-0"></p>
             </div>
           </div>
         </div>
