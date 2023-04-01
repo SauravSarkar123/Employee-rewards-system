@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import SidebarMenu from './side';
 const RewardTasks = (props) => {
   const [tasks, setTasks] = useState([]);
+  const [rewardedemp, setrewardedemp] = useState([]);
     const [cookies, setCookie, removeCookie] = useCookies([
       "access_token",
       "name",
@@ -42,6 +43,7 @@ const RewardTasks = (props) => {
       .get(`${API_URL}/gettasks`, { withCredentials: true })
       .then((response) => {
         setTasks(response.data.tasks.filter((tasks) => tasks.status === "Approved"));
+        setrewardedemp(response.data.tasks.filter((tasks) => tasks.status === "Rewarded"));
         console.log(response.data.tasks);
       })
       .catch((error) => {
@@ -113,16 +115,16 @@ console.log(tasks)
         <div className="summary">
         
   <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
-    <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Ongoing Projects</h2>
-    <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{projects.filter(p => p.status === 'In progress').length}</p>
+    <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Approved Employees</h2>
+    <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{tasks.length}</p>
   </div>
   <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
-    <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Upcoming Deadlines</h2>
-    <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{projects.filter(p => new Date(p.deadline) <= new Date()).length}</p>
+    <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Token Balance</h2>
+    <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>1000000</p>
   </div>
   <div className="summary-card" style={{ backgroundColor: "#fff", padding: "20px", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)", borderRadius: "5px", marginBottom: "20px" }}>
-    <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}>Pending Tasks</h2>
-    <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{tasks.filter(t => t.progress < 100).length}</p>
+    <h2 style={{ fontSize: "1.2rem", fontWeight: "bold", margin: "0" }}> Rewarded Employees</h2>
+    <p style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "10px 0 0 0" }}>{rewardedemp.length}</p>
   </div>
 </div>
 
