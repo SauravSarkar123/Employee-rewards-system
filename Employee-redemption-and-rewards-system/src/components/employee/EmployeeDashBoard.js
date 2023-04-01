@@ -109,15 +109,30 @@ const EmployeeDashboard = (props) => {
         );
         console.log(response.data.tasks);
       })
-      // const red= response.data.tasks.filter((tasks) => tasks.empName == toke.name)
-      // console.log(rd)
+      .catch((error) => {
+        console.log(error);
+      });
+      axios
+      .get(`${API_URL}/empdetails`, { withCredentials: true })
+      .then((response) => {
+        const userData = response.data.user.filter((user) => user.name === toke.name);
+        setEmployees(userData);
+        console.log(userData);
+      })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+    
+ 
+  
+
   console.log(tasks);
   const status = tasks.status;
+  const onboarded = employees && employees[0] && employees[0].isOnboarded;
 
+  console.log("vanakam", onboarded);
+ 
   return (
     <div>
       <header
@@ -321,86 +336,100 @@ const EmployeeDashboard = (props) => {
         </div>
       </Dialog>
 
-      <div
-        className="card"
-        style={{
-          boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
-          marginBottom: "40px",
-          width: "845px",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <h5
-          className="card-header font-weight-bold"
+      {onboarded ? (
+        <div
+          className="card"
           style={{
-            textAlign: "center",
-            fontFamily: "Montserrat",
-            padding: "20px",
-            color: "black",
+            boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.3)",
+            marginBottom: "40px",
+            width: "845px",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
-          Pending Tasks
-        </h5>
-        <div className={`${styles.cardBody}`}>
-          <div className={`${styles.listGroup} list-group`} id="employee-list">
+          <h5
+            className="card-header font-weight-bold"
+            style={{
+              textAlign: "center",
+              fontFamily: "Montserrat",
+              padding: "20px",
+              color: "black",
+            }}
+          >
+            Pending Tasks
+          </h5>
+          <div className={`${styles.cardBody}`}>
             <div
-              className="list-group"
-              style={{ maxHeight: "1350px", overflowY: "auto" }}
+              className={`${styles.listGroup} list-group`}
+              id="employee-list"
             >
-              {tasks.map((task) => (
-                <div
-                  key={task.task}
-                  className="list-group-item"
-                  style={{
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6
-                        className="font-weight-bold mb-0"
-                        style={{
-                          fontFamily: "Montserrat",
-                          marginTop: "20px",
-                        }}
-                      >
-                        {task.task}
-                      </h6>
-                      <small>{task.deadline}</small>
-                    </div>
-                    <div style={{ textAlign: "center" }}>
-                      <p
-                        style={{ display: "inline-block", marginRight: "10px" }}
-                      >
-                        Status:
-                      </p>
-                      <p style={{ display: "inline-block", color: "#ff0000" }}>
-                        <b>{task.status}</b>
-                      </p>
-                    </div>
+              <div
+                className="list-group"
+                style={{ maxHeight: "1350px", overflowY: "auto" }}
+              >
+                {tasks.map((task) => (
+                  <div
+                    key={task.task}
+                    className="list-group-item"
+                    style={{
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6
+                          className="font-weight-bold mb-0"
+                          style={{
+                            fontFamily: "Montserrat",
+                            marginTop: "20px",
+                          }}
+                        >
+                          {task.task}
+                        </h6>
+                        <small>{task.deadline}</small>
+                      </div>
+                      <div style={{ textAlign: "center" }}>
+                        <p
+                          style={{
+                            display: "inline-block",
+                            marginRight: "10px",
+                          }}
+                        >
+                          Status:
+                        </p>
+                        <p
+                          style={{ display: "inline-block", color: "#ff0000" }}
+                        >
+                          <b>{task.status}</b>
+                        </p>
+                      </div>
 
-                    {task.status === "Pending" ? (
-                      <button
-                        onClick={() => {
-                          togglePopup(task);
-                        }}
-                        className="btn btn-primary"
-                        style={{
-                          fontFamily: "Montserrat",
-                          marginTop: "20px",
-                        }}
-                      >
-                        View Tasks
-                      </button>
-                    ) : null}
+                      {task.status === "Pending" ? (
+                        <button
+                          onClick={() => {
+                            togglePopup(task);
+                          }}
+                          className="btn btn-primary"
+                          style={{
+                            fontFamily: "Montserrat",
+                            marginTop: "20px",
+                          }}
+                        >
+                          View Tasks
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) :  (
+        <div style={{textAlign:"center"}}>
+          <h2>You haven't joined the company yet!</h2>
+        </div>
+      )}
     </div>
   );
 };
