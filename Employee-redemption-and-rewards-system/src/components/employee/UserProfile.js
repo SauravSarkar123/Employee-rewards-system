@@ -49,6 +49,7 @@ const ProfilePage = (props) => {
       .catch((error) => {
         console.log(error);
       });
+      
   }, []);
   console.log(tasks);
   useEffect(() => {
