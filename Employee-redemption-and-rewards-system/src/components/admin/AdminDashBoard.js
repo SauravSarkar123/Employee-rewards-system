@@ -20,6 +20,7 @@ import {
 function AdminDashBoard() {
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
+  const [users,setusers] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies([
     "access_token",
     "name",
@@ -37,22 +38,21 @@ function AdminDashBoard() {
   const tokenn = jwt_decode(cookies.access_token);
   const API_URL = "http://localhost:8800";
 
-  const handleLogout = () => {
-    removeCookie("access_token");
-  };
+ 
 
   useEffect(() => {
     axios
       .get(`${API_URL}/empdetails`, { withCredentials: true })
       .then((response) => {
         setEmployees(response.data.user);
-        console.log(response.data.user);
+        setusers(response.data.user.filter((user) => user.isOnboarded === false))
+        console.log('redd',response.data.user);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
+console.log('red',users)
   const filteredEmployees = employees.filter((employee) => {
     console.log(employee.isOnboarded);
     return (
@@ -68,7 +68,7 @@ function AdminDashBoard() {
       
       <div className="row">
         <div className="col-md-3">
-          <div style={{ marginTop: "40px", marginLeft: "20px" }}>
+          <div style={{ marginTop: "40px", marginLeft: "20px",display:"flex" }}>
             <SidebarMenu />
           </div>
         </div>
@@ -82,21 +82,12 @@ function AdminDashBoard() {
             // }}
           >
             WELCOME {tokenn.name.toUpperCase()}'s ADMIN
-            <Link to="/logincomp">
-              <button
-                onClick={handleLogout}
-                className="btn btn-primary"
-                style={{ margin: "1rem", marginLeft: "300px" }}
-              >
-                <FaSignOutAlt /> Log Out
-              </button>
-            </Link>
           </div>
           <div
             className="row"
             style={{ marginTop: "40px", marginLeft: "-280px" }}
           >
-            <div className="col-md-3">
+            {/* <div className="col-md-3">
               <div
                 className="card"
                 style={{
@@ -137,8 +128,8 @@ function AdminDashBoard() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-md-3">
+            </div> */}
+            {/* <div className="col-md-3">
               <div
                 className="card"
                 style={{
@@ -178,7 +169,8 @@ function AdminDashBoard() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <div className="row justify-content-center">
             <div className="col-md-3">
               <div
                 className="card"
@@ -189,6 +181,8 @@ function AdminDashBoard() {
                   boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.3)",
                   border: "0px",
                   backgroundColor: "#FFC107",
+                  margin: "auto", /* centers horizontally */
+                  
                 }}
               >
                 <div className={styles.txt} style={{ marginTop: "20px" }}>
@@ -201,7 +195,7 @@ function AdminDashBoard() {
                         fontSize: "70px",
                       }}
                     >
-                      40
+                      {users.length}
                     </b>
                   </h3>
                   <FaHome
@@ -215,13 +209,14 @@ function AdminDashBoard() {
                   />
                   <br />
                   <div style={{ marginTop: "-20px", marginLeft: "10px" }}>
-                    Deleted
+                    Total Users
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
-              <div
+            </div>
+            {/* <div className="col-md-3"> */}
+              {/* <div
                 className="card"
                 style={{
                   color: "white",
@@ -260,8 +255,8 @@ function AdminDashBoard() {
                     Deleted
                   </div>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
           <div className="row mt-" >
             <div className="col-md-11 " style={{ marginTop: "50px",marginLeft:"-100px" ,}}>
