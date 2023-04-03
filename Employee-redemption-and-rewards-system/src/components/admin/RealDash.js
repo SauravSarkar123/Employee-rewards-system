@@ -94,9 +94,9 @@ function AdminDashBoard() {
 
   const OnboardedEmployees = filteredEmployees.length;
   console.log(OnboardedEmployees)
-  const PendingApprovals = tasks.filter((task) => task.status === "Waiting For Approval").length;
-  const TaskIncentive = Alltasks.filter((task) => task.status === "Approved").length;
-  const Assignedtasks = tasks.filter((task) => task.status === "Pending" ).length;
+  const PendingApprovals = tasks.filter((task) => task.status === "Waiting For Approval" & task.companyName === tokenn.name).length;
+  const TaskIncentive = Alltasks.filter((task) => task.status === "Approved" & task.companyName === tokenn.name).length;
+  const Assignedtasks = tasks.filter((task) => task.status === "Pending" & task.companyName === tokenn.name).length;
 
 
 

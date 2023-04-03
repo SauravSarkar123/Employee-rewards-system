@@ -8,15 +8,15 @@ export const registerCompany = async (req, res, next) => {
   try{
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password,salt);
-  const { comName, comAddress, comEmail, password, mobile } = req.body;
+  const { comName, comAddress, comEmail, password, mobile, walletAddress } = req.body;
 
-  if (!comName || !comEmail  || !password || !comEmail  || !mobile ) {
+  if (!comName || !comEmail || !password || !comEmail || !mobile || !walletAddress ) {
     return res
       .status(400)
       .json({ message: "All the fields must be filled" });
   }
 
-  const newUser = new CompanyReg({comName, comEmail, comAddress, password:hash, mobile});
+  const newUser = new CompanyReg({comName, comEmail, comAddress, password:hash, mobile, walletAddress});
 
   
     const savedUser = await newUser.save();

@@ -19,6 +19,7 @@ import CalendarView from './components/employee/EmployeeTaskView'
 import RewardTasks from './components/admin/RewardTasks'
 import AssignTask from "./components/admin/CreateModal"
 import ViewTask from './components/admin/ViewTask'
+import PlatformAdmin from './components/Platform admin/Tokens reward'
 
 
 
@@ -54,7 +55,7 @@ export default function App() {
                     <Route path="/reward" component={RewardTasks}/>
                     <Route path="/assigntask/:Name" component={AssignTask}/>
                     <Route path="/viewtask/:empName/:task" component={ViewTask}/>
-                    {/* <Route path="/viewtask/:empName" component={ViewTask}/>    */}
+                    <Route path="/admin" component={PlatformAdmin}/>
                 </Switch>
             </div>
         </Router>

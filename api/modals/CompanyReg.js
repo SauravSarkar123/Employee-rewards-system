@@ -34,7 +34,12 @@ const CompanySchema = new mongoose.Schema({
         type : Boolean,
         default : false
     },
-
+    
+    walletAddress : {
+        type : String,
+        unique : true
+    }
+    
     // status:{
     //     type : Boolean,
     //     required : true,

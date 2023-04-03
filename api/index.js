@@ -22,6 +22,8 @@ import allrewards from "./routes/company/allrewards.js"
 import updatetask from "./routes/employee/updatetask.js"
 import status from "./routes/company/status.js"
 import viewassigned from "./routes/employee/viewassigned.js"
+import company from "./routes/admin/admin.js"
+import verifycom from "./routes/admin/verifycomp.js"
 const app = express()
 dotenv.config();
 
@@ -61,7 +63,8 @@ app.use("/", allrewards)
 app.use("/",rewards)
 app.use("/",viewassigned)
 app.use("/",updatetask)
-
+app.use("/", company)
+app.use("/", verifycom)
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.header("Access-Control-Allow-Credentials", true);
