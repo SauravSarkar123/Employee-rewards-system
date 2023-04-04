@@ -54,7 +54,7 @@ export default function App() {
                     <Route path="/emptask" component={CalendarView}/>
                     <Route path="/reward" component={RewardTasks}/>
                     <Route path="/assigntask/:Name" component={AssignTask}/>
-                    <Route path="/viewtask/:empName/:task" component={ViewTask}/>
+                    <Route path="/viewtask/:id" component={ViewTask}/>
                     <Route path="/admin" component={PlatformAdmin}/>
                 </Switch>
             </div>
