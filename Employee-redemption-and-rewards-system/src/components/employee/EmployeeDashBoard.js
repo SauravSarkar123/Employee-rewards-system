@@ -55,34 +55,48 @@ const EmployeeDashboard = (props) => {
       "Clicking on mark as completed notifies the admin. Are you sure you want to continue?"
     );
     if (confirmed) {
+      const date = new Date().toLocaleDateString("en-GB"); // get current date in dd/mm/yy format
       axios
         .put(
           `${API_URL}/updatetask/${taskk._id}`,
           { status: "Waiting For Approval" },
           { withCredentials: true }
         )
-        .then((response) => {
-          const updatedTask = response.data.updatedTask;
-          console.log(response.data.updatedTask);
-          // update tasks state
-          setTasks(
-            tasks.map((t) => {
-              if (t._id === updatedTask._id) {
-                window.location.reload();
-                return updatedTask;
-              } else {
-                window.location.reload();
-                return t;
-              }
+        .then(() => {
+          axios
+            .put(
+              `${API_URL}/completion/${taskk._id}`,
+              { completion : date },
+              { withCredentials: true }
+            )
+            .then((response) => {
+              window.location.reload();
+              const updatedTask = response.data.updatedTask;
+              console.log(response.data.updatedTask);
+              // update tasks state
+              setTasks(
+                tasks.map((t) => {
+                  if (t._id === updatedTask._id) {
+                    window.location.reload();
+                    return updatedTask;
+                  } else {
+                    window.location.reload();
+                    return t;
+                  }
+                })
+              );
             })
-          );
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
           console.log(error);
         });
     }
   };
-
+  
+  
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);

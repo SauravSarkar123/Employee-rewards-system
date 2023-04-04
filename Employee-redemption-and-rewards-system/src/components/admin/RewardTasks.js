@@ -142,7 +142,7 @@ console.log(tasks)
     <div className="task-list-header">
       <div className="task-name" style={{ width: '25%' }}>Task Name</div>
       <div className="task-assigned-to" style={{ width: '20%' }}>Assigned To</div>
-      <div className="task-due-date" style={{ width: '10%' }}>Due Date</div>
+      <div className="task-due-date" style={{ width: '10%' }}>Completion Date</div>
       <div className="task-progress" style={{ width: '10%' }}>Rewards</div>
       
       <div className="task-status" style={{ width: '15%', paddingLeft: "30px" }}>Actions</div>
@@ -157,7 +157,7 @@ console.log(tasks)
       }}>
         <div className="task-name" style={{ width: '25%' }}>{task.task}</div>
         <div className="task-assigned-to" style={{ width: '20%' }}>{task.empName}</div>
-        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.deadline}</div>
+        <div className="task-due-date" style={{ width: '10%', marginLeft:"80px" }}>{task.completion}</div>
         <div className="task-progress" style={{ width: '10%' ,marginLeft:"40px"}}>{task.rewards}
         </div>
         

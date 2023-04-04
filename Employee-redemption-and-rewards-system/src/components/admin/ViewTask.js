@@ -35,7 +35,7 @@ const CreateModal = (props) => {
   const status = task.status;
   const Approval = (taskk) => {
     const confirmed = window.confirm(
-      "Clicking on this will approve the task. Are you you want to Approve?"
+      "Do you want to approve this task"
     );
     if (confirmed) {
       axios
@@ -80,70 +80,102 @@ const CreateModal = (props) => {
 
   return (
     <div className="modal-container">
-      <header
-        style={{
-          backgroundColor: "#F2F2F2",
-          padding: "1.5rem 0",
-          height: "100px",
-        }}
-      >
-        <div style={{ position: "relative", bottom: "20px", left: "20px" }}>
-          <SidebarMenu />
-        </div>
-        <h2
-          className="heading"
-          style={{
-            fontFamily: "Axiforma",
-            fontSize: "2.5rem",
-            marginBottom: "1.5rem",
-            color: "#333333",
-            textAlign: "center",
-            textTransform: "uppercase",
-            position: "relative",
-            bottom: "60px",
-          }}
-        >
-          VIEW TASK
-        </h2>
-      </header>
-      <div
-        className="Add-list"
-        style={{
-          backgroundColor: "#f5f5f5",
-          color: "#222",
-          margin: "0 auto",
-          width: "1000px",
-          textAlign: "center",
-          boxShadow: "0 24px 500px #26214a1a",
-          borderRadius: "12px",
-          padding: "2rem",
-          marginLeft: "250px",
-          height:"20px"
-        }}
-      >
-        <form className="modal-form" style={{height:"500px"}} >
-        <h3>Employee Name:{task.empName}</h3>
-              <p>Task :{task.task}</p>
-              <p>Name:{task.taskName}</p>
-              <p>Description:{task.taskDescription}</p>
-              <p>Deadline: {task.deadline}</p>
-              <p>Rewards: {task.rewards}</p>
-              <p> Status : {task.status}</p>
-              {status === "Waiting For Approval" ? (
-              <div style={{display:"flex", flexDirection:"row"}}>
-              <Link to={`/real`}><button className="btttn" onClick={() => {reward();Approval(task);}} >Approve</button></Link>
-              <button className="btttn2" >Reject</button>
-              </div>
-              ) : null}
-              </form>
-      
-      </div>
-      <br />
-      {/* <div className="head2" style={{ fontFamily: "Axiforma" }}>
-        Copyright &copy; 2023 | Asset Warrenty
-      </div>
-      <br /> */}
+  <header
+    style={{
+      backgroundColor: "#333333",
+      padding: "1.5rem 0",
+      height: "100px",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+      color: "#F2F2F2",
+    }}
+  >
+    <div style={{ position: "relative", bottom: "20px", left: "20px" }}>
+      <SidebarMenu />
     </div>
+    <h2
+      className="heading"
+      style={{
+        fontFamily: "Axiforma",
+        fontSize: "2.5rem",
+        marginBottom: "1.5rem",
+        color: "#F2F2F2",
+        textAlign: "center",
+        textTransform: "uppercase",
+        position: "relative",
+        bottom: "60px",
+      }}
+    >
+      VIEW TASK
+    </h2>
+  </header>
+  <div
+    className="Add-list"
+    style={{
+      backgroundColor: "#FFFFFF",
+      color: "#333333",
+      margin: "0 auto",
+      width: "1000px",
+      textAlign: "center",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+      borderRadius: "12px",
+      padding: "2rem",
+      marginLeft: "250px",
+    }}
+  >
+    <form className="modal-form" style={{ height: "500px" }}>
+      <h3>Employee Name: {task.empName}</h3>
+      <p>Task: {task.task}</p>
+      <p>Name: {task.taskName}</p>
+      <p>Description: {task.taskDescription}</p>
+      <p>Deadline: {task.deadline}</p>
+      <p>Completion Date: {task.completion}</p>
+      <p>Rewards: {task.rewards}</p>
+      <p>Status: {task.status}</p>
+      {status === "Waiting For Approval" ? (
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <Link to={`/real`}>
+            <button
+              className="btttn"
+              style={{
+                backgroundColor: "#38A169",
+                color: "#F2F2F2",
+                borderRadius: "5px",
+                padding: "0.5rem 1rem",
+                marginRight: "1rem",
+                border: "none",
+                cursor: "pointer",
+                boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+              }}
+              onClick={() => {
+                reward();
+                Approval(task);
+              }}
+            >
+              Approve
+            </button>
+          </Link>
+          <button
+            className="btttn2"
+            style={{
+              backgroundColor: "#E53E3E",
+              color: "#F2F2F2",
+              borderRadius: "5px",
+              padding: "0.5rem 1rem",
+              border: "none",
+              cursor: "pointer",
+              boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            Reject
+          </button>
+        </div>
+      ) : null}
+    </form>
+  </div>
+  <br />
+  <br />
+</div>
+
   );
 };
 

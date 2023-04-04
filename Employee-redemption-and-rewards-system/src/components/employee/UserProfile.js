@@ -224,7 +224,7 @@ const ProfilePage = (props) => {
                 <tr key={index}>
                   <td align="center">{token.companyName}</td>
                   <td align="center">{token.task}</td>
-                  <td align="center">{token.deadline}</td>
+                  <td align="center">{token.completion}</td>
                   {/* <td align="center">{token.rating}</td> */}
                   <td align="center">{token.rewards}</td>
                 </tr>

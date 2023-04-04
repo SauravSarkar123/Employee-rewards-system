@@ -33,6 +33,10 @@ const TaskSchema = new mongoose.Schema({
         type : String,
         required : true,
     },
+    completion:{
+        type : String,
+        default:"Not Completed Yet ",
+    },
     rewards:{
         type: Number,
         required : true,
