@@ -123,14 +123,32 @@ const CreateModal = (props) => {
     }}
   >
     <form className="modal-form" style={{ height: "500px" }}>
-      <h3>Employee Name: {task.empName}</h3>
-      <p>Task: {task.task}</p>
-      <p>Name: {task.taskName}</p>
-      <p>Description: {task.taskDescription}</p>
-      <p>Deadline: {task.deadline}</p>
-      <p>Completion Date: {task.completion}</p>
-      <p>Rewards: {task.rewards}</p>
-      <p>Status: {task.status}</p>
+    <div style={{ display: "flex",textAlign:"center"}}>
+  <h3 style={{position:"relative",left:"90px"}}>Employee Name</h3>
+  <h3 style={{position:"relative",left:"175px"}}> :</h3>
+  <h3 style={{position:"relative",left:"260px"}}>{task.empName}</h3>
+</div>
+<div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}> Task</p> <p style={{fontSize:"1.4rem",position:"relative",left:"333px"}}> : </p> <p style={{position:"relative",left:"420px",fontSize:"1.4rem"}}>{task.task}</p>
+      </div>
+      <div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}>Name </p> <p style={{fontSize:"1.4rem",position:"relative",left:"321px"}}> : </p>  <p style={{position:"relative",left:"412px",fontSize:"1.4rem"}}> {task.taskName}</p>
+      </div>
+      <div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}>Description </p> <p style={{fontSize:"1.4rem",position:"relative",left:"268px"}}>: </p>  <p style={{position:"relative",left:"358px",fontSize:"1.4rem"}}>{task.taskDescription}</p>
+      </div>
+      <div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}>Deadline</p> <p style={{fontSize:"1.4rem",position:"relative",left:"295px"}}> : </p> <p style={{position:"relative",left:"385px",fontSize:"1.4rem"}}> {task.deadline}</p>
+      </div>
+      <div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}>Completion Date </p><p style={{fontSize:"1.4rem",position:"relative",left:"215.5px"}}> : </p> <p style={{position:"relative",left:"305px",fontSize:"1.4rem"}}>{task.completion}</p>
+      </div>
+      <div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}>Rewards </p><p style={{fontSize:"1.4rem",position:"relative",left:"295.5px"}}> : </p> <p style={{position:"relative",left:"385px",fontSize:"1.4rem"}}> {task.rewards}</p>
+      </div>
+      <div style={{ display: "flex",textAlign:"center"}}>
+      <p style={{position:"relative",left:"90px",fontSize:"1.4rem"}}>Status </p><p style={{fontSize:"1.4rem",position:"relative",left:"317px"}}> : </p> <p style={{position:"relative",left:"405px",fontSize:"1.4rem"}}> {task.status}</p>
+      </div>
       {status === "Waiting For Approval" ? (
         <div style={{ display: "flex", flexDirection: "row" }}>
           <Link to={`/real`}>
@@ -144,7 +162,8 @@ const CreateModal = (props) => {
                 marginRight: "1rem",
                 border: "none",
                 cursor: "pointer",
-                boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+                boxShadow: "0 2px 5px rgba(0, 0, 0, 1.0)",
+                marginTop:"10px"
               }}
               onClick={() => {
                 reward();
@@ -163,7 +182,8 @@ const CreateModal = (props) => {
               padding: "0.5rem 1rem",
               border: "none",
               cursor: "pointer",
-              boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+              boxShadow: "0 2px 5px rgba(0, 0, 0,1.0)",
+              marginTop:"10px"
             }}
           >
             Reject
