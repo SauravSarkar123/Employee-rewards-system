@@ -112,10 +112,12 @@ const EmployeeDashboard = (props) => {
       .catch((error) => {
         console.log(error);
       });
-      axios
+    axios
       .get(`${API_URL}/empdetails`, { withCredentials: true })
       .then((response) => {
-        const userData = response.data.user.filter((user) => user.name === toke.name);
+        const userData = response.data.user.filter(
+          (user) => user.name === toke.name
+        );
         setEmployees(userData);
         console.log(userData);
       })
@@ -123,16 +125,13 @@ const EmployeeDashboard = (props) => {
         console.log(error);
       });
   }, []);
-    
- 
-  
 
   console.log(tasks);
   const status = tasks.status;
   const onboarded = employees && employees[0] && employees[0].isOnboarded;
 
   console.log("vanakam", onboarded);
- 
+
   return (
     <div>
       <header
@@ -386,7 +385,21 @@ const EmployeeDashboard = (props) => {
                         >
                           {task.task}
                         </h6>
-                        <small>{task.deadline}</small>
+                        <p
+                          style={{ display: "inline-block", fontSize: "16px" }}
+                        >
+                          Deadline:
+                        </p>
+                        <small
+                          style={{
+                            display: "inline-block",
+                            fontSize: "16px",
+                            position: "relative",
+                            left: "5px",
+                          }}
+                        >
+                          {task.deadline}
+                        </small>
                       </div>
                       <div style={{ textAlign: "center" }}>
                         <p
@@ -425,8 +438,8 @@ const EmployeeDashboard = (props) => {
             </div>
           </div>
         </div>
-      ) :  (
-        <div style={{textAlign:"center"}}>
+      ) : (
+        <div style={{ textAlign: "center" }}>
           <h2>You haven't joined the company yet!</h2>
         </div>
       )}

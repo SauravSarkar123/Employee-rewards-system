@@ -51,34 +51,31 @@ const CreateModal = (props) => {
     setRewards(e.target.value);
   };
 
-  // const handleAddModel = (e) => {
-  //   e.preventDefault();
-  //   // console.log(`Selected Product: ${selectedProduct}`);
-  //   // console.log(`Model Name: ${modelName}`);
-  //   // console.log(`Model Description: ${modelDes}`);
-  //   // console.log(`Deadline: ${deadline}`);
-  // };
- 
+
   const handleAddModel = async (event) => {
-
     event.preventDefault();
-    
-
+  
     try {
-      console.log(compName, employeeName)
-      const response = await axios.post(`${API_URL}/assigntask/${employeeName}/${compName}`, { task, taskName, taskDescription, deadline, rewards }, { withCredentials: true })
-      
+      const deadlineDate = new Date(deadline); // Convert the deadline value to a Date object
+      const formattedDeadline = deadlineDate.toLocaleDateString("en-GB"); // Get the deadline in the dd/mm/yy format
+  
+      const response = await axios.post(
+        `${API_URL}/assigntask/${employeeName}/${compName}`,
+        { task, taskName, taskDescription, deadline: formattedDeadline, rewards },
+        { withCredentials: true }
+      );
+  
       console.log(response.data);
-      console.log(employeeName)
-      console.log(compName)
-
-      history.push("/real")
-      
+      console.log(employeeName);
+      console.log(compName);
+  
+      history.push("/real");
     } catch (error) {
-      console.log("wrongyyyy")
+      console.log("wrongyyyy");
       console.error(error);
     }
   };
+  
 
 
   return (
