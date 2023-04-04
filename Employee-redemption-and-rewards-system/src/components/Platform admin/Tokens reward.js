@@ -24,11 +24,11 @@ const PlatformAdmin = () => {
         console.log(error);
       });
   }, []);
-  const admin = companies && companies[0] && companies[0].isAdmin;
-console.log("admin", admin)
+  
+
   const Verify = (comp) => {
     const confirmed = window.confirm(
-      "Clicking on mark as completed notifies the admin. Are you sure you want to continue?"
+      "Approve this Company?"
     );
     if (confirmed) {
       axios
@@ -39,7 +39,7 @@ console.log("admin", admin)
         )
         .then((response) => {
           const compp = response.data.savedUser;
-          // window.location.reload();
+          window.location.reload();
           console.log("red", response.data.savedUser);
           // update tasks state
           setupdatecompanies(
@@ -93,7 +93,10 @@ console.log("admin", admin)
             </tr>
           </thead>
           <tbody>
-            {companies.map((company, index) => (
+          {companies.map((company, index) => {
+              const admin = company.isAdmin;
+              console.log(admin)
+              return (
               <tr key={index} style={{ borderBottom: "1px solid #ccc" }}>
                 <td style={{ padding: "1rem" }}>{company.comName}</td>
                 <td style={{ padding: "1rem" }}>{company.walletAddress}</td>
@@ -126,11 +129,14 @@ console.log("admin", admin)
                   >
                     Verify
                   </button>
-                )}
+                  
+                )} 
                 </td>
+          
               </tr>
-            ))}
+          )})}
           </tbody>
+                  
         </table>
       </div>
     </div>
